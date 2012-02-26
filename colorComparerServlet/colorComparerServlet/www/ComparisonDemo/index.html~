@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/farbtastic/farbtastic.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+		<link rel="stylesheet" href="js/farbtastic/farbtastic.css" type="text/css" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+	</head>
+	<body>
+		<div id="blocks">
+			<div class="block">
+				<div id="colorPickerA">&nbsp;</div>
+			</div>
+			<div class="block">				
+				<input type="text" id="colorA" name="colorA" /><br />
+				<input type="text" id="colorB" name="colorB" /><br />
+				<span id="score"></span>
+				<span id="complement">Test</span>
+			</div>
+			<div class="block">
+				<div id="colorPickerB">&nbsp;</div>
+			</div>
+			<div style="clear:both;"></div>
+			<p style="text-align: center;">Thanks for the excellent color picker <a href="http://acko.net/blog/farbtastic-jquery-color-picker-plug-in/">farbtastic</a>!</p>
+		</div>
+	</body>
+</html>
+
+

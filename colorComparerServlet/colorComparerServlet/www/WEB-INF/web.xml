@@ -1,0 +1,36 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/dtd/web-app_2_3.dtd">
+    <servlet>
+        <servlet-name>ColorComparer</servlet-name>
+        <servlet-class>com.colorComparer.servlet.ColorComparerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ColorProfile</servlet-name>
+        <servlet-class>com.colorComparer.servlet.ColorProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComplementMath</servlet-name>
+        <servlet-class>com.colorComparer.servlet.ComplementMathServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TriadMath</servlet-name>
+        <servlet-class>com.colorComparer.servlet.TriadMathServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ColorComparer</servlet-name>
+        <url-pattern>/ColorComparer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColorProfile</servlet-name>
+        <url-pattern>/ColorProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComplementMath</servlet-name>
+        <url-pattern>/ComplementMath</url-pattern>
+    </servlet-mapping>
+ <servlet-mapping>
+        <servlet-name>TriadMath</servlet-name>
+        <url-pattern>/TriadMath</url-pattern>
+    </servlet-mapping>
+</web-app>

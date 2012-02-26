@@ -1,0 +1,36 @@
+#blocks {
+	width:645px; 
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.block {
+	width: 195px;
+	height: 195px;
+	float: left;
+	text-align: center;
+	padding: 20px;
+}
+
+.goodMatch {
+	background-color: #b2d48c;
+}
+
+.badMatch {
+	background-color: #e9c57c;
+}
+
+.terribleMatch {
+	background-color: #eda09c;
+}
+
+.thanks {
+	color: silver;
+	text-align: center;
+}
+
+.warning {
+	color: red;
+	text-align: center;
+}
