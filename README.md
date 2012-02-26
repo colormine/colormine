@@ -1,13 +1,16 @@
 # Quick Start Guide
-Just getting started? Click here!
+New here? Check out the [Getting Started Guide](https://github.com/colormine/colorMine/wiki/Getting-Started)
 
-## More information 
-[[Resources|Click here for additional resources and information about color]]
+# More information 
+Click here for [additional resources and information](https://github.com/colormine/colorMine/wiki/Helpful-links) about color
 
 Find information and demonstrations on our blog, [http://colormine.org](http://colormine.org "Information and Demonstrations at http://colormine.org")
 Follow us at [@colorminedev](http://twitter.com/colorminedev/ "@ColorMineDev on Twitter") on Twitter
 
-# Latest News
+# Recent Updates
+
+### 2012-02-26 : Rebranding
+We've rebranded as ColorMine and moved to GitHub. Exciting!
 
 ### 2012-02-23 : Better Build Process
 We're now using ant for building the servlet project. This makes us completely windows-friendly, and makes it easier to play nice with other toys like continuous integration servers.
