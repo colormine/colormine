@@ -2,8 +2,11 @@ syntax: glob
 
 *.tmp
 *.log
-bin/*
-tomcat/*
-WEB-INF/classes/*
+bin/
+tomcat/
+WEB-INF/classes/
 *~
+*.swap
 *.orig
+*.war
+staging/
