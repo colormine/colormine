@@ -1,8 +1,7 @@
-syntax: glob
-
+*.class
 *.tmp
 *.log
-bin/
+bin/*
 tomcat/
 WEB-INF/classes/
 *~
