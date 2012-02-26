@@ -4,7 +4,6 @@
 	<!-- Note: Properties are not overwritten once set, so create your own build.properties file if needed -->
 	<property file="build.properties" />
 	<property file="conf/build.properties.default" />
-	<property name="stagingDir" value="staging" />
 	<property name="colorMineHome" value="../colorMine/colorMine" />
 	<property name="colorMineServletHome" value="colorMineServlet" />
 
@@ -22,7 +21,7 @@
 		<mkdir dir="${stagingDir}/WEB-INF/lib" />
 		<mkdir dir="${colorMineHome}/bin" />
 		<mkdir dir="${colorMineServletHome}/bin" />
-		<mkdir dir="${containerDeployPath}" />
+		<mkdir dir="${warPath}" />
 	</target>
 
 	<target name="compile" depends="init">
