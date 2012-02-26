@@ -1,6 +1,0 @@
-#NOTE: Don't update the default values. Create your own build.properties at the root of this project and override whatever you like there
-containerPath=../tomcat/apache-tomcat-7.0.25
-containerDeployPath=ContainerPath/webapps/ColorComparer
-containerStartupScript=ContainerPath/bin/startup.sh
-containerShutdownScript=ContainerPath/bin/shutdown.sh
-containerUrl=http://localhost:8080

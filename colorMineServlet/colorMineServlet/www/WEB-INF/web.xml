@@ -1,0 +1,36 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/dtd/web-app_2_3.dtd">
+    <servlet>
+        <servlet-name>ColorMine</servlet-name>
+        <servlet-class>org.colorMine.servlet.ColorMineServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ColorProfile</servlet-name>
+        <servlet-class>org.colorMine.servlet.ColorProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComplementMath</servlet-name>
+        <servlet-class>org.colorMine.servlet.ComplementMathServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TriadMath</servlet-name>
+        <servlet-class>org.colorMine.servlet.TriadMathServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ColorMine</servlet-name>
+        <url-pattern>/ColorMine</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColorProfile</servlet-name>
+        <url-pattern>/ColorProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComplementMath</servlet-name>
+        <url-pattern>/ComplementMath</url-pattern>
+    </servlet-mapping>
+ <servlet-mapping>
+        <servlet-name>TriadMath</servlet-name>
+        <url-pattern>/TriadMath</url-pattern>
+    </servlet-mapping>
+</web-app>

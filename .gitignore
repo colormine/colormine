@@ -1,0 +1,9 @@
+syntax: glob
+
+*.tmp
+*.log
+bin/*
+tomcat/*
+WEB-INF/classes/*
+*~
+*.orig
