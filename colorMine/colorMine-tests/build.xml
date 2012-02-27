@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="colorMine-tests" default="compile" basedir=".">
+
+	<property name="home" value="../colorMine" />
+
+        <path id="colorMine-classpath">
+                <pathelement location="${home}/bin" />
+		<pathelement location="lib/junit.jar" />
+	</path>
+
+	<target name="init" depends="clean">
+		<ant dir="${home}" target="init" />
+		<mkdir dir="bin" />
+	</target>
+
+	<target name="compile" depends="init">
+		<ant dir="${home}" target="compile" />
+		<javac srcdir="src" destdir="bin" includeantruntime="true">
+			<classpath refid="colorMine-classpath"/>
+		</javac>
+	</target>
+
+	<target name="clean">
+		<ant dir="${home}" target="clean" /> <!-- Not sure if this is a good idea -->
+		<delete dir="bin" />
+	</target>
+
+</project>

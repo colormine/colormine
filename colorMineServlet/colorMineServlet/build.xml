@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="colorMineServlet" default="war" basedir=".">
+
+	<property name="home" value="../../colorMine/colorMine" />
+	<property name="staging" value="${java.io.tmpdir}/${user.name}/${ant.project.name}/staging" />
+
+	<path id="servlet-classpath">
+		<pathelement location="${home}/bin" />
+		<pathelement location="lib/json.jar" />
+		<pathelement location="lib/servlet-api.jar" />
+	</path>
+
+	<target name="init" depends="clean">
+		<ant dir="${home}" target="clean" />
+		<mkdir dir="bin" />
+		<mkdir dir="${staging}" />
+		<mkdir dir="${staging}/WEB-INF" />
+		<mkdir dir="${staging}/WEB-INF/classes" />
+		<mkdir dir="${staging}/WEB-INF/lib" />
+	</target>
+
+	<target name="compile" depends="init">
+		<ant dir="${home}" target="jar" />
+		<javac srcdir="src" destdir="bin" includeantruntime="true">
+			<classpath refid="servlet-classpath" />
+		</javac>
+	</target>
+
+	<target name="copy" depends="compile">
+		<copy todir="${staging}">
+			<fileset dir="www"/>
+		</copy> 
+		<copy todir="${staging}/WEB-INF/classes" overwrite="true">
+			<fileset dir="bin" />
+		</copy>
+		<copy todir="${staging}/WEB-INF/lib" file="${home}/colorMine.jar"/>
+		<copy todir="${staging}/WEB-INF/lib" file="lib/json.jar"/>
+	</target>
+
+	<target name="war" depends="copy">
+		<war destfile="ColorMine.war" webxml="${staging}/WEB-INF/web.xml">
+			<fileset dir="${staging}"/>
+		</war>
+	</target>
+
+	<target name="clean">
+		<echo>Cleaning up binaries</echo>
+		<ant dir="${home}" target="clean" />
+		<delete dir="${staging}" />
+	</target>
+
+</project>
