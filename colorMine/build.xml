@@ -22,6 +22,12 @@
 		</javac>
 	</target>
 
+        <target name="jar" depends="compile">
+                <jar destfile="colorMine.jar">
+                        <fileset dir="${home}/bin"/>
+                </jar>
+        </target>
+
 	<target name="clean">
 		<echo>Cleaning up binaries</echo>
 		<delete dir="${home}/bin" />
