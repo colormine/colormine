@@ -1,4 +1,4 @@
-# Quick Start Guide
+# Getting Started Guide
 New here? Check out the [Getting Started Guide](https://github.com/colormine/colorMine/wiki/Getting-Started)
 
 # More information 
