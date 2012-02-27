@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="colorMineServlet" default="war" basedir=".">
+<project name="colorMineServlet" default="compile" basedir=".">
 
 	<property name="home" value="../../colorMine/colorMine" />
 	<property name="staging" value="${java.io.tmpdir}/${user.name}/${ant.project.name}/staging" />

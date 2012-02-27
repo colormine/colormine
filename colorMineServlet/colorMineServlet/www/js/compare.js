@@ -25,6 +25,7 @@ $(document).ready(function() {
 	function updateScore(scoreData) {
 		var score = scoreData.score;
 		var description;
+
 		if(score <= 1000) {
 			 scoreDiv.attr('class', 'goodMatch');
 			 description = 'Great!';
@@ -37,15 +38,15 @@ $(document).ready(function() {
 		}
 		scoreDiv.html(description + ' - ' + parseInt(score));
 	}
-	
+
 	function isComplement(complementData) {
 		var score = complementData.score;
 		var description;
-		
-		if(score == 1) {
+
+		if(1 == score) {
 			 complementDiv.attr('class', 'goodMatch');
 			 description = 'Complements';
-		} else if(score == 0) {
+		} else if(0 == score) {
 			 complementDiv.attr('class', 'badMatch');
 			 description = 'Not Complements';
 		} else {
@@ -54,32 +55,36 @@ $(document).ready(function() {
 		}
 		complementDiv.html(description + ' - ' + parseInt(score));
 	}
-	
 
-	function compare(item, color) {
+	function setColor(item, color) {
 		item.val(color);
 		item.css('backgroundColor', color);
+	}
+
+	function compare() {
+		var valueA = colorA.val();
+		var valueB = colorB.val();
 		
+		if("" == valueA || "" == valueB) {
+			alert('Please choose two colors to proceed');
+			return;
+		}
+
 		var data = {
 			method: 'compare',
 			type: 'rgb',
-			value1: normalize(colorA.val()),
-			value2: normalize(colorB.val())
+			value1: normalize(valueA),
+			value2: normalize(valueB)
 		};
-		
-		$.get('/ColorMine/ColorMine', data, updateScore);
-		
-		var data2 = {
-			method: 'complement',
-			type: 'rgb',
-			value1: normalize(colorA.val()),
-			value2: normalize(colorB.val())
-		};
-		
-		$.get('/ColorMine/ColorMine', data2, isComplement);
 
+		var complementData = jQuery.extend({}, data);
+		complementData.method = 'complement';
+
+		$.get('/ColorMine/ColorMine', data, updateScore);
+		$.get('/ColorMine/ColorMine', complementData, isComplement);
 	}
 
-	$('#colorPickerA').farbtastic(function(color) { compare(colorA, color); });
-	$('#colorPickerB').farbtastic(function(color) { compare(colorB, color); });
+	$('#colorPickerA').farbtastic(function(color) { setColor(colorA, color) });
+	$('#colorPickerB').farbtastic(function(color) { setColor(colorB, color) });
+	$('#update').bind('click', compare);
 });
