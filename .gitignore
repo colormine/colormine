@@ -8,4 +8,5 @@ WEB-INF/classes/
 *.swap
 *.orig
 *.war
+*.jar
 staging/
