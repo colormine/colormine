@@ -1,5 +1,7 @@
 package org.colorMine;
 
+import java.awt.Color;
+
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
 import org.colorMine.colorSpace.Lab;
@@ -30,8 +32,9 @@ public class ColorCalculator {
 		
 		return ColorSpaceConverter.hslToRgb(hsl);
 	}
-	public static Rgb[] GetTriadic(Rgb rgb){
-		Rgb[] triadicColors = new Rgb[2];
+	public static Color[] GetTriadic(Rgb rgb){
+		
+		Color[] triadicColors = new Color[2];
 		
 		Hsl hsl = ColorSpaceConverter.rgbToHsl(rgb);
 		hsl = getHslComplement(hsl);
@@ -39,26 +42,12 @@ public class ColorCalculator {
 		Hsl triad1 = moveHueOncolorWheel(hsl,120.0);
 		Hsl triad2 = moveHueOncolorWheel(hsl,-120.0);
 		
-		triadicColors[0] = ColorSpaceConverter.hslToRgb(triad1);
-		triadicColors[1] = ColorSpaceConverter.hslToRgb(triad2);
+		triadicColors[0] = ColorSpaceConverter.hsltoColor(triad1);
+		triadicColors[1] = ColorSpaceConverter.hsltoColor(triad2);
 		
 		return triadicColors;
 	}
-	private static Hsl getHslComplement(Hsl hsl) {
-		
-		Hsl ComplementH = moveHueOncolorWheel(hsl,180.0);
-
-		return ComplementH;
-	}
-	private static Hsl moveHueOncolorWheel(Hsl hsl,double percent) {
-		double H = hsl.H + percent/360;
-
-		if (H > 1) {
-			H-= 1;
-		}
-
-		return new Hsl(H,hsl.S,hsl.L);
-	}
+	
 	
 	public static double compare(String type, String value1, String value2) {
 		double[] a = getRgbNumbers(value1);
@@ -86,4 +75,20 @@ public class ColorCalculator {
 		return doubleNumbers;
 	}
 
+	
+private static Hsl getHslComplement(Hsl hsl) {
+		
+		Hsl ComplementH = moveHueOncolorWheel(hsl,180.0);
+
+		return ComplementH;
+	}
+private static Hsl moveHueOncolorWheel(Hsl hsl,double percent) {
+		double H = hsl.H + percent/360;
+
+		if (H > 1) {
+			H-= 1;
+		}
+
+		return new Hsl(H,hsl.S,hsl.L);
+	}
 }

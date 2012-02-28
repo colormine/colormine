@@ -55,8 +55,7 @@ public class ColorSpaceConverter {
 		return n > 0.008856 ? i : 7.787 * n + 16 / 116;
 	}
 
-	// the following came from the website below
-	// http://serennu.com/colour/rgbtohsl.php
+
 	public static Hsl rgbToHsl(Rgb rgb) {
 		
 		double R = (rgb.R / 255);
@@ -136,6 +135,9 @@ public class ColorSpaceConverter {
 		}
 
 		return new Rgb(r, g, b);
+	}
+	public static Color hsltoColor(Hsl hsl) {
+		return rgbToColor(hslToRgb(hsl));
 	}
 	private static double hueToRgb(double v1, double v2, double vh) {
 		if (vh < 0.0) {
