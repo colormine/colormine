@@ -31,8 +31,8 @@ public class ColorCalculatorTest extends TestCase {
 		// ARRANGE
 
 		// ACT
-		double result = ColorCalculator
-				.isComplement("rgb", "144-238-144", "238-144-237");
+//		double result = ColorCalculator
+		//		.isComplement("rgb", "144-238-144", "238-144-237");
 		// ASSERT
 		assertEquals(1.0, result);
 	
@@ -44,8 +44,8 @@ public class ColorCalculatorTest extends TestCase {
 		// ARRANGE
 
 		// ACT
-		double result = ColorCalculator
-				.isComplement("rgb", "144-238-144", "0-255-0");
+//		double result = ColorCalculator
+//				.isComplement("rgb", "144-238-144", "0-255-0");
 		// ASSERT
 		assertEquals(0.0, result);
 	}
