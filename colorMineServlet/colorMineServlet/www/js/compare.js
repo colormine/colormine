@@ -80,8 +80,8 @@ $(document).ready(function() {
 		var complementData = jQuery.extend({}, data);
 		complementData.method = 'complement';
 
-		$.get('./ColorMine', data, updateScore);
-		$.get('./ColorMine', complementData, isComplement);
+		$.get('../ColorMine', data, updateScore);
+		$.get('../ColorMine', complementData, isComplement);
 	}
 
 	$('#colorPickerA').farbtastic(function(color) { setColor(colorA, color) });

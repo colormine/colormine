@@ -39,8 +39,8 @@ $(document).ready(function() {
 			color: rgbToHex(color),
 		};
 
-		$.get('./ComplementMath', data, setComplementColorBlock);
-		$.get('./TriadMath', data, setTriadBlocks);
+		$.get('../ComplementMath', data, setComplementColorBlock);
+		$.get('../TriadMath', data, setTriadBlocks);
 	}
 
 	$('#colorPickerA').farbtastic(setColorBlocks);
