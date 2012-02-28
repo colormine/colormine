@@ -1,5 +1,7 @@
 package org.colorMine.colorSpace;
 
+import java.awt.Color;
+
 public class Rgb extends ColorTuple implements IColorTuple {
 	public final double R;
 	public final double G;
@@ -8,6 +10,13 @@ public class Rgb extends ColorTuple implements IColorTuple {
 	// should probably be pulled out to a factory-ish thing
 	public Rgb(double[] tuple) {
 		this(tuple[0],tuple[1],tuple[2]);
+	}
+	
+	public Rgb(Color color)
+	{
+		R = color.getRed();
+		G = color.getGreen();
+		B = color.getBlue();
 	}
 	
 	public Rgb(double r, double g, double b) {

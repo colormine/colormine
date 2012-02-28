@@ -1,5 +1,6 @@
 package org.colorMine.servlet;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,13 +37,13 @@ public class TriadMathServlet extends HttpServlet {
 			
 			double[] colorNumbers = ColorCalculator.getRgbNumbers(color);
 			
-			Rgb[] triadColors = ColorCalculator.GetTriadic((new Rgb(colorNumbers)));
+			Color[] triadColors = ColorCalculator.GetTriadic((new Rgb(colorNumbers)));
 			
 			List<String> colorHexStrings = new ArrayList<String>();
 			
-			for (Rgb c : triadColors)
+			for (Color c : triadColors)
 			{
-				colorHexStrings.add(c.toHex());
+			  colorHexStrings.add(new Rgb(c).toHex());
 			}
 		
 			ServletOutput.write(response, colorHexStrings,"color");

@@ -21,18 +21,18 @@ public class ColorCalculator {
 		Rgb rgb1 = new Rgb(a);
 		Rgb rgb2 = new Rgb(b);
 
-		Rgb complementRgb = getComplement(rgb1);
+		Rgb complementRgb = new Rgb(getComplement(rgb1));
 
 		return (complementRgb.isNearMatch(rgb2, 1.0)) ? 1 : 0;
 	}
-	public static Rgb getComplement(Rgb rgb) {
+	public static Color getComplement(Rgb rgb) {
 		
 		Hsl hsl = ColorSpaceConverter.rgbToHsl(rgb);
 		hsl = getHslComplement(hsl);
 		
-		return ColorSpaceConverter.hslToRgb(hsl);
+		return ColorSpaceConverter.hsltoColor(hsl);
 	}
-	public static Color[] GetTriadic(Rgb rgb){
+	public static Color[] getTriadic(Rgb rgb){
 		
 		Color[] triadicColors = new Color[2];
 		
@@ -76,13 +76,13 @@ public class ColorCalculator {
 	}
 
 	
-private static Hsl getHslComplement(Hsl hsl) {
+	private static Hsl getHslComplement(Hsl hsl) {
 		
 		Hsl ComplementH = moveHueOncolorWheel(hsl,180.0);
 
 		return ComplementH;
 	}
-private static Hsl moveHueOncolorWheel(Hsl hsl,double percent) {
+	private static Hsl moveHueOncolorWheel(Hsl hsl,double percent) {
 		double H = hsl.H + percent/360;
 
 		if (H > 1) {
