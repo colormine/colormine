@@ -12,38 +12,38 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.colorMine.ColorMine;
-
+import org.colorMine.servlet.validation.IValidationResult;
+import org.colorMine.servlet.validation.ImageUploadValidator;
 
 @MultipartConfig
 public class ColorProfileServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -3765738018606119921L;
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
-	private void processRequest(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean profileReturned = false;
 
 		for (Part part : request.getParts()) {
 			String filename = getFilename(part);
-			if (filename == null) {
-				// Handle "normal" fields here
-			} else if (!filename.isEmpty()) {
-				filename = filename.substring(filename.lastIndexOf('/') + 1)
-						.substring(filename.lastIndexOf('\\') + 1); // MSIE fix.
+			if (!filename.isEmpty()) {
+				IValidationResult result = ImageUploadValidator.validate(part);
+
+				if(!result.isValid()) {
+					throw new IOException(result.toString());
+				}
+
+				filename = filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE fix.
 				InputStream fileContent = part.getInputStream();
 				BufferedImage image = ImageIO.read(fileContent);
-				ServletOutput.write(response,
-						ColorMine.getRgbProfile(image));
+				ServletOutput.write(response, ColorMine.getRgbProfile(image));
 				profileReturned = true;
 			}
 		}
@@ -52,6 +52,7 @@ public class ColorProfileServlet extends HttpServlet {
 			throw new IOException("Ok...");
 		}
 	}
+
 
 	// Yucky
 	private static String getFilename(Part part) {
