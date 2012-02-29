@@ -9,6 +9,9 @@ Follow us at [@colorminedev](http://twitter.com/colorminedev/ "@ColorMineDev on 
 
 # Recent Updates
 
+### 2012-02-26 : Relative Links
+The color servlets have been converted over to use relative links. This means that the links will be correct regardless of the name you deploy it under, including "ROOT". This enabled us to deploy the app on the aws beanstalk: http://demo.colormine.org
+
 ### 2012-02-26 : Rebranding
 We've rebranded as ColorMine and moved to GitHub. Exciting!
 
