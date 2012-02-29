@@ -2,7 +2,7 @@
 
 ColorMine is an open-source Java library that is designed to make working with colors easy.
 
-We're still ironing out the vision, so keep checking back!
+We're still ironing out the "vision", so keep checking back!
 
 ## Getting Started Guide
 New here? Check out the [Getting Started Guide](https://github.com/colormine/colorMine/wiki/Getting-Started)
