@@ -40,8 +40,6 @@ The servlet code has been placed into it's own project. The servlets were create
 
 The tests have also been put into their own project. This keeps the main library 'pure' and prevents them from being automatically picked up during deployment.
 
-The changes have been reflected in the [[QuickStart|QuickStart Guide]], so check it out if you run into any problems.
-
 *2012-02-18 : Complements*
 The complement code is now working! We had to allow for a small margin of error in order to get past a few rounding issues.
 
