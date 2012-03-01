@@ -14,10 +14,13 @@ $(document).ready(function() {
 
 	function rgbToHex(color) {
 		rgb = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-		function hex(x) {
-			return ("0" + parseInt(x).toString(16)).slice(-2);
-		}
-		return normalize("#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]));
+		function hex(n) {
+ 		n = parseInt(n,10);
+ 		if (isNaN(n)) return "00";
+ 		n = Math.max(0,Math.min(n,255));
+ 		return "0123456789ABCDEF".charAt((n-n%16)/16)
+      			+ "0123456789ABCDEF".charAt(n%16);
+}		return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 	}
 
 	function setComplementColorBlock(color) {
@@ -36,7 +39,7 @@ $(document).ready(function() {
 	function updateColorBlocks() {
 		var color = colorBlock.css('background-color');
 		var data = {
-			color: color,
+			color: rgbToHex(color),
 		};
 
 		$.get('../ComplementMath', data, setComplementColorBlock);

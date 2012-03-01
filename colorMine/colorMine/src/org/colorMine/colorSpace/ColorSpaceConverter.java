@@ -137,7 +137,11 @@ public class ColorSpaceConverter {
 		return new Rgb(r, g, b);
 	}
 	public static Color hsltoColor(Hsl hsl) {
-		return rgbToColor(hslToRgb(hsl));
+		Rgb rgb = hslToRgb(hsl);
+		
+		Color returnColor = new Color((int)rgb.R,(int)rgb.G,(int)rgb.B);
+		
+		return returnColor;
 	}
 	private static double hueToRgb(double v1, double v2, double vh) {
 		if (vh < 0.0) {
