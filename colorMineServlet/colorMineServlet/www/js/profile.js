@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('input:file').fileupload({
 		datatype: 'json',
-		url: '/ColorMine/ColorProfile',
+		url: '../ColorProfile',
 		done: function(e,data) {
 			var out = "";
 	        $.each(data.result, function (color, count) {

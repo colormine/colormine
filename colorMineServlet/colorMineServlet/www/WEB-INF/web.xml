@@ -2,7 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/dtd/web-app_2_3.dtd">
     <servlet>
-        <servlet-name>ColorMine</servlet-name>
+    <servlet-name>ColorMine</servlet-name>
         <servlet-class>org.colorMine.servlet.ColorMineServlet</servlet-class>
     </servlet>
     <servlet>
