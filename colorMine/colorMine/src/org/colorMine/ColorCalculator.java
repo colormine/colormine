@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
-import org.colorMine.colorSpace.Lab;
 import org.colorMine.colorSpace.Rgb;
 
 public class ColorCalculator {
@@ -45,31 +44,20 @@ public class ColorCalculator {
 		return triadicColors;
 	}
 	
-	public static double GetMatchScore(String type, Color firstColor, Color secondColor) {
-//		double[] a = getRgbNumbers(value1);
-//		double[] b = getRgbNumbers(value2);
-
-//		if (LAB_TYPE.equals(type)) {
-//			return ColorMine.compare(new Lab(a), new Lab(b));
+	public static double GetMatchScore(Color firstColor, Color secondColor) {
+			return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
+	}
+//	public double[] getRgbNumbers(String value) {
+//		final int max = 3;
+//
+//		String[] stringNumbers = value.split(COLOR_DELIMITER);
+//		double[] doubleNumbers = new double[max];
+//
+//		for (int i = 0; i < max; i++) {
+//			doubleNumbers[i] = Double.parseDouble(stringNumbers[i]);
 //		}
-
-		if (RGB_TYPE.equals(type)) {
-			return ColorMine.compare(new Rgb(a), new Rgb(b));
-		}
-
-		throw new IllegalArgumentException("Must set a " + TYPE + " of " + LAB_TYPE + " or " + RGB_TYPE);
-	}
-	public static double[] getRgbNumbers(String value) {
-		final int max = 3;
-
-		String[] stringNumbers = value.split(COLOR_DELIMITER);
-		double[] doubleNumbers = new double[max];
-
-		for (int i = 0; i < max; i++) {
-			doubleNumbers[i] = Double.parseDouble(stringNumbers[i]);
-		}
-		return doubleNumbers;
-	}
+//		return doubleNumbers;
+//	}
 
 	
 	private static Hsl getHslComplement(Hsl hsl) {
