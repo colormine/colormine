@@ -14,29 +14,26 @@ public class ColorCalculator {
 	final static String RGB_TYPE = "rgb";
 	final static String TYPE = "type";
 
-	public static double isComplement(String type, String value1, String value2) {
-		double[] a = getRgbNumbers(value1);
-		double[] b = getRgbNumbers(value2);
+	public static boolean isComplement(Color firstColor,Color secondColor) {
 
-		Rgb rgb1 = new Rgb(a);
-		Rgb rgb2 = new Rgb(b);
-
-		Rgb complementRgb = new Rgb(getComplement(rgb1));
-
-		return (complementRgb.isNearMatch(rgb2, 1.0)) ? 1 : 0;
-	}
-	public static Color getComplement(Rgb rgb) {
+		Color complementColor = getComplement(firstColor);
 		
-		Hsl hsl = ColorSpaceConverter.rgbToHsl(rgb);
+		Rgb secondRgb = new Rgb(secondColor);
+
+		return (secondRgb.isNearMatch(new Rgb(complementColor), 1.0)) ? true : false;
+	}
+	public static Color getComplement(Color color) {
+		
+		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
 		hsl = getHslComplement(hsl);
 		
 		return ColorSpaceConverter.hsltoColor(hsl);
 	}
-	public static Color[] getTriadic(Rgb rgb){
+	public static Color[] getTriadic(Color color){
 		
 		Color[] triadicColors = new Color[2];
 		
-		Hsl hsl = ColorSpaceConverter.rgbToHsl(rgb);
+		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
 		hsl = getHslComplement(hsl);
 		
 		Hsl triad1 = moveHueOncolorWheel(hsl,120.0);
@@ -48,14 +45,13 @@ public class ColorCalculator {
 		return triadicColors;
 	}
 	
-	
-	public static double compare(String type, String value1, String value2) {
-		double[] a = getRgbNumbers(value1);
-		double[] b = getRgbNumbers(value2);
+	public static double GetMatchScore(String type, Color firstColor, Color secondColor) {
+//		double[] a = getRgbNumbers(value1);
+//		double[] b = getRgbNumbers(value2);
 
-		if (LAB_TYPE.equals(type)) {
-			return ColorMine.compare(new Lab(a), new Lab(b));
-		}
+//		if (LAB_TYPE.equals(type)) {
+//			return ColorMine.compare(new Lab(a), new Lab(b));
+//		}
 
 		if (RGB_TYPE.equals(type)) {
 			return ColorMine.compare(new Rgb(a), new Rgb(b));
@@ -91,4 +87,5 @@ public class ColorCalculator {
 
 		return new Hsl(H,hsl.S,hsl.L);
 	}
+
 }

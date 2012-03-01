@@ -1,5 +1,7 @@
 package org.colorMine.tests;
 
+import java.awt.Color;
+
 import junit.framework.TestCase;
 
 import org.colorMine.ColorCalculator;
@@ -29,12 +31,13 @@ public class ColorCalculatorTest extends TestCase {
 	public void test_Should_return_1_for_color_complements() {
 
 		// ARRANGE
-
+		Color color1 = new Color(144,238,144);
+		Color color2 = new Color(238,144,237);
 		// ACT
-//		double result = ColorCalculator
-		//		.isComplement("rgb", "144-238-144", "238-144-237");
+		boolean result = ColorCalculator
+			.isComplement(color1,color2);
 		// ASSERT
-		assertEquals(1.0, result);
+		assertEquals(true, result);
 	
 	}
 	
@@ -42,12 +45,13 @@ public class ColorCalculatorTest extends TestCase {
 	public void test_Should_return_0_for_Noncolor_complements() {
 
 		// ARRANGE
-
+		Color color1 = new Color(144,238,144);
+		Color color2 = new Color(0,0,255);
 		// ACT
-//		double result = ColorCalculator
-//				.isComplement("rgb", "144-238-144", "0-255-0");
+		double result = ColorCalculator
+			.isComplement(color1,color2);
 		// ASSERT
-		assertEquals(0.0, result);
+		assertEquals(true, result);
 	}
 	
 	
