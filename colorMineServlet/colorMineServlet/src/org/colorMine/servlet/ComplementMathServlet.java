@@ -1,5 +1,6 @@
 package org.colorMine.servlet;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.util.Map;
 
@@ -31,29 +32,16 @@ public class ComplementMathServlet extends HttpServlet {
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-			String color = GetColorFromParamer(request.getParameterMap());
+			String colorString = ServletHelpers.GetColorFromParamer(request.getParameterMap(),DATA_KEY);
 			
-			double[] colorNumbers = ColorCalculator.getRgbNumbers(color);
-			
-			Rgb complementColor = ColorCalculator.getComplement(new Rgb(colorNumbers));						
-			
-			ServletOutput.write(response, complementColor.toHex(),DATA_KEY);
+			Color baseColor = ServletHelpers.ParseColorFromHex(colorString);
+
+			Color complementColor = ColorCalculator.getComplement(baseColor);	
+
+			ServletOutput.write(response, new Rgb(complementColor).toHex(),DATA_KEY);
 			
 	}
-	private String  GetColorFromParamer(Map<String, String[]> parameterMap){
-		
-		String color = "";
-		
-		if (parameterMap.containsKey(DATA_KEY))
-		{
-			color = parameterMap.get(DATA_KEY)[0];
-		}
-		else{
-			throw new IllegalArgumentException("Must Contain Color information!");
-		}
-		
-		return color;
-	}
+
 	
 
 

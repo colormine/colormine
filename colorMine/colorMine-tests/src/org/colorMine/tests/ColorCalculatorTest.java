@@ -48,7 +48,7 @@ public class ColorCalculatorTest extends TestCase {
 		Color color1 = new Color(144,238,144);
 		Color color2 = new Color(0,0,255);
 		// ACT
-		double result = ColorCalculator
+		boolean result = ColorCalculator
 			.isComplement(color1,color2);
 		// ASSERT
 		assertEquals(true, result);

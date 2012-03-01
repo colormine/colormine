@@ -47,19 +47,7 @@ public class ColorCalculator {
 	public static double GetMatchScore(Color firstColor, Color secondColor) {
 			return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
 	}
-//	public double[] getRgbNumbers(String value) {
-//		final int max = 3;
-//
-//		String[] stringNumbers = value.split(COLOR_DELIMITER);
-//		double[] doubleNumbers = new double[max];
-//
-//		for (int i = 0; i < max; i++) {
-//			doubleNumbers[i] = Double.parseDouble(stringNumbers[i]);
-//		}
-//		return doubleNumbers;
-//	}
 
-	
 	private static Hsl getHslComplement(Hsl hsl) {
 		
 		Hsl ComplementH = moveHueOncolorWheel(hsl,180.0);
