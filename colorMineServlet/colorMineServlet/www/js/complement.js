@@ -36,7 +36,7 @@ $(document).ready(function() {
 	function updateColorBlocks() {
 		var color = colorBlock.css('background-color');
 		var data = {
-			color: rgbToHex(color),
+			color: color,
 		};
 
 		$.get('../ComplementMath', data, setComplementColorBlock);
