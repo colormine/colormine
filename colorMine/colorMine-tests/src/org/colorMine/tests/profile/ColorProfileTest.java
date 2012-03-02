@@ -11,8 +11,7 @@ import junit.framework.TestCase;
 public class ColorProfileTest extends TestCase {
 
 	public void testColorProfile() {
-		BufferedImage image = new BufferedImage(1, 1,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
 		ColorProfile profile = new ColorProfile(image);
 		Map<Color, Integer> result = profile.getColorProfile();
@@ -23,8 +22,7 @@ public class ColorProfileTest extends TestCase {
 	}
 
 	public void testColorProfileQuantity() {
-		BufferedImage image = new BufferedImage(2, 2,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
 		image.setRGB(0, 1, 0xFF0000);
 		image.setRGB(1, 0, 0xFF0000);
@@ -42,8 +40,7 @@ public class ColorProfileTest extends TestCase {
 	}
 
 	public void testColorProfileAccuracy() {
-		BufferedImage image = new BufferedImage(2, 2,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0x123456);
 		image.setRGB(0, 1, 0xF2C4A6);
 		image.setRGB(1, 0, 0xCCCCCC);

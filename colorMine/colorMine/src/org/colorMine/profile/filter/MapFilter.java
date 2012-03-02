@@ -24,7 +24,7 @@ public class MapFilter implements IColorProfileFilter {
 		_mapColors = mapProfile.getRgbProfile();
 		_tolerance = Integer.MAX_VALUE;
 	}
-	
+
 	public MapFilter(IColorProfile mapProfile, int tolerance) {
 		_mapColors = mapProfile.getRgbProfile();
 		_tolerance = tolerance;
@@ -58,8 +58,6 @@ public class MapFilter implements IColorProfileFilter {
 			}
 		}
 
-		return new ColorProfileFilterResult(new ColorProfile(resultColors),
-				new ColorProfile(modifiedColors), new ColorProfile(
-						invalidColors), imageProfile);
+		return new ColorProfileFilterResult(new ColorProfile(resultColors), new ColorProfile(modifiedColors), new ColorProfile(invalidColors), imageProfile);
 	}
 }

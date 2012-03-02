@@ -20,7 +20,7 @@ public class MapFilterTest extends TestCase {
 
 		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
-		MapFilter filter = new MapFilter(map); 
+		MapFilter filter = new MapFilter(map);
 		IColorProfile imageProfile = new ColorProfile(image);
 		IColorProfileFilterResult result = filter.apply(imageProfile);
 		assertTrue(result.getOriginalProfile() == imageProfile);
@@ -36,8 +36,8 @@ public class MapFilterTest extends TestCase {
 		MapFilter filter = new MapFilter(map);
 		IColorProfile imageProfile = new ColorProfile(image);
 		IColorProfileFilterResult result = filter.apply(imageProfile);
-		Map<Rgb,Integer> rgbColors = result.getFilteredProfile().getRgbProfile();
-		assertTrue(rgbColors.containsKey(new Rgb(.5,0,0)));
+		Map<Rgb, Integer> rgbColors = result.getFilteredProfile().getRgbProfile();
+		assertTrue(rgbColors.containsKey(new Rgb(.5, 0, 0)));
 	}
 
 	private Map<Rgb, Integer> getBasicProfile() {
@@ -47,5 +47,5 @@ public class MapFilterTest extends TestCase {
 		colors.put(new Rgb(new double[] { 0, 0, .5 }), 1);
 		return colors;
 	}
-	
+
 }

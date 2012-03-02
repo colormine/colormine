@@ -11,8 +11,7 @@ import junit.framework.TestCase;
 public class ColorMineTest extends TestCase {
 
 	public void testColorProfileAccuracy() {
-		BufferedImage image = new BufferedImage(1, 1,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
 		Map<Rgb, Integer> result = ColorMine.getRgbProfile(image);
 

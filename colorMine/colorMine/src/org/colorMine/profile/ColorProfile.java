@@ -28,12 +28,10 @@ public class ColorProfile implements IColorProfile {
 		_pixelCount = count;
 	}
 
-
 	public Map<Color, Integer> getColorProfile() {
 		HashMap<Color, Integer> colorProfile = new HashMap<Color, Integer>();
 		for (Rgb key : _colors.keySet()) {
-			colorProfile.put(ColorSpaceConverter.rgbToColor(key),
-					_colors.get(key));
+			colorProfile.put(ColorSpaceConverter.rgbToColor(key), _colors.get(key));
 		}
 		return colorProfile;
 	}
@@ -57,7 +55,7 @@ public class ColorProfile implements IColorProfile {
 	// TODO I don't like supporting more than one type, which one to stick to?
 	public Lab getAverageLab() {
 		Map<Lab, Integer> labColors = getLabProfile();
-		double[] coordinates =  { 0, 0, 0 };
+		double[] coordinates = { 0, 0, 0 };
 
 		for (Lab key : labColors.keySet()) {
 			coordinates[0] += key.L;

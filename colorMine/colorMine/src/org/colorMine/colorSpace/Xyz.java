@@ -15,5 +15,4 @@ public class Xyz extends ColorTuple implements IColorTuple {
 		return new double[] { X, Y, Z };
 	}
 
-
 }

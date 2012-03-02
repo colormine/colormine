@@ -9,9 +9,7 @@ public class ColorProfileFilterResult implements IColorProfileFilterResult {
 	private IColorProfile _discarded;
 	private IColorProfile _original;
 
-	public ColorProfileFilterResult(IColorProfile filtered,
-			IColorProfile modified, IColorProfile discarded,
-			IColorProfile original) {
+	public ColorProfileFilterResult(IColorProfile filtered, IColorProfile modified, IColorProfile discarded, IColorProfile original) {
 		_filtered = filtered;
 		_modified = modified;
 		_discarded = discarded;

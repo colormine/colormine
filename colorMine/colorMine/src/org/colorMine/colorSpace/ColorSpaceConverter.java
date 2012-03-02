@@ -17,8 +17,7 @@ public class ColorSpaceConverter {
 	}
 
 	public static Color rgbToColor(Rgb rgb) {
-		Color color = new Color((int) (255 * rgb.R), (int) (255 * rgb.G),
-				(int) (255 * rgb.B));
+		Color color = new Color((int) (255 * rgb.R), (int) (255 * rgb.G), (int) (255 * rgb.B));
 		return color;
 	}
 
@@ -26,15 +25,16 @@ public class ColorSpaceConverter {
 		Xyz xyz = rgbToXyz(rgb);
 		return xyzToLab(xyz);
 	}
+
 	public static Xyz rgbToXyz(Rgb rgb) {
 		double r = pivotRgb(rgb.R);
 		double g = pivotRgb(rgb.G);
 		double b = pivotRgb(rgb.B);
 
 		// Observer. = 2°, Illuminant = D65
-		return new Xyz(r * 0.4124 + g * 0.3576 + b * 0.1805, r * 0.2126 + g
-				* 0.7152 + b * 0.0722, r * 0.0193 + g * 0.1192 + b * 0.9505);
+		return new Xyz(r * 0.4124 + g * 0.3576 + b * 0.1805, r * 0.2126 + g * 0.7152 + b * 0.0722, r * 0.0193 + g * 0.1192 + b * 0.9505);
 	}
+
 	public static Lab xyzToLab(Xyz xyz) {
 		final double REF_X = 95.047; // Observer= 2°, Illuminant= D65
 		final double REF_Y = 100.000;
@@ -50,14 +50,14 @@ public class ColorSpaceConverter {
 	private static double pivotRgb(double n) {
 		return (n > 0.04045 ? Math.pow((n + 0.055) / 1.055, 2.4) : n / 12.92) * 100;
 	}
+
 	private static double pivotXyz(double n) {
 		double i = Math.cbrt(n);
 		return n > 0.008856 ? i : 7.787 * n + 16 / 116;
 	}
 
-
 	public static Hsl rgbToHsl(Rgb rgb) {
-		
+
 		double R = (rgb.R / 255);
 		double G = (rgb.G / 255);
 		double B = (rgb.B / 255);
@@ -72,42 +72,36 @@ public class ColorSpaceConverter {
 
 		l = (var_Max + var_Min) / 2;
 
-		if (delta_Max == 0.0) { 
+		if (delta_Max == 0.0) {
 			h = 0.0;
 			s = 0.0;
 		} else {
-			s = (l < 0.5) 
-					? delta_Max / (var_Max + var_Min) 
-					: delta_Max / (2.0 - var_Max - var_Min);
+			s = (l < 0.5) ? delta_Max / (var_Max + var_Min) : delta_Max / (2.0 - var_Max - var_Min);
 
 			double del_R = (((var_Max - R) / 6.0) + (delta_Max / 2.0)) / delta_Max;
 			double del_G = (((var_Max - G) / 6.0) + (delta_Max / 2.0)) / delta_Max;
 			double del_B = (((var_Max - B) / 6.0) + (delta_Max / 2.0)) / delta_Max;
 
-			if (areCloseEnough(R,var_Max)) {
+			if (areCloseEnough(R, var_Max)) {
 				h = del_B - del_G;
-			} else if (areCloseEnough(G,var_Max)) {
+			} else if (areCloseEnough(G, var_Max)) {
 				h = (1.0 / 3.0) + del_R - del_B;
-			} else if (areCloseEnough(B,var_Max)) {
-				h = (2.0/ 3.0) + del_G - del_R;
+			} else if (areCloseEnough(B, var_Max)) {
+				h = (2.0 / 3.0) + del_G - del_R;
 			}
 
-			if (h < 0.0)
-			{
+			if (h < 0.0) {
 				h += 1.0;
 			}
 
-				
-			if (h > 1.0)
-			{
+			if (h > 1.0) {
 				h -= 1.0;
 			}
-			
 
-				
 		}
-		return new Hsl(h,s,l);
+		return new Hsl(h, s, l);
 	}
+
 	public static Rgb hslToRgb(Hsl hsl) {
 		double r = 0;
 		double g = 0;
@@ -136,13 +130,15 @@ public class ColorSpaceConverter {
 
 		return new Rgb(r, g, b);
 	}
+
 	public static Color hsltoColor(Hsl hsl) {
 		Rgb rgb = hslToRgb(hsl);
-		
-		Color returnColor = new Color((int)rgb.R,(int)rgb.G,(int)rgb.B);
-		
+
+		Color returnColor = new Color((int) rgb.R, (int) rgb.G, (int) rgb.B);
+
 		return returnColor;
 	}
+
 	private static double hueToRgb(double v1, double v2, double vh) {
 		if (vh < 0.0) {
 			vh += 1.0;
@@ -166,9 +162,10 @@ public class ColorSpaceConverter {
 
 		return (v1);
 	};
-	
-	private final static double DoublePrecision = .000001; 
+
+	private final static double DoublePrecision = .000001;
+
 	private static boolean areCloseEnough(double a, double b) {
 		return Math.abs(a - b) < DoublePrecision;
-	}	
+	}
 }

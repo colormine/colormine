@@ -30,7 +30,7 @@ public class ValidationResult implements IValidationResult {
 	@Override
 	public String toString() {
 		StringBuilder output = new StringBuilder();
-		for(String message : _errorMessage) {
+		for (String message : _errorMessage) {
 			output.append(message + " ");
 		}
 		return output.toString();

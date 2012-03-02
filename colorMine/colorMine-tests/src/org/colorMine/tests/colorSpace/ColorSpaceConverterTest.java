@@ -8,7 +8,6 @@ import org.colorMine.colorSpace.Lab;
 import org.colorMine.colorSpace.Rgb;
 import org.colorMine.colorSpace.Xyz;
 
-
 import junit.framework.TestCase;
 
 public class ColorSpaceConverterTest extends TestCase {
@@ -58,7 +57,6 @@ public class ColorSpaceConverterTest extends TestCase {
 
 	private void match(double a, double b) {
 		DecimalFormat format = new DecimalFormat("#.##");
-		assertEquals(Double.valueOf(format.format(a)),
-				Double.valueOf(format.format(b)));
+		assertEquals(Double.valueOf(format.format(a)), Double.valueOf(format.format(b)));
 	}
 }

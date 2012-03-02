@@ -10,16 +10,16 @@ public class ImageUploadValidator {
 	public static IValidationResult validate(Part part) {
 		ArrayList<String> errors = new ArrayList<String>();
 		// SIZE_LIMIT is given in mb
-		if(part.getSize() >= (sizeLimitMb * 1024 * 1024)) {
+		if (part.getSize() >= (sizeLimitMb * 1024 * 1024)) {
 			errors.add("Invalid upload, the file size must be under " + sizeLimitMb + "mb.");
 		}
 
 		String contentType = part.getContentType();
-		if(!contentType.matches("image.*")) {
+		if (!contentType.matches("image.*")) {
 			errors.add("Invalid upload, the file must be of type gif, jpg, jpeg, or png. (" + contentType + ")");
 		}
-		
+
 		return new ValidationResult(0 == errors.size(), errors);
 	}
-	
+
 }

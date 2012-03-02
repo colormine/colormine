@@ -20,8 +20,7 @@ public class LabComparerTest extends TestCase {
 
 	private void equals(double score, Lab a, Lab b) {
 		DecimalFormat format = new DecimalFormat("#.###");
-		assertEquals(score,
-				Double.valueOf(format.format(a.compare(b))));
+		assertEquals(score, Double.valueOf(format.format(a.compare(b))));
 	}
 
 }

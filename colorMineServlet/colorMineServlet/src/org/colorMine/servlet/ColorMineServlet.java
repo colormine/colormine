@@ -9,18 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.colorMine.ColorCalculator;
 
-
 public class ColorMineServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -1864511099400018228L;
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
@@ -29,27 +26,21 @@ public class ColorMineServlet extends HttpServlet {
 	final static String VALUE_1 = "value1";
 	final static String VALUE_2 = "value2";
 
-	private void processRequest(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, String[]> parameterMap = request.getParameterMap();
 
 		// Use "out" to send content to browser
 		String method = parameterMap.get(METHOD)[0];
 
 		double result = 0;
-		
+
 		if (COMPARISON_METHOD.equals(method)) {
-			result = ColorCalculator.GetMatchScore(ServletHelpers.ParseColorFromHex(parameterMap.get(VALUE_1)[0])
-					, ServletHelpers.ParseColorFromHex(parameterMap.get(VALUE_2)[0]));
+			result = ColorCalculator.GetMatchScore(ServletHelpers.ParseColorFromHex(parameterMap.get(VALUE_1)[0]), ServletHelpers.ParseColorFromHex(parameterMap.get(VALUE_2)[0]));
 		} else {
-			throw new IllegalArgumentException(COMPARISON_METHOD
-					+ " is the only " + METHOD
-					+ " currently available. Given method was " + method);
+			throw new IllegalArgumentException(COMPARISON_METHOD + " is the only " + METHOD + " currently available. Given method was " + method);
 		}
 
-		ServletOutput.write(response, result,"score");
+		ServletOutput.write(response, result, "score");
 	}
 
-	
-	
 }

@@ -19,7 +19,7 @@ import org.colorMine.servlet.validation.ImageUploadValidator;
 public class ColorProfileServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -3765738018606119921L;
-	
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
@@ -36,11 +36,12 @@ public class ColorProfileServlet extends HttpServlet {
 			if (!filename.isEmpty()) {
 				IValidationResult result = ImageUploadValidator.validate(part);
 
-				if(!result.isValid()) {
+				if (!result.isValid()) {
 					throw new IOException(result.toString());
 				}
 
-				filename = filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE fix.
+				filename = filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE
+																														// fix.
 				InputStream fileContent = part.getInputStream();
 				BufferedImage image = ImageIO.read(fileContent);
 				ServletOutput.write(response, ColorMine.getRgbProfile(image));
@@ -53,15 +54,11 @@ public class ColorProfileServlet extends HttpServlet {
 		}
 	}
 
-
 	// Yucky
 	private static String getFilename(Part part) {
-		for (String contentDisposition : part.getHeader("content-disposition")
-				.split(";")) {
+		for (String contentDisposition : part.getHeader("content-disposition").split(";")) {
 			if (contentDisposition.trim().startsWith("filename")) {
-				return contentDisposition
-						.substring(contentDisposition.indexOf('=') + 1).trim()
-						.replace("\"", "");
+				return contentDisposition.substring(contentDisposition.indexOf('=') + 1).trim().replace("\"", "");
 			}
 		}
 		return null;

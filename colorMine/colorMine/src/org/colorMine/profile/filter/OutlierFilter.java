@@ -7,7 +7,6 @@ import org.colorMine.colorSpace.Rgb;
 import org.colorMine.profile.ColorProfile;
 import org.colorMine.profile.IColorProfile;
 
-
 /**
  * Removes colors that make up less than a given percentage of the image This is
  * best done after using something like the MapFilter to 'condense' the palette
@@ -38,8 +37,7 @@ public final class OutlierFilter implements IColorProfileFilter {
 			}
 		}
 
-		return new ColorProfileFilterResult(new ColorProfile(result), null,
-				new ColorProfile(removed), profile);
+		return new ColorProfileFilterResult(new ColorProfile(result), null, new ColorProfile(removed), profile);
 	}
 
 }

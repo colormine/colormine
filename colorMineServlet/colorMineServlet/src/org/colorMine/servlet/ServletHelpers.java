@@ -5,24 +5,21 @@ import java.util.Map;
 
 public final class ServletHelpers {
 
-	public static Color ParseColorFromHex(String hexString){
+	public static Color ParseColorFromHex(String hexString) {
 		return Color.decode(hexString);
 	}
-	public static String  GetColorFromParamer(Map<String, String[]> parameterMap,String key){
-		
+
+	public static String GetColorFromParamer(Map<String, String[]> parameterMap, String key) {
+
 		String color = "";
-		
-		if (parameterMap.containsKey(key))
-		{
+
+		if (parameterMap.containsKey(key)) {
 			color = parameterMap.get(key)[0];
-		}
-		else{
+		} else {
 			throw new IllegalArgumentException("Must Contain Color information!");
 		}
-		
+
 		return color;
 	}
-	
-	
-	
+
 }

@@ -13,55 +13,58 @@ public class ColorCalculator {
 	final static String RGB_TYPE = "rgb";
 	final static String TYPE = "type";
 
-	public static boolean isComplement(Color firstColor,Color secondColor) {
+	public static boolean isComplement(Color firstColor, Color secondColor) {
 
 		Color complementColor = getComplement(firstColor);
-		
+
 		Rgb secondRgb = new Rgb(secondColor);
 
 		return (secondRgb.isNearMatch(new Rgb(complementColor), 1.0)) ? true : false;
 	}
+
 	public static Color getComplement(Color color) {
-		
+
 		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
 		hsl = getHslComplement(hsl);
-		
+
 		return ColorSpaceConverter.hsltoColor(hsl);
 	}
-	public static Color[] getTriadic(Color color){
-		
+
+	public static Color[] getTriadic(Color color) {
+
 		Color[] triadicColors = new Color[2];
-		
+
 		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
 		hsl = getHslComplement(hsl);
-		
-		Hsl triad1 = moveHueOncolorWheel(hsl,120.0);
-		Hsl triad2 = moveHueOncolorWheel(hsl,-120.0);
-		
+
+		Hsl triad1 = moveHueOncolorWheel(hsl, 120.0);
+		Hsl triad2 = moveHueOncolorWheel(hsl, -120.0);
+
 		triadicColors[0] = ColorSpaceConverter.hsltoColor(triad1);
 		triadicColors[1] = ColorSpaceConverter.hsltoColor(triad2);
-		
+
 		return triadicColors;
 	}
-	
+
 	public static double GetMatchScore(Color firstColor, Color secondColor) {
-			return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
+		return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
 	}
 
 	private static Hsl getHslComplement(Hsl hsl) {
-		
-		Hsl ComplementH = moveHueOncolorWheel(hsl,180.0);
+
+		Hsl ComplementH = moveHueOncolorWheel(hsl, 180.0);
 
 		return ComplementH;
 	}
-	private static Hsl moveHueOncolorWheel(Hsl hsl,double percent) {
-		double H = hsl.H + percent/360;
+
+	private static Hsl moveHueOncolorWheel(Hsl hsl, double percent) {
+		double H = hsl.H + percent / 360;
 
 		if (H > 1) {
-			H-= 1;
+			H -= 1;
 		}
 
-		return new Hsl(H,hsl.S,hsl.L);
+		return new Hsl(H, hsl.S, hsl.L);
 	}
 
 }
