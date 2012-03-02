@@ -5,7 +5,7 @@
 
         <path id="colorMine-classpath">
                 <pathelement location="${home}/bin" />
-		<pathelement location="lib/junit.jar" />
+		<pathelement location="lib/testng-6.4.jar" />
 	</path>
 
 	<target name="init" depends="clean">
