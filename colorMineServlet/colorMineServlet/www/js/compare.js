@@ -39,22 +39,6 @@ $(document).ready(function() {
 		scoreDiv.html(description + ' - ' + parseInt(score));
 	}
 
-	function isComplement(complementData) {
-		var score = complementData.score;
-		var description;
-
-		if(1 == score) {
-			 complementDiv.attr('class', 'goodMatch');
-			 description = 'Complements';
-		} else if(0 == score) {
-			 complementDiv.attr('class', 'badMatch');
-			 description = 'Not Complements';
-		} else {
-			complementDiv.attr('class', 'terribleMatch');
-			description = 'Error!';
-		}
-		complementDiv.html(description + ' - ' + parseInt(score));
-	}
 
 	function setColor(item, color) {
 		item.val(color);
@@ -72,16 +56,11 @@ $(document).ready(function() {
 
 		var data = {
 			method: 'compare',
-			type: 'rgb',
-			value1: normalize(valueA),
-			value2: normalize(valueB)
+			value1: valueA,
+			value2: valueB
 		};
 
-		var complementData = jQuery.extend({}, data);
-		complementData.method = 'complement';
-
 		$.get('../ColorMine', data, updateScore);
-		$.get('../ColorMine', complementData, isComplement);
 	}
 
 	$('#colorPickerA').farbtastic(function(color) { setColor(colorA, color) });
