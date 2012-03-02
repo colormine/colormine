@@ -3,11 +3,7 @@ package org.colorMine.tests;
 import java.awt.Color;
 
 import junit.framework.TestCase;
-
 import org.colorMine.ColorCalculator;
-import org.colorMine.colorSpace.ColorSpaceConverter;
-import org.colorMine.colorSpace.Hsl;
-import org.colorMine.colorSpace.Rgb;
 import org.junit.Test;
 
 public class ColorCalculatorTest extends TestCase {
@@ -26,7 +22,6 @@ public class ColorCalculatorTest extends TestCase {
 		assertEquals(true, result);
 
 	}
-
 	@Test
 	public void test_isComplement_GivenNonComplementaryColors_returnsFalse() {
 
@@ -38,5 +33,26 @@ public class ColorCalculatorTest extends TestCase {
 		// ASSERT
 		assertEquals(false, result);
 	}
+	@Test
+	public void test_getTriadic_GivenAColor_returnsTwoValues() {
 
+		// ARRANGE
+		Color color1 = new Color(144, 238, 144);
+		// ACT
+		Color[] result = ColorCalculator.getTriadic(color1);
+		// ASSERT
+		assertEquals(2, result.length);
+	}
+	@Test
+	public void test_getTriadic_GivenAColor_returnsTriadicColors() {
+
+		// ARRANGE
+		Color color1 = new Color(255, 0, 111);
+		Color expectedColor1 = new Color(104,180,255);
+		Color ExpectedColor2 = new Color(144, 238, 144);
+		// ACT
+		Color[] result = ColorCalculator.getTriadic(color1);
+		// ASSERT
+		assertEquals(false, result);
+	}
 }
