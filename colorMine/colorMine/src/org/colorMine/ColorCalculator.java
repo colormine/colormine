@@ -3,8 +3,7 @@ package org.colorMine;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
@@ -43,7 +42,12 @@ public class ColorCalculator {
 	public static Color[] getAnalogous(Color color) {
 		return getPointsOnColorWheel(color,30,-30);
 	}
+	
+	public static double GetMatchScore(Color firstColor, Color secondColor) {
+		return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
+	}
 
+	
 	private static Color[] getPointsOnColorWheel(Color color,double ... points)
 	{
 		Collection<Color> colors = new ArrayList<Color>();
@@ -61,19 +65,12 @@ public class ColorCalculator {
 
 		return colors.toArray(new Color[colors.size()]);
 	}
-	
-	
-	public static double GetMatchScore(Color firstColor, Color secondColor) {
-		return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
-	}
-
 	private static Hsl getHslComplement(Hsl hsl) {
 
 		Hsl ComplementH = moveHueOncolorWheel(hsl, 180.0);
 
 		return ComplementH;
 	}
-
 	private static Hsl moveHueOncolorWheel(Hsl hsl, double percent) {
 		double H = hsl.H + percent / 360;
 

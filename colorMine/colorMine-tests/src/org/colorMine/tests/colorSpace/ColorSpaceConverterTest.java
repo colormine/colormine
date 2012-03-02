@@ -4,14 +4,31 @@ import java.awt.Color;
 import java.text.DecimalFormat;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
+import org.colorMine.colorSpace.Hsl;
 import org.colorMine.colorSpace.Lab;
 import org.colorMine.colorSpace.Rgb;
 import org.colorMine.colorSpace.Xyz;
+import org.junit.Test;
 
 import junit.framework.TestCase;
 
 public class ColorSpaceConverterTest extends TestCase {
 
+	@Test
+	public void test_rgbToHsl_GivenHslValue_ReturnsRgb() {
+
+		// ARRANGE
+		Hsl expected = new Hsl(.66, .44, .62);
+		Rgb rgb = new Rgb(115, 115, 200);
+		// ACT
+		Hsl result = ColorSpaceConverter.rgbToHsl(rgb);
+
+		// ASSERT
+		assertTrue(result.isNearMatch(expected, .01));
+
+	}
+	
+	
 	public void testRgbToXyz() {
 		Rgb rgb = new Rgb(1, 0, 0);
 		Xyz xyz = ColorSpaceConverter.rgbToXyz(rgb);

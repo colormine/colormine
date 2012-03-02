@@ -12,22 +12,10 @@ import org.junit.Test;
 
 public class ColorCalculatorTest extends TestCase {
 
-	@Test
-	public void test_Should_convert_rgb_to_hsl() {
 
-		// ARRANGE
-		Hsl expected = new Hsl(.66, .44, .62);
-		Rgb rgb = new Rgb(115, 115, 200);
-		// ACT
-		Hsl result = ColorSpaceConverter.rgbToHsl(rgb);
-
-		// ASSERT
-		assertTrue(result.isNearMatch(expected, .01));
-
-	}
 
 	@Test
-	public void test_Should_return_1_for_color_complements() {
+	public void test_isComplement_GivenComplementaryColors_returnsTrue() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -40,7 +28,7 @@ public class ColorCalculatorTest extends TestCase {
 	}
 
 	@Test
-	public void test_Should_return_0_for_Noncolor_complements() {
+	public void test_isComplement_GivenNonComplementaryColors_returnsFalse() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -48,7 +36,7 @@ public class ColorCalculatorTest extends TestCase {
 		// ACT
 		boolean result = ColorCalculator.isComplement(color1, color2);
 		// ASSERT
-		assertEquals(true, result);
+		assertEquals(false, result);
 	}
 
 }
