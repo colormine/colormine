@@ -27,8 +27,6 @@ public class ColorSpaceConverterTest  {
 		assert(result.isNearMatch(expected, .01));
 
 	}
-	
-	
 	public void RgbToXyz_givenRgb_ReturnsXyz() {
 		Rgb rgb = new Rgb(1, 0, 0);
 		Xyz xyz = ColorSpaceConverter.rgbToXyz(rgb);
@@ -36,8 +34,6 @@ public class ColorSpaceConverterTest  {
 		
 		assert(expected.isNearMatch(xyz, .001));
 	}
-
-	
 	public void XyzToLab_givenXyz_ReturnsLab() {
 		Xyz xyz = new Xyz(41.240, 21.260, 1.930);
 		Lab lab = ColorSpaceConverter.xyzToLab(xyz);
@@ -45,7 +41,6 @@ public class ColorSpaceConverterTest  {
 
 		assert(expected.isNearMatch(lab, .001));
 	}
-
 	public void test_RgbToLab_givenRgb_ReturnsLab() {
 		Rgb rgb = new Rgb(1, 0, 0);
 		Lab lab = ColorSpaceConverter.rgbToLab(rgb);
@@ -53,13 +48,11 @@ public class ColorSpaceConverterTest  {
 
 		assert(expected.isNearMatch(lab, .001));
 	}
-	
 	public void RgbToColor_givenRgb_ReturnsColor() {
 		Rgb rgb = new Rgb(1, 0, 0);
 		Color color = ColorSpaceConverter.rgbToColor(rgb);
 		assertEquals(color, Color.RED);
 	}
-	
 	public void ColorConversion() {
 		Color color = new Color(12, 34, 56);
 		Rgb rgb = ColorSpaceConverter.colorToRgb(color);

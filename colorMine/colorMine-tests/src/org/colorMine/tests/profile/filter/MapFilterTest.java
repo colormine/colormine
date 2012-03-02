@@ -1,5 +1,7 @@
 package org.colorMine.tests.profile.filter;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,11 +11,10 @@ import org.colorMine.profile.*;
 import org.colorMine.profile.filter.IColorProfileFilterResult;
 import org.colorMine.profile.filter.MapFilter;
 
-import junit.framework.TestCase;
+public class MapFilterTest  {
 
-public class MapFilterTest extends TestCase {
-
-	public void testSanity() {
+	@Test
+	public void Sanity() {
 		Map<Rgb, Integer> colors = new HashMap<Rgb, Integer>();
 		colors.put(new Rgb(new double[] { 1, 0, 0 }), 1);
 		IColorProfile map = new ColorProfile(colors);
@@ -23,12 +24,13 @@ public class MapFilterTest extends TestCase {
 		MapFilter filter = new MapFilter(map);
 		IColorProfile imageProfile = new ColorProfile(image);
 		IColorProfileFilterResult result = filter.apply(imageProfile);
-		assertTrue(result.getOriginalProfile() == imageProfile);
-		assertTrue(0 == result.getDiscardedProfile().getRgbProfile().size());
-		assertTrue(1 == result.getFilteredProfile().getRgbProfile().size());
+		AssertJUnit.assertTrue(result.getOriginalProfile() == imageProfile);
+		AssertJUnit.assertTrue(0 == result.getDiscardedProfile().getRgbProfile().size());
+		AssertJUnit.assertTrue(1 == result.getFilteredProfile().getRgbProfile().size());
 	}
 
-	public void testBasicRounding() {
+
+	public void BasicRounding() {
 		Map<Rgb, Integer> colors = getBasicProfile();
 		IColorProfile map = new ColorProfile(colors);
 		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
@@ -37,7 +39,7 @@ public class MapFilterTest extends TestCase {
 		IColorProfile imageProfile = new ColorProfile(image);
 		IColorProfileFilterResult result = filter.apply(imageProfile);
 		Map<Rgb, Integer> rgbColors = result.getFilteredProfile().getRgbProfile();
-		assertTrue(rgbColors.containsKey(new Rgb(.5, 0, 0)));
+		AssertJUnit.assertTrue(rgbColors.containsKey(new Rgb(.5, 0, 0)));
 	}
 
 	private Map<Rgb, Integer> getBasicProfile() {

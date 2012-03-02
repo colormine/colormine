@@ -1,27 +1,30 @@
 package org.colorMine.tests.profile;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 
 import org.colorMine.profile.ColorProfile;
 
-import junit.framework.TestCase;
+@Test
+public class ColorProfileTest  {
 
-public class ColorProfileTest extends TestCase {
 
-	public void testColorProfile() {
+	public void ColorProfile() {
 		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
 		ColorProfile profile = new ColorProfile(image);
 		Map<Color, Integer> result = profile.getColorProfile();
 
-		assertEquals(1, result.size());
-		assertTrue(result.containsKey(Color.RED));
-		assertEquals(1, (int) result.get(Color.RED));
+		AssertJUnit.assertEquals(1, result.size());
+		AssertJUnit.assertTrue(result.containsKey(Color.RED));
+		AssertJUnit.assertEquals(1, (int) result.get(Color.RED));
 	}
 
-	public void testColorProfileQuantity() {
+
+	public void ColorProfileQuantity() {
 		BufferedImage image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
 		image.setRGB(0, 1, 0xFF0000);
@@ -30,16 +33,17 @@ public class ColorProfileTest extends TestCase {
 		ColorProfile profile = new ColorProfile(image);
 		Map<Color, Integer> result = profile.getColorProfile();
 
-		assertEquals(2, result.size());
+		AssertJUnit.assertEquals(2, result.size());
 
-		assertTrue(result.containsKey(Color.RED));
-		assertEquals(3, (int) result.get(Color.RED));
+		AssertJUnit.assertTrue(result.containsKey(Color.RED));
+		AssertJUnit.assertEquals(3, (int) result.get(Color.RED));
 
-		assertTrue(result.containsKey(Color.BLACK));
-		assertEquals(1, (int) result.get(Color.BLACK));
+		AssertJUnit.assertTrue(result.containsKey(Color.BLACK));
+		AssertJUnit.assertEquals(1, (int) result.get(Color.BLACK));
 	}
 
-	public void testColorProfileAccuracy() {
+
+	public void ColorProfileAccuracy() {
 		BufferedImage image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0x123456);
 		image.setRGB(0, 1, 0xF2C4A6);
@@ -49,12 +53,12 @@ public class ColorProfileTest extends TestCase {
 		ColorProfile profile = new ColorProfile(image);
 		Map<Color, Integer> result = profile.getColorProfile();
 
-		assertEquals(4, result.size());
+		AssertJUnit.assertEquals(4, result.size());
 
-		assertEquals(1, (int) result.get(new Color(0x123456)));
-		assertEquals(1, (int) result.get(new Color(0xF2C4A6)));
-		assertEquals(1, (int) result.get(new Color(0xCCCCCC)));
-		assertEquals(1, (int) result.get(new Color(0xDDDDDD)));
+		AssertJUnit.assertEquals(1, (int) result.get(new Color(0x123456)));
+		AssertJUnit.assertEquals(1, (int) result.get(new Color(0xF2C4A6)));
+		AssertJUnit.assertEquals(1, (int) result.get(new Color(0xCCCCCC)));
+		AssertJUnit.assertEquals(1, (int) result.get(new Color(0xDDDDDD)));
 	}
 
 }

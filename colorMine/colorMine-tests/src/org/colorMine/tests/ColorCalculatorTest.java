@@ -1,17 +1,15 @@
 package org.colorMine.tests;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.awt.Color;
 
-import junit.framework.TestCase;
 import org.colorMine.ColorCalculator;
-import org.junit.Test;
-
-public class ColorCalculatorTest extends TestCase {
 
 
-
-	@Test
-	public void test_isComplement_GivenComplementaryColors_returnsTrue() {
+@Test
+public class ColorCalculatorTest {
+	public void isComplement_GivenComplementaryColors_returnsTrue() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -19,11 +17,10 @@ public class ColorCalculatorTest extends TestCase {
 		// ACT
 		boolean result = ColorCalculator.isComplement(color1, color2);
 		// ASSERT
-		assertEquals(true, result);
+		AssertJUnit.assertEquals(true, result);
 
 	}
-	@Test
-	public void test_isComplement_GivenNonComplementaryColors_returnsFalse() {
+	public void isComplement_GivenNonComplementaryColors_returnsFalse() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -31,20 +28,18 @@ public class ColorCalculatorTest extends TestCase {
 		// ACT
 		boolean result = ColorCalculator.isComplement(color1, color2);
 		// ASSERT
-		assertEquals(false, result);
+		AssertJUnit.assertEquals(false, result);
 	}
-	@Test
-	public void test_getTriadic_GivenAColor_returnsTwoValues() {
+	public void getTriadic_GivenAColor_returnsTwoValues() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
 		// ACT
 		Color[] result = ColorCalculator.getTriadic(color1);
 		// ASSERT
-		assertEquals(2, result.length);
+		AssertJUnit.assertEquals(2, result.length);
 	}
-	@Test
-	public void test_getTriadic_GivenAColor_returnsTriadicColors() {
+	public void getTriadic_GivenAColor_returnsTriadicColors() {
 
 		// ARRANGE
 		Color color1 = new Color(255, 0, 111);
@@ -53,6 +48,6 @@ public class ColorCalculatorTest extends TestCase {
 		// ACT
 		Color[] result = ColorCalculator.getTriadic(color1);
 		// ASSERT
-		assertEquals(false, result);
+		AssertJUnit.assertEquals(false, result);
 	}
 }
