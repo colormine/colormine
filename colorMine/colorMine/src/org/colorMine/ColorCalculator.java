@@ -1,6 +1,10 @@
 package org.colorMine;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
@@ -31,21 +35,34 @@ public class ColorCalculator {
 	}
 
 	public static Color[] getTriadic(Color color) {
+		return getPointsOnColorWheel(color,120,-120);
+	}
+	public static Color[] getSpiltComplements(Color color) {
+		return getPointsOnColorWheel(color,150,-150);
+	}
+	public static Color[] getAnalogous(Color color) {
+		return getPointsOnColorWheel(color,30,-30);
+	}
 
-		Color[] triadicColors = new Color[2];
+	private static Color[] getPointsOnColorWheel(Color color,double ... points)
+	{
+		Collection<Color> colors = new ArrayList<Color>();
 
 		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
 		hsl = getHslComplement(hsl);
 
-		Hsl triad1 = moveHueOncolorWheel(hsl, 120.0);
-		Hsl triad2 = moveHueOncolorWheel(hsl, -120.0);
+		
+		for (double point : points)
+		{
+			Hsl hslPoint = moveHueOncolorWheel(hsl, point);
+			colors.add(ColorSpaceConverter.hsltoColor(hslPoint));
+		}
+	
 
-		triadicColors[0] = ColorSpaceConverter.hsltoColor(triad1);
-		triadicColors[1] = ColorSpaceConverter.hsltoColor(triad2);
-
-		return triadicColors;
+		return colors.toArray(new Color[colors.size()]);
 	}
-
+	
+	
 	public static double GetMatchScore(Color firstColor, Color secondColor) {
 		return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
 	}
