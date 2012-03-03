@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="colorMine" default="jar" basedir=".">
 
+	<property name="testHome" value="../colorMine-tests" />
+
         <path id="colorMine-classpath">
                 <pathelement location="bin" />
 	</path>
@@ -18,6 +20,10 @@
                         <fileset dir="bin"/>
                 </jar>
         </target>
+
+	<target name="test">
+              <ant dir="${testHome}" target="test" />
+	</target>
 
 	<target name="clean">
 		<delete dir="bin" />
