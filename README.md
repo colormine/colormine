@@ -15,6 +15,9 @@ Follow us at [@colorminedev](http://twitter.com/colorminedev/ "@ColorMineDev on 
 
 ## Recent Updates
 
+*2012-03-01 : Switching to TestNG*
+We've moved over to TestNG for better parameterized tests. Additionally, you can now run "ant test" to run the tests for you.
+
 *2012-02-28 : Relative Links*
 The color servlets have been converted over to use relative links. This means that the links will be correct regardless of the name you deploy it under, including "ROOT". This enabled us to deploy the app on the aws beanstalk: http://demo.colormine.org
 

@@ -10,3 +10,4 @@ WEB-INF/classes/
 *.war
 *.jar
 staging/
+test-output/
