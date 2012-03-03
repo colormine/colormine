@@ -55,6 +55,7 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertTrue(contains(expectedColor1,result) && contains(expectedColor2,result));
 	}
+	
 	private boolean contains(Color color, Color[] colors)
 	{
 		for (Color c : colors)
