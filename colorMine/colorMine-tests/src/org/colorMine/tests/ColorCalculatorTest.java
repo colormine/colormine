@@ -33,11 +33,7 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertEquals(false, result);
 	}
-<<<<<<< HEAD
-	@Test
-=======
 
->>>>>>> 52bec129959467c7a5716aaf194830d40e121466
 	public void getTriadic_GivenAColor_returnsTwoValues() {
 
 		// ARRANGE

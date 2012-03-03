@@ -7,7 +7,6 @@ import java.util.Collection;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
-import org.colorMine.colorSpace.IColorTuple;
 import org.colorMine.colorSpace.Rgb;
 
 public class ColorCalculator {

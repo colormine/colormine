@@ -6,7 +6,6 @@ import java.awt.Color;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
-import org.colorMine.colorSpace.IColorTuple;
 import org.colorMine.colorSpace.Lab;
 import org.colorMine.colorSpace.Rgb;
 import org.colorMine.colorSpace.Xyz;
