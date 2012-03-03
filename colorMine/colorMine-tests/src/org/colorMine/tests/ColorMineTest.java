@@ -14,13 +14,14 @@ import static org.mockito.Mockito.*;
 public class ColorMineTest {
 
 	private IColoredImage _image;
+	
 	@BeforeTest
 	public void setup() {
 		
-		IColoredImage _image = mock(IColoredImage.class);
+		_image = mock(IColoredImage.class);
 		when(_image.getHeight()).thenReturn(1);
 		when(_image.getWidth()).thenReturn(1);
-		when(_image.getRGB(1,1)).thenReturn(0xFF0000);
+		when(_image.getRGB(0,0)).thenReturn(0xFF0000);
 
 	}
 
