@@ -2,15 +2,14 @@ package org.colorMine.profile;
 
 import java.awt.image.BufferedImage;
 
-public class ColoredImage  implements IColoredImage {
+public class ColoredImage implements IColoredImage {
 
 	private BufferedImage _image;
 
-	public ColoredImage(BufferedImage image)
-	{
+	public ColoredImage(BufferedImage image) {
 		_image = image;
 	}
-	
+
 	@Override
 	public int getWidth() {
 		return _image.getWidth();
@@ -25,5 +24,5 @@ public class ColoredImage  implements IColoredImage {
 	public int getRGB(int x, int y) {
 		return _image.getRGB(x, y);
 	}
-	
+
 }

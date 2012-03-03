@@ -47,9 +47,8 @@ public class ColorProfileServlet extends HttpServlet {
 																														// fix.
 				InputStream fileContent = part.getInputStream();
 				BufferedImage image = ImageIO.read(fileContent);
-				
+
 				IColoredImage colorImage = new ColoredImage(image);
-				
 
 				ServletOutput.write(response, ColorMine.getColorProfile(colorImage));
 

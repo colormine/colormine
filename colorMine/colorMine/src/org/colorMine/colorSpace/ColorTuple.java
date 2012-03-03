@@ -29,8 +29,6 @@ public abstract class ColorTuple implements IColorTuple {
 		return Math.sqrt(Math.pow(myData[0] - otherData[0], 2) + Math.pow(myData[1] - otherData[1], 2) + Math.pow(myData[2] - otherData[2], 2));
 	}
 
-
-
 	@Override
 	public String toString() {
 		double[] tuple = getTuple();
@@ -57,6 +55,5 @@ public abstract class ColorTuple implements IColorTuple {
 
 		return false;
 	}
-
 
 }

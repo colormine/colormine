@@ -8,9 +8,6 @@ import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Lab;
 import org.colorMine.colorSpace.Rgb;
 
-
-
-
 public class ColorProfile implements IColorProfile {
 	private final Map<Rgb, Integer> _colors;
 	private final int _pixelCount;

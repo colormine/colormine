@@ -8,6 +8,7 @@
 	<path id="test-classpath">
 		<pathelement location="${home}/dist/colorMine.jar" />
 		<pathelement location="lib/testng-6.4.jar" />
+		<pathelement location="lib/mockito-all-1.9.0.jar" />
 	</path>
 
 	<target name="init" depends="clean">

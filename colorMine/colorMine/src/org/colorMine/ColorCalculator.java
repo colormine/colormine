@@ -4,10 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
-
 
 public class ColorCalculator {
 
@@ -20,7 +18,7 @@ public class ColorCalculator {
 
 		Color complementColor = getComplement(firstColor);
 
-		return (ColorSpaceConverter.isNearMatch(complementColor,secondColor, 1.0)) ? true : false;
+		return (ColorSpaceConverter.isNearMatch(complementColor, secondColor, 1.0)) ? true : false;
 	}
 
 	public static Color getComplement(Color color) {
@@ -44,20 +42,18 @@ public class ColorCalculator {
 	}
 
 	public static double GetMatchScore(Color firstColor, Color secondColor) {
-		return ColorMine.compare(firstColor,secondColor);
+		return ColorMine.compare(firstColor, secondColor);
 	}
 
 	private static Color[] getPointsOnColorWheel(Color color, double... points) {
-		
+
 		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
 		Collection<Color> colors = new ArrayList<Color>();
-			
-		for (double point : points)
-		{
+
+		for (double point : points) {
 			Hsl hslPoint = moveHueOnColorWheel(hsl, point);
 			colors.add(ColorSpaceConverter.hslToColor(hslPoint));
 		}
-	
 
 		return colors.toArray(new Color[colors.size()]);
 	}
@@ -78,8 +74,5 @@ public class ColorCalculator {
 
 		return new Hsl(H, hsl.S, hsl.L);
 	}
-	
-	
-	
 
 }
