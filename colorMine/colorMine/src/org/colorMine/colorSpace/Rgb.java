@@ -33,17 +33,4 @@ public class Rgb extends ColorTuple implements IColorTuple {
 	public double[] getTuple() {
 		return new double[] { R, G, B };
 	}
-
-	public String toHex() {
-		return "#" + toBrowserHexValue((int) R) + toBrowserHexValue((int) G) + toBrowserHexValue((int) B);
-	}
-
-	private static String toBrowserHexValue(int number) {
-		StringBuilder builder = new StringBuilder(Integer.toHexString(number & 0xff));
-		while (builder.length() < 2) {
-			builder.append("0");
-		}
-		return builder.toString().toUpperCase();
-	}
-
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.colorMine.ColorMine;
+import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Rgb;
 import org.colorMine.profile.ColorProfile;
 import org.colorMine.profile.IColorProfile;
@@ -41,7 +42,7 @@ public class MapFilter implements IColorProfileFilter {
 			Rgb bestMatch = null;
 
 			for (Rgb mapRgb : _mapColors.keySet()) {
-				double currentScore = ColorMine.compare(imageRgb, mapRgb);
+				double currentScore = ColorMine.compare(ColorSpaceConverter.rgbToColor(imageRgb), ColorSpaceConverter.rgbToColor(mapRgb));
 				if (currentScore < bestScore) {
 					bestScore = currentScore;
 					bestMatch = mapRgb;
