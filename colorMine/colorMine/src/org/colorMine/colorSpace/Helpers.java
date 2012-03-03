@@ -4,7 +4,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
-final class Helpers {
+public final class Helpers {
 
 	static double max(double... numbers) {
 		Arrays.sort(numbers);
