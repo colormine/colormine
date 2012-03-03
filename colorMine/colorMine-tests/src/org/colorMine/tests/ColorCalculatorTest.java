@@ -43,6 +43,24 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
+	public void getAnalogous_GivenAColor_returnsTwoValues() {
+
+		// ARRANGE
+		Color color1 = new Color(144, 238, 144);
+		// ACT
+		Color[] result = ColorCalculator.getAnalogous(color1);
+		// ASSERT
+		AssertJUnit.assertEquals(2, result.length);
+	}
+	public void getSpiltComplements_GivenAColor_returnsTwoValues() {
+
+		// ARRANGE
+		Color color1 = new Color(144, 238, 144);
+		// ACT
+		Color[] result = ColorCalculator.getSpiltComplements(color1);
+		// ASSERT
+		AssertJUnit.assertEquals(2, result.length);
+	}
 
 	public void getTriadic_GivenAColor_returnsTriadicColors() {
 
@@ -53,6 +71,32 @@ public class ColorCalculatorTest {
 		
 		// ACT
 		Color[] result = ColorCalculator.getTriadic(color1);
+
+		// ASSERT
+		AssertJUnit.assertTrue(contains(expectedColor1,result) && contains(expectedColor2,result));
+	}
+	public void getAnalogous_GivenAColor_returnsAnalogousColors() {
+
+		// ARRANGE
+		Color color1 = new Color(255, 0, 111);
+		Color expectedColor1 = new Color(111,255,0);
+		Color expectedColor2 = new Color(0, 110, 255);
+		
+		// ACT
+		Color[] result = ColorCalculator.getAnalogous(color1);
+
+		// ASSERT
+		AssertJUnit.assertTrue(contains(expectedColor1,result) && contains(expectedColor2,result));
+	}
+	public void getSpiltComplements_GivenAColor_returnsSpiltComplements() {
+
+		// ARRANGE
+		Color color1 = new Color(255, 0, 111);
+		Color expectedColor1 = new Color(111,255,0);
+		Color expectedColor2 = new Color(0, 110, 255);
+		
+		// ACT
+		Color[] result = ColorCalculator.getSpiltComplements(color1);
 
 		// ASSERT
 		AssertJUnit.assertTrue(contains(expectedColor1,result) && contains(expectedColor2,result));
