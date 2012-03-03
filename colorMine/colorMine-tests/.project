@@ -3,6 +3,7 @@
 	<name>colorMine-tests</name>
 	<comment></comment>
 	<projects>
+		<project>colorMine</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
