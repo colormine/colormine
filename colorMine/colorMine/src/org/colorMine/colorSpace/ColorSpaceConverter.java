@@ -168,4 +168,33 @@ public class ColorSpaceConverter {
 	private static boolean areCloseEnough(double a, double b) {
 		return Math.abs(a - b) < DoublePrecision;
 	}
+	
+	public static boolean isNearMatch(IColorTuple firstColor,IColorTuple secondColor ,double nearMatchTorrerance) {
+
+		double[] values = firstColor.getTuple();
+		double[] values2 = secondColor.getTuple();
+
+		return compareNearValue(values[0], values2[0], nearMatchTorrerance) 
+				&& compareNearValue(values[1], values2[1], nearMatchTorrerance)
+				&& compareNearValue(values[2], values2[2], nearMatchTorrerance);
+
+	}
+	public static boolean isNearMatch(Color firstColor,Color secondColor,  double nearMatchTorrerance) {
+
+		double[] values = {firstColor.getRed(),firstColor.getGreen(),firstColor.getBlue()};
+		double[] values2 = {secondColor.getRed(),secondColor.getGreen(),secondColor.getBlue()};
+
+		return compareNearValue(values[0], values2[0], nearMatchTorrerance) 
+				&& compareNearValue(values[1], values2[1], nearMatchTorrerance)
+				&& compareNearValue(values[2], values2[2], nearMatchTorrerance);
+
+	}
+	private static  boolean compareNearValue(double value, double otherValue, double nearMatchTorrerance) {
+		if (value == otherValue || Math.abs(value - otherValue) <= nearMatchTorrerance) {
+			return true;
+		}
+
+		return false;
+	}
+	
 }

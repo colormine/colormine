@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 @Test
 public class ColorSpaceConverterTest {
 
+	
 	public void rgbToHsl_GivenHslValue_ReturnsRgb() {
 
 		// ARRANGE
@@ -23,7 +24,9 @@ public class ColorSpaceConverterTest {
 		Hsl result = ColorSpaceConverter.rgbToHsl(rgb);
 
 		// ASSERT
-		assert (result.isNearMatch(expected, .01));
+
+		assert(ColorSpaceConverter.isNearMatch(expected,result, .01));
+
 
 	}
 
@@ -31,8 +34,10 @@ public class ColorSpaceConverterTest {
 		Rgb rgb = new Rgb(1, 0, 0);
 		Xyz xyz = ColorSpaceConverter.rgbToXyz(rgb);
 		Xyz expected = new Xyz(41.240, 21.260, 1.930);
+		
+		assert(ColorSpaceConverter.isNearMatch(xyz,expected, .001));
 
-		assert (expected.isNearMatch(xyz, .001));
+		
 	}
 
 	public void XyzToLab_givenXyz_ReturnsLab() {
@@ -40,7 +45,9 @@ public class ColorSpaceConverterTest {
 		Lab lab = ColorSpaceConverter.xyzToLab(xyz);
 		Lab expected = new Lab(53.233, 80.109, 67.220);
 
-		assert (expected.isNearMatch(lab, .001));
+
+		assert(ColorSpaceConverter.isNearMatch(lab,expected, .001));
+
 	}
 
 	public void test_RgbToLab_givenRgb_ReturnsLab() {
@@ -48,7 +55,8 @@ public class ColorSpaceConverterTest {
 		Lab lab = ColorSpaceConverter.rgbToLab(rgb);
 		Lab expected = new Lab(53.233, 80.109, 67.220);
 
-		assert (expected.isNearMatch(lab, .001));
+		assert(ColorSpaceConverter.isNearMatch(lab,expected, .001));
+
 	}
 
 	public void RgbToColor_givenRgb_ReturnsColor() {
