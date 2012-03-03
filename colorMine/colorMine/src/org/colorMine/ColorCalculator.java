@@ -8,6 +8,7 @@ import java.util.Collection;
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
 
+
 public class ColorCalculator {
 
 	final static String COLOR_DELIMITER = "-";
@@ -21,7 +22,7 @@ public class ColorCalculator {
 
 		return (ColorSpaceConverter.isNearMatch(complementColor,secondColor, 1.0)) ? true : false;
 	}
-	
+
 	public static Color getComplement(Color color) {
 
 		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
@@ -31,15 +32,15 @@ public class ColorCalculator {
 	}
 
 	public static Color[] getTriadic(Color color) {
-		return getPointsOnColorWheel(color,120,-120);
+		return getPointsOnColorWheel(color, 120, -120);
 	}
 
 	public static Color[] getSpiltComplements(Color color) {
-		return getPointsOnColorWheel(color,150,-150);
+		return getPointsOnColorWheel(color, 150, -150);
 	}
 
 	public static Color[] getAnalogous(Color color) {
-		return getPointsOnColorWheel(color,30,-30);
+		return getPointsOnColorWheel(color, 30, -30);
 	}
 
 	public static double GetMatchScore(Color firstColor, Color secondColor) {
@@ -47,6 +48,7 @@ public class ColorCalculator {
 	}
 
 	private static Color[] getPointsOnColorWheel(Color color, double... points) {
+		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
 		Collection<Color> colors = new ArrayList<Color>();
 
 		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
@@ -63,12 +65,12 @@ public class ColorCalculator {
 
 	private static Hsl getHslComplement(Hsl hsl) {
 
-		Hsl ComplementH = moveHueOncolorWheel(hsl, 180.0);
+		Hsl ComplementH = moveHueOnColorWheel(hsl, 180.0);
 
 		return ComplementH;
 	}
 
-	private static Hsl moveHueOncolorWheel(Hsl hsl, double percent) {
+	private static Hsl moveHueOnColorWheel(Hsl hsl, double percent) {
 		double H = hsl.H + percent / 360;
 
 		if (H > 1) {

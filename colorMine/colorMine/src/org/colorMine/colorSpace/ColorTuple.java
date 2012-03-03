@@ -30,6 +30,7 @@ public abstract class ColorTuple implements IColorTuple {
 	}
 
 
+
 	@Override
 	public String toString() {
 		double[] tuple = getTuple();
@@ -41,7 +42,6 @@ public abstract class ColorTuple implements IColorTuple {
 	private static int dToI(double d) {
 		return (int) (255 * d);
 	}
-
 
 	public boolean isNearMatch(IColorTuple color, double nearMatchTorrerance) {
 		double[] values = color.getTuple();

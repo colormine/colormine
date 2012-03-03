@@ -2,31 +2,30 @@
 <project name="colorMine-tests" default="jar" basedir=".">
 
 	<property name="home" value="../colorMine" />
-	<property name="jar" value="colorMine-tests.jar" />
+	<property name="jar" value="dist/colorMine-tests.jar" />
 	<property name="testOutput" value="test-output" />
 
-        <path id="test-classpath">
-                <pathelement location="${home}/bin" />
+	<path id="test-classpath">
+		<pathelement location="${home}/dist/colorMine.jar" />
 		<pathelement location="lib/testng-6.4.jar" />
 	</path>
 
 	<target name="init" depends="clean">
-		<ant dir="${home}" target="init" />
 		<mkdir dir="bin" />
 	</target>
 
 	<target name="compile" depends="init">
-		<ant dir="${home}" target="compile" />
+		<ant dir="${home}" target="jar" />
 		<javac srcdir="src" destdir="bin" includeantruntime="true">
 			<classpath refid="test-classpath"/>
 		</javac>
 	</target>
 
-        <target name="jar" depends="compile">
-                <jar destfile="${jar}">
-                        <fileset dir="bin"/>
-                </jar>
-        </target>
+    <target name="jar" depends="compile">
+		<jar destfile="${jar}">
+			<fileset dir="bin"/>
+		</jar>
+    </target>
 
 	<taskdef name="testng" classpathref="test-classpath" classname="org.testng.TestNGAntTask"/>
 	<target name="test" depends="jar">
