@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="colorMine-tests" default="jar" basedir=".">
+<project name="colorMine-tests" default="test" basedir=".">
 
 	<property name="home" value="../colorMine" />
 	<property name="jar" value="dist/colorMine-tests.jar" />
