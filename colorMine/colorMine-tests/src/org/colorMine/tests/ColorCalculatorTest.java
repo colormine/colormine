@@ -1,11 +1,10 @@
 package org.colorMine.tests;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.awt.Color;
 
 import org.colorMine.ColorCalculator;
-
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 @Test
 public class ColorCalculatorTest {
@@ -20,6 +19,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertEquals(true, result);
 
 	}
+
 	public void isComplement_GivenNonComplementaryColors_returnsFalse() {
 
 		// ARRANGE
@@ -30,6 +30,7 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertEquals(false, result);
 	}
+
 	public void getTriadic_GivenAColor_returnsTwoValues() {
 
 		// ARRANGE
@@ -39,15 +40,15 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
-	public void getTriadic_GivenAColor_returnsTriadicColors() {
 
-		// ARRANGE
-		Color color1 = new Color(255, 0, 111);
-		Color expectedColor1 = new Color(104,180,255);
-		Color ExpectedColor2 = new Color(144, 238, 144);
-		// ACT
-		Color[] result = ColorCalculator.getTriadic(color1);
-		// ASSERT
-		AssertJUnit.assertEquals(false, result);
+	public void getTriadic_GivenAColor_returnsTriadicColors() {
+		/*
+		 * // ARRANGE Color color1 = new Color(255, 0, 111); Color
+		 * expectedColor1 = new Color(104,180,255); Color ExpectedColor2 = new
+		 * Color(144, 238, 144); // ACT Color[] result =
+		 * ColorCalculator.getTriadic(color1); // ASSERT
+		 * AssertJUnit.assertEquals(false, result);
+		 */
+		AssertJUnit.fail("Test is always false, commented out to avoid warnings");
 	}
 }

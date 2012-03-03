@@ -11,7 +11,7 @@ import org.colorMine.profile.*;
 import org.colorMine.profile.filter.IColorProfileFilterResult;
 import org.colorMine.profile.filter.MapFilter;
 
-public class MapFilterTest  {
+public class MapFilterTest {
 
 	@Test
 	public void Sanity() {
@@ -28,7 +28,6 @@ public class MapFilterTest  {
 		AssertJUnit.assertTrue(0 == result.getDiscardedProfile().getRgbProfile().size());
 		AssertJUnit.assertTrue(1 == result.getFilteredProfile().getRgbProfile().size());
 	}
-
 
 	public void BasicRounding() {
 		Map<Rgb, Integer> colors = getBasicProfile();

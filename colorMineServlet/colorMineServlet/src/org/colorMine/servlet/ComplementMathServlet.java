@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.colorMine.ColorCalculator;
-import org.colorMine.colorSpace.Rgb;
 
 public class ComplementMathServlet extends HttpServlet {
 
@@ -26,20 +25,17 @@ public class ComplementMathServlet extends HttpServlet {
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		try {
-
 			String colorString = ServletHelpers.GetColorFromParamer(request.getParameterMap(), DATA_KEY);
 
 			Color baseColor = ServletHelpers.ParseColorFromHex(colorString);
 			Color complementColor = ColorCalculator.getComplement(baseColor);
 
-			ServletOutput.write(response, new Rgb(complementColor).toHex(), DATA_KEY);
+			ServletOutput.write(response, complementColor, DATA_KEY);
 
 		} catch (Exception e) {
 			ServletOutput.write(response, e.getMessage(), DATA_KEY);
 		}
-
 	}
 
 }

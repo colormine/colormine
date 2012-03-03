@@ -1,16 +1,15 @@
 package org.colorMine.tests.profile;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 
 import org.colorMine.profile.ColorProfile;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 @Test
-public class ColorProfileTest  {
-
+public class ColorProfileTest {
 
 	public void ColorProfile() {
 		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
@@ -22,7 +21,6 @@ public class ColorProfileTest  {
 		AssertJUnit.assertTrue(result.containsKey(Color.RED));
 		AssertJUnit.assertEquals(1, (int) result.get(Color.RED));
 	}
-
 
 	public void ColorProfileQuantity() {
 		BufferedImage image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);
@@ -41,7 +39,6 @@ public class ColorProfileTest  {
 		AssertJUnit.assertTrue(result.containsKey(Color.BLACK));
 		AssertJUnit.assertEquals(1, (int) result.get(Color.BLACK));
 	}
-
 
 	public void ColorProfileAccuracy() {
 		BufferedImage image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_RGB);

@@ -6,9 +6,8 @@ import java.text.DecimalFormat;
 
 import org.colorMine.colorSpace.Lab;
 
-
 @Test
-public class LabComparerTest  {
+public class LabComparerTest {
 
 	public void NoDistance() {
 		equals(0.0, new Lab(1, 0, 0), new Lab(1, 0, 0));
