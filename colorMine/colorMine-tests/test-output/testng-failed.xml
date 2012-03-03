@@ -8,11 +8,6 @@
           <include name="getTriadic_GivenAColor_returnsTriadicColors"/>
         </methods>
       </class> <!-- org.colorMine.tests.ColorCalculatorTest -->
-      <class name="org.colorMine.tests.ColorMineTest">
-        <methods>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- org.colorMine.tests.ColorMineTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -53,8 +53,6 @@ public class ColorCalculator {
 		Collection<Color> colors = new ArrayList<Color>();
 
 		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
-		hsl = getHslComplement(hsl);
-
 		
 		for (double point : points)
 		{
