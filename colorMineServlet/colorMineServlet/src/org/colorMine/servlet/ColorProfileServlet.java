@@ -3,6 +3,7 @@ package org.colorMine.servlet;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -44,13 +45,15 @@ public class ColorProfileServlet extends HttpServlet {
 																														// fix.
 				InputStream fileContent = part.getInputStream();
 				BufferedImage image = ImageIO.read(fileContent);
-				ServletOutput.write(response, ColorMine.getRgbProfile(image));
+
+				ServletOutput.write(response, ColorMine.getColorProfile(image));
+
 				profileReturned = true;
 			}
 		}
 
 		if (!profileReturned) {
-			throw new IOException("Ok...");
+			throw new IOException("An error has occured");
 		}
 	}
 

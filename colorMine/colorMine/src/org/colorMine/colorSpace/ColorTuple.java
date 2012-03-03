@@ -14,7 +14,13 @@ public abstract class ColorTuple implements IColorTuple {
 
 	@Override
 	public int hashCode() {
-		return Integer.parseInt(toString(), 16);
+		double[] tuple = getTuple();
+		StringBuilder result = new StringBuilder();
+		for (double d : tuple) {
+			result.append(d);
+			result.append("-");
+		}
+		return result.toString().hashCode();
 	}
 
 	public double compare(IColorTuple other) {
@@ -23,6 +29,7 @@ public abstract class ColorTuple implements IColorTuple {
 		return Math.sqrt(Math.pow(myData[0] - otherData[0], 2) + Math.pow(myData[1] - otherData[1], 2) + Math.pow(myData[2] - otherData[2], 2));
 	}
 
+<<<<<<< HEAD
 	@Override
 	public String toString() {
 		double[] tuple = getTuple();
@@ -36,5 +43,21 @@ public abstract class ColorTuple implements IColorTuple {
 	}
 
 
+=======
+	public boolean isNearMatch(IColorTuple color, double nearMatchTorrerance) {
+		double[] values = color.getTuple();
+		double[] values2 = this.getTuple();
+
+		return compareNearValue(values[0], values2[0], nearMatchTorrerance) && compareNearValue(values[1], values2[1], nearMatchTorrerance) && compareNearValue(values[2], values2[2], nearMatchTorrerance);
+	}
+
+	private boolean compareNearValue(double value, double otherValue, double nearMatchTorrerance) {
+		if (value == otherValue || Math.abs(value - otherValue) <= nearMatchTorrerance) {
+			return true;
+		}
+
+		return false;
+	}
+>>>>>>> 52bec129959467c7a5716aaf194830d40e121466
 
 }

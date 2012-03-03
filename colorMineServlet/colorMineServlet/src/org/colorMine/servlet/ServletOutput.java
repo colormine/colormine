@@ -1,66 +1,41 @@
 package org.colorMine.servlet;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 
-import org.colorMine.colorSpace.Rgb;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ServletOutput {
 
-	public static void write(HttpServletResponse response, double data, String key) throws IOException {
-		write(response, CreateJsonData(data, key));
+	static void write(HttpServletResponse response, double data, String key) throws IOException {
+		write(response, createJsonData(data, key));
 	}
 
-	public static void write(HttpServletResponse response, String data, String key) throws IOException {
-		write(response, CreateJsonData(data, key));
+	static void write(HttpServletResponse response, String data, String key) throws IOException {
+		write(response, createJsonData(data, key));
 	}
 
-	private static JSONObject CreateJsonData(Object data, String key) throws IOException {
-		try {
-			JSONObject json = new JSONObject();
-			json.put(key, data);
-
-			return json;
-		} catch (JSONException jsonException) {
-			throw new IOException(jsonException.getMessage());
-		}
-	}
-
-	public static void write(HttpServletResponse response, Map<Rgb, Integer> data) throws IOException {
+	static void write(HttpServletResponse response, Map<Color, Integer> data) throws IOException {
 		Map<String, String> stringData = convertToSerializable(data);
 		JSONObject json = new JSONObject(stringData);
 		write(response, json);
 	}
 
-	private static Map<String, String> convertToSerializable(Map<Rgb, Integer> data) {
-		Map<String, String> output = new HashMap<String, String>();
-
-		Iterator<Map.Entry<Rgb, Integer>> i = data.entrySet().iterator();
-		while (i.hasNext()) {
-			Map.Entry<Rgb, Integer> pairs = (Map.Entry<Rgb, Integer>) i.next();
-			output.put(pairs.getKey().toString(), Integer.toString(pairs.getValue()));
-		}
-		return output;
+	static void write(HttpServletResponse response, Color color, String key) throws IOException {
+		String colorString = colorToHex(color);
+		JSONObject json = createJsonData(colorString, key);
+		write(response, json);
 	}
 
-	private static void write(HttpServletResponse response, JSONObject json) throws IOException {
-		writeAsJsonString(response, json.toString());
-	}
-
-	private static void writeAsJsonString(HttpServletResponse response, String output) throws IOException {
-		response.setContentType("application/json");
-		PrintWriter out = response.getWriter();
-		out.write(output);
-	}
-
-	public static void write(HttpServletResponse response, Collection<String> strings, String key) throws IOException {
+	static void write(HttpServletResponse response, Collection<String> strings, String key) throws IOException {
 		try {
 
 			JSONObject json = new JSONObject();
@@ -74,6 +49,42 @@ public class ServletOutput {
 		} catch (JSONException jsonException) {
 			throw new IOException(jsonException.getMessage());
 		}
+	}
+
+	static String colorToHex(Color color) {
+		return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+	}
+
+	private static void write(HttpServletResponse response, JSONObject json) throws IOException {
+		writeAsJsonString(response, json.toString());
+	}
+
+	private static void writeAsJsonString(HttpServletResponse response, String output) throws IOException {
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		out.write(output);
+	}
+
+	private static JSONObject createJsonData(Object data, String key) throws IOException {
+		try {
+			JSONObject json = new JSONObject();
+			json.put(key, data);
+
+			return json;
+		} catch (JSONException jsonException) {
+			throw new IOException(jsonException.getMessage());
+		}
+	}
+
+	private static Map<String, String> convertToSerializable(Map<Color, Integer> data) {
+		Map<String, String> output = new HashMap<String, String>();
+
+		Iterator<Map.Entry<Color, Integer>> i = data.entrySet().iterator();
+		while (i.hasNext()) {
+			Map.Entry<Color, Integer> pairs = (Map.Entry<Color, Integer>) i.next();
+			output.put(colorToHex(pairs.getKey()), Integer.toString(pairs.getValue()));
+		}
+		return output;
 	}
 
 }

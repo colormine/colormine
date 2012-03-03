@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.colorMine.ColorCalculator;
-import org.colorMine.colorSpace.Rgb;
 
 public class TriadMathServlet extends HttpServlet {
 
@@ -38,10 +37,9 @@ public class TriadMathServlet extends HttpServlet {
 		List<String> colorHexStrings = new ArrayList<String>();
 
 		for (Color c : triadColors) {
-			colorHexStrings.add(new Rgb(c).toHex());
+			colorHexStrings.add(ServletOutput.colorToHex(c));
 		}
 
 		ServletOutput.write(response, colorHexStrings, DATA_KEY);
-
 	}
 }
