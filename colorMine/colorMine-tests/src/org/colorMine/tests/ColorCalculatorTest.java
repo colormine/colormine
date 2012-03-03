@@ -22,7 +22,6 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertEquals(true, result);
 
 	}
-
 	public void isComplement_GivenNonComplementaryColors_returnsFalse() {
 
 		// ARRANGE
@@ -33,7 +32,6 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertEquals(false, result);
 	}
-
 	public void getTriadic_GivenAColor_returnsTwoValues() {
 
 		// ARRANGE
@@ -61,7 +59,6 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
-
 	public void getTriadic_GivenAColor_returnsTriadicColors() {
 
 		// ARRANGE
@@ -79,8 +76,8 @@ public class ColorCalculatorTest {
 
 		// ARRANGE
 		Color color1 = new Color(255, 0, 111);
-		Color expectedColor1 = new Color(111,255,0);
-		Color expectedColor2 = new Color(0, 110, 255);
+		Color expectedColor1 = new Color(255,16,0);
+		Color expectedColor2 = new Color(255, 0,238);
 		
 		// ACT
 		Color[] result = ColorCalculator.getAnalogous(color1);
@@ -92,8 +89,8 @@ public class ColorCalculatorTest {
 
 		// ARRANGE
 		Color color1 = new Color(255, 0, 111);
-		Color expectedColor1 = new Color(111,255,0);
-		Color expectedColor2 = new Color(0, 110, 255);
+		Color expectedColor1 = new Color(0,255,16);
+		Color expectedColor2 = new Color(0, 238, 255);
 		
 		// ACT
 		Color[] result = ColorCalculator.getSpiltComplements(color1);
@@ -101,7 +98,23 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertTrue(contains(expectedColor1,result) && contains(expectedColor2,result));
 	}
-	
+	public void GetmatchScore_GivenGoodMatchingColors_returns()
+	{
+		AssertJUnit.fail();
+	}
+	public void GetmatchScore_GivenBadMatchingColors_returns()
+	{
+		AssertJUnit.fail();
+	}
+	public void GetmatchScore_GivenTerribleMatchingColors_returns()
+	{
+		AssertJUnit.fail();
+	}
+	public void GetmatchScore_GivenGreatMatchingColors_returns()
+	{
+		AssertJUnit.fail();
+	}
+	//Helpers
 	private boolean contains(Color color, Color[] colors)
 	{
 		for (Color c : colors)

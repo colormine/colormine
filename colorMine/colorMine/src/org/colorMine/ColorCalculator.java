@@ -21,7 +21,7 @@ public class ColorCalculator {
 
 		return (ColorSpaceConverter.isNearMatch(complementColor,secondColor, 1.0)) ? true : false;
 	}
-
+	
 	public static Color getComplement(Color color) {
 
 		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
