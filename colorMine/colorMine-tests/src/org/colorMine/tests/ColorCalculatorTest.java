@@ -107,7 +107,7 @@ public class ColorCalculatorTest {
 		// ACT
 		double result = ColorCalculator.GetMatchScore(firstColor, secondColor);
 		// ASSERT
-		AssertJUnit.assertEquals(result,0);
+		AssertJUnit.assertEquals(result,0.0);
 	}
 	//Helpers
 	private boolean contains(Color color, Color[] colors)

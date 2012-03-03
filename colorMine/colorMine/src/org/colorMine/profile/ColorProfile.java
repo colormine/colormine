@@ -1,7 +1,6 @@
 package org.colorMine.profile;
 
 import java.awt.Color;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 

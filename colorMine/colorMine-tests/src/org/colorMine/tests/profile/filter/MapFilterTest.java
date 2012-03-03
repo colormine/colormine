@@ -1,5 +1,9 @@
 package org.colorMine.tests.profile.filter;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.awt.image.BufferedImage;
@@ -11,8 +15,21 @@ import org.colorMine.profile.*;
 import org.colorMine.profile.filter.IColorProfileFilterResult;
 import org.colorMine.profile.filter.MapFilter;
 
+@Test
 public class MapFilterTest {
 
+	private IColoredImage _image;
+	@BeforeTest
+	public void setup() {
+		
+		IColoredImage _image = mock(IColoredImage.class);
+		when(_image.getHeight()).thenReturn(1);
+		when(_image.getWidth()).thenReturn(1);
+		when(_image.getRGB(1,1)).thenReturn(0xFF0000);
+
+	}
+	
+	
 	@Test
 	public void Sanity() {
 		Map<Rgb, Integer> colors = new HashMap<Rgb, Integer>();
@@ -22,7 +39,7 @@ public class MapFilterTest {
 		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
 		MapFilter filter = new MapFilter(map);
-		IColorProfile imageProfile = new ColorProfile(image);
+		IColorProfile imageProfile = new ColorProfile(_image);
 		IColorProfileFilterResult result = filter.apply(imageProfile);
 		AssertJUnit.assertTrue(result.getOriginalProfile() == imageProfile);
 		AssertJUnit.assertTrue(0 == result.getDiscardedProfile().getRgbProfile().size());
@@ -35,7 +52,7 @@ public class MapFilterTest {
 		BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		image.setRGB(0, 0, 0xFF0000);
 		MapFilter filter = new MapFilter(map);
-		IColorProfile imageProfile = new ColorProfile(image);
+		IColorProfile imageProfile = new ColorProfile(_image);
 		IColorProfileFilterResult result = filter.apply(imageProfile);
 		Map<Rgb, Integer> rgbColors = result.getFilteredProfile().getRgbProfile();
 		AssertJUnit.assertTrue(rgbColors.containsKey(new Rgb(.5, 0, 0)));
