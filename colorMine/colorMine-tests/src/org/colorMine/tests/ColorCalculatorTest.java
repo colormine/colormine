@@ -5,6 +5,7 @@ import org.testng.AssertJUnit;
 import java.awt.Color;
 
 import org.colorMine.ColorCalculator;
+import org.colorMine.colorSpace.ColorSpaceConverter;
 
 
 @Test
@@ -60,7 +61,7 @@ public class ColorCalculatorTest {
 	{
 		for (Color c : colors)
 		{
-			if (c.equals(color))
+			if (ColorSpaceConverter.isNearMatch(c, color, 1.0))
 			{
 				return true;
 			}

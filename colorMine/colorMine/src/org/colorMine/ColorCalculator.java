@@ -23,7 +23,7 @@ public class ColorCalculator {
 
 		Rgb secondRgb = new Rgb(secondColor);
 
-		return (secondRgb.isNearMatch(new Rgb(complementColor), 1.0)) ? true : false;
+		return (ColorSpaceConverter.isNearMatch(new Rgb(complementColor),secondRgb, 1.0)) ? true : false;
 	}
 	public static boolean isTriadic(Color color, Color secondColor)
 	{
@@ -32,7 +32,7 @@ public class ColorCalculator {
 		
 		for (Color c : Triadics)
 		{
-			if (new Rgb(secondColor).isNearMatch(new Rgb(c), 1.0))
+			if (ColorSpaceConverter.isNearMatch(c,secondColor, 1.0))
 			{
 				return true;
 			}
@@ -93,33 +93,7 @@ public class ColorCalculator {
 		return new Hsl(H, hsl.S, hsl.L);
 	}
 	
-	public boolean isNearMatch(IColorTuple firstColor,IColorTuple secondColor ,double nearMatchTorrerance) {
-
-		double[] values = firstColor.getTuple();
-		double[] values2 = secondColor.getTuple();
-
-		return compareNearValue(values[0], values2[0], nearMatchTorrerance) 
-				&& compareNearValue(values[1], values2[1], nearMatchTorrerance)
-				&& compareNearValue(values[2], values2[2], nearMatchTorrerance);
-
-	}
-	public boolean isNearMatch(Color firstColor,Color secondColor,  double nearMatchTorrerance) {
-
-		double[] values = {firstColor.getRed(),firstColor.getGreen(),firstColor.getBlue()};
-		double[] values2 = {secondColor.getRed(),secondColor.getGreen(),secondColor.getBlue()};
-
-		return compareNearValue(values[0], values2[0], nearMatchTorrerance) 
-				&& compareNearValue(values[1], values2[1], nearMatchTorrerance)
-				&& compareNearValue(values[2], values2[2], nearMatchTorrerance);
-
-	}
-	private boolean compareNearValue(double value, double otherValue, double nearMatchTorrerance) {
-		if (value == otherValue || Math.abs(value - otherValue) <= nearMatchTorrerance) {
-			return true;
-		}
-
-		return false;
-	}
+	
 	
 
 }
