@@ -56,11 +56,11 @@ public class ColorSpaceConverter {
 		return n > 0.008856 ? i : 7.787 * n + 16 / 116;
 	}
 
-	public static Hsl rgbToHsl(Rgb rgb) {
+	public static Hsl colorToHsl(Color color) {
 
-		double R = (rgb.R / 255);
-		double G = (rgb.G / 255);
-		double B = (rgb.B / 255);
+		double R = (color.getRed() / 255.0);
+		double G = (color.getGreen() / 255.0);
+		double B = (color.getBlue() / 255.0);
 
 		double var_Min = Helpers.min(R, G, B); // Min. value of RGB
 		double var_Max = Helpers.max(R, G, B); // Max. value of RGB
@@ -102,7 +102,7 @@ public class ColorSpaceConverter {
 		return new Hsl(h, s, l);
 	}
 
-	public static Rgb hslToRgb(Hsl hsl) {
+	public static Color hslToColor(Hsl hsl) {
 		double r = 0;
 		double g = 0;
 		double b = 0;
@@ -122,23 +122,14 @@ public class ColorSpaceConverter {
 
 			var_1 = 2.0 * hsl.L - var_2;
 
-			r = Math.round(255 * hueToRgb(var_1, var_2, hsl.H + (1.0 / 3.0)));
-			g = Math.round(255 * hueToRgb(var_1, var_2, hsl.H));
-			b = Math.round(255 * hueToRgb(var_1, var_2, hsl.H - (1.0 / 3.0)));
+			r = (255 * hueToRgb(var_1, var_2, hsl.H + (1.0 / 3.0)));
+			g = (255 * hueToRgb(var_1, var_2, hsl.H));
+			b = (255 * hueToRgb(var_1, var_2, hsl.H - (1.0 / 3.0)));
 
 		}
 
-		return new Rgb(r, g, b);
+		return new Color((int)r, (int)g, (int)b);
 	}
-
-	public static Color hsltoColor(Hsl hsl) {
-		Rgb rgb = hslToRgb(hsl);
-
-		Color returnColor = new Color((int) rgb.R, (int) rgb.G, (int) rgb.B);
-
-		return returnColor;
-	}
-
 	private static double hueToRgb(double v1, double v2, double vh) {
 		if (vh < 0.0) {
 			vh += 1.0;

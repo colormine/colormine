@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.colorMine.colorSpace.Rgb;
 
+
 @Test
 public class RgbTest {
 

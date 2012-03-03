@@ -29,7 +29,7 @@ public abstract class ColorTuple implements IColorTuple {
 		return Math.sqrt(Math.pow(myData[0] - otherData[0], 2) + Math.pow(myData[1] - otherData[1], 2) + Math.pow(myData[2] - otherData[2], 2));
 	}
 
-<<<<<<< HEAD
+
 	@Override
 	public String toString() {
 		double[] tuple = getTuple();
@@ -43,7 +43,6 @@ public abstract class ColorTuple implements IColorTuple {
 	}
 
 
-=======
 	public boolean isNearMatch(IColorTuple color, double nearMatchTorrerance) {
 		double[] values = color.getTuple();
 		double[] values2 = this.getTuple();
@@ -58,6 +57,6 @@ public abstract class ColorTuple implements IColorTuple {
 
 		return false;
 	}
->>>>>>> 52bec129959467c7a5716aaf194830d40e121466
+
 
 }

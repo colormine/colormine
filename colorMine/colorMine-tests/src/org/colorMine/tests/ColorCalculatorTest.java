@@ -10,7 +10,7 @@ import org.colorMine.colorSpace.ColorSpaceConverter;
 
 @Test
 public class ColorCalculatorTest {
-	@Test
+
 	public void isComplement_GivenComplementaryColors_returnsTrue() {
 
 		// ARRANGE
@@ -22,7 +22,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertEquals(true, result);
 
 	}
-	@Test
+
 	public void isComplement_GivenNonComplementaryColors_returnsFalse() {
 
 		// ARRANGE
@@ -43,13 +43,14 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
-	@Test
+
 	public void getTriadic_GivenAColor_returnsTriadicColors() {
 
 		// ARRANGE
 		Color color1 = new Color(255, 0, 111);
 		Color expectedColor1 = new Color(111,255,0);
 		Color expectedColor2 = new Color(0, 110, 255);
+		
 		// ACT
 		Color[] result = ColorCalculator.getTriadic(color1);
 

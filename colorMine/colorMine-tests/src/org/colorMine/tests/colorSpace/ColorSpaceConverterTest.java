@@ -15,33 +15,34 @@ import org.testng.annotations.Test;
 public class ColorSpaceConverterTest {
 
 	
-	public void rgbToHsl_GivenHslValue_ReturnsRgb() {
+	public void ColorToHsl_GivenHslValue_ReturnsRgb() {
 
 		// ARRANGE
 		Hsl expected = new Hsl(.66, .44, .62);
-		Rgb rgb = new Rgb(115, 115, 200);
+		Color color = new Color(115, 115, 200);
+		
 		// ACT
-		Hsl result = ColorSpaceConverter.rgbToHsl(rgb);
+		Hsl result = ColorSpaceConverter.colorToHsl(color);
 
 		// ASSERT
-
 		assert(ColorSpaceConverter.isNearMatch(expected,result, .01));
-
-
 	}
 
 	public void RgbToXyz_givenRgb_ReturnsXyz() {
+		
+		// ARRANGE
 		Rgb rgb = new Rgb(1, 0, 0);
-		Xyz xyz = ColorSpaceConverter.rgbToXyz(rgb);
 		Xyz expected = new Xyz(41.240, 21.260, 1.930);
 		
-		assert(ColorSpaceConverter.isNearMatch(xyz,expected, .001));
-
+		// ACT
+		Xyz xyz = ColorSpaceConverter.rgbToXyz(rgb);
 		
+		// ASSERT
+		assert(ColorSpaceConverter.isNearMatch(xyz,expected, .001));
 	}
 
 	public void XyzToLab_givenXyz_ReturnsLab() {
-		Xyz xyz = new Xyz(41.240, 21.260, 1.930);
+    	Xyz xyz = new Xyz(41.240, 21.260, 1.930);
 		Lab lab = ColorSpaceConverter.xyzToLab(xyz);
 		Lab expected = new Lab(53.233, 80.109, 67.220);
 

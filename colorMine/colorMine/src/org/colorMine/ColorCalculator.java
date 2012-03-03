@@ -7,7 +7,6 @@ import java.util.Collection;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
-import org.colorMine.colorSpace.Rgb;
 
 public class ColorCalculator {
 
@@ -20,17 +19,15 @@ public class ColorCalculator {
 
 		Color complementColor = getComplement(firstColor);
 
-		Rgb secondRgb = new Rgb(secondColor);
-
-		return (ColorSpaceConverter.isNearMatch(new Rgb(complementColor),secondRgb, 1.0)) ? true : false;
+		return (ColorSpaceConverter.isNearMatch(complementColor,secondColor, 1.0)) ? true : false;
 	}
 
 	public static Color getComplement(Color color) {
 
-		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
+		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
 		hsl = getHslComplement(hsl);
 
-		return ColorSpaceConverter.hsltoColor(hsl);
+		return ColorSpaceConverter.hslToColor(hsl);
 	}
 
 	public static Color[] getTriadic(Color color) {
@@ -46,18 +43,18 @@ public class ColorCalculator {
 	}
 
 	public static double GetMatchScore(Color firstColor, Color secondColor) {
-		return ColorMine.compare(new Rgb(firstColor), new Rgb(secondColor));
+		return ColorMine.compare(firstColor,secondColor);
 	}
 
 	private static Color[] getPointsOnColorWheel(Color color, double... points) {
 		Collection<Color> colors = new ArrayList<Color>();
 
-		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
+		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
 		
 		for (double point : points)
 		{
 			Hsl hslPoint = moveHueOncolorWheel(hsl, point);
-			colors.add(ColorSpaceConverter.hsltoColor(hslPoint));
+			colors.add(ColorSpaceConverter.hslToColor(hslPoint));
 		}
 	
 
