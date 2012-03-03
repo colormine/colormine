@@ -9,11 +9,14 @@ import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Lab;
 import org.colorMine.colorSpace.Rgb;
 
+
+
+
 public class ColorProfile implements IColorProfile {
 	private final Map<Rgb, Integer> _colors;
 	private final int _pixelCount;
 
-	public ColorProfile(BufferedImage image) {
+	public ColorProfile(IColoredImage image) {
 		_colors = getProfile(image);
 		_pixelCount = image.getWidth() * image.getHeight();
 	}
@@ -70,7 +73,7 @@ public class ColorProfile implements IColorProfile {
 		return new Lab(coordinates);
 	}
 
-	private Map<Rgb, Integer> getProfile(BufferedImage image) {
+	private Map<Rgb, Integer> getProfile(IColoredImage image) {
 		int width = image.getWidth();
 		int height = image.getHeight();
 		Map<Rgb, Integer> profile = new HashMap<Rgb, Integer>();

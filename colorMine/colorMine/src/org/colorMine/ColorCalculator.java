@@ -48,14 +48,13 @@ public class ColorCalculator {
 	}
 
 	private static Color[] getPointsOnColorWheel(Color color, double... points) {
-		Hsl hsl = ColorSpaceConverter.rgbToHsl(new Rgb(color));
-		Collection<Color> colors = new ArrayList<Color>();
-
-		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
 		
+		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
+		Collection<Color> colors = new ArrayList<Color>();
+			
 		for (double point : points)
 		{
-			Hsl hslPoint = moveHueOncolorWheel(hsl, point);
+			Hsl hslPoint = moveHueOnColorWheel(hsl, point);
 			colors.add(ColorSpaceConverter.hslToColor(hslPoint));
 		}
 	

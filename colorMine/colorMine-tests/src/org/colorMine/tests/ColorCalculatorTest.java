@@ -98,21 +98,16 @@ public class ColorCalculatorTest {
 		// ASSERT
 		AssertJUnit.assertTrue(contains(expectedColor1,result) && contains(expectedColor2,result));
 	}
-	public void GetmatchScore_GivenGoodMatchingColors_returns()
+	public void GetmatchScore_GivenExactMatchingColors_returnsZero()
 	{
-		AssertJUnit.fail();
-	}
-	public void GetmatchScore_GivenBadMatchingColors_returns()
-	{
-		AssertJUnit.fail();
-	}
-	public void GetmatchScore_GivenTerribleMatchingColors_returns()
-	{
-		AssertJUnit.fail();
-	}
-	public void GetmatchScore_GivenGreatMatchingColors_returns()
-	{
-		AssertJUnit.fail();
+		// ARRANGE
+		Color firstColor = new Color(255,0,0);
+		Color secondColor = new Color(255,0,0);
+		
+		// ACT
+		double result = ColorCalculator.GetMatchScore(firstColor, secondColor);
+		// ASSERT
+		AssertJUnit.assertEquals(result,0);
 	}
 	//Helpers
 	private boolean contains(Color color, Color[] colors)

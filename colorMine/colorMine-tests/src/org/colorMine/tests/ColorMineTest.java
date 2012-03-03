@@ -1,21 +1,25 @@
 package org.colorMine.tests;
 
 import java.awt.Color;
-import java.awt.image.BufferedImage;
 import java.util.Map;
-
 import org.colorMine.ColorMine;
+import org.colorMine.profile.IColoredImage;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
 
+import static org.mockito.Mockito.*;
+
 public class ColorMineTest {
 
-	private BufferedImage _image;
-
+	private IColoredImage _image;
 	@BeforeTest
 	public void setup() {
-		BufferedImage _image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-		_image.setRGB(0, 0, 0xFF0000);
+		
+		IColoredImage _image = mock(IColoredImage.class);
+		when(_image.getHeight()).thenReturn(1);
+		when(_image.getWidth()).thenReturn(1);
+		when(_image.getRGB(1,1)).thenReturn(255);
+
 	}
 
 	public void getColorProfile_givenHeightAndWitdh1_returns1AsValue() {
