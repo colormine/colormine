@@ -36,7 +36,7 @@ public class MapFilterTest {
 
 		// ARRANGE
 		Map<Color, Integer> colors = new HashMap<Color, Integer>();
-		colors.put(new Color(255, 0, 0 ), 1);
+		colors.put(new Color(255, 0, 0), 1);
 		IColorProfile map = new ColorProfile(colors);
 
 		MapFilter filter = new MapFilter(map);
@@ -59,14 +59,14 @@ public class MapFilterTest {
 		IColorProfileFilterResult result = filter.apply(imageProfile);
 		Map<Color, Integer> rgbColors = result.getFilteredProfile().getColorProfile();
 
-		AssertJUnit.assertTrue(rgbColors.containsKey(new Color(128,0,0)));
+		AssertJUnit.assertTrue(rgbColors.containsKey(new Color(128, 0, 0)));
 	}
 
 	private Map<Color, Integer> getBasicProfile() {
 		Map<Color, Integer> colors = new HashMap<Color, Integer>();
-		colors.put(new Color( 128, 0, 0 ), 1);
-		colors.put(new Color( 0, 128, 0 ), 1);
-		colors.put(new Color( 0, 0, 128 ), 1);
+		colors.put(new Color(128, 0, 0), 1);
+		colors.put(new Color(0, 128, 0), 1);
+		colors.put(new Color(0, 0, 128), 1);
 		return colors;
 	}
 
