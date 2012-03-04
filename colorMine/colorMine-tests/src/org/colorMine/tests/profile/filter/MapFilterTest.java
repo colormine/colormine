@@ -3,10 +3,10 @@ package org.colorMine.tests.profile.filter;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.colorMine.colorSpace.Rgb;
 import org.colorMine.profile.ColorProfile;
 import org.colorMine.profile.IColorProfile;
 import org.colorMine.profile.IColoredImage;
@@ -35,8 +35,8 @@ public class MapFilterTest {
 	public void Sanity() {
 
 		// ARRANGE
-		Map<Rgb, Integer> colors = new HashMap<Rgb, Integer>();
-		colors.put(new Rgb(new double[] { 1, 0, 0 }), 1);
+		Map<Color, Integer> colors = new HashMap<Color, Integer>();
+		colors.put(new Color(255, 0, 0 ), 1);
 		IColorProfile map = new ColorProfile(colors);
 
 		MapFilter filter = new MapFilter(map);
@@ -44,29 +44,29 @@ public class MapFilterTest {
 		IColorProfileFilterResult result = filter.apply(imageProfile);
 
 		AssertJUnit.assertTrue(result.getOriginalProfile() == imageProfile);
-		AssertJUnit.assertTrue(0 == result.getDiscardedProfile().getRgbProfile().size());
-		AssertJUnit.assertTrue(1 == result.getFilteredProfile().getRgbProfile().size());
+		AssertJUnit.assertTrue(0 == result.getDiscardedProfile().getColorProfile().size());
+		AssertJUnit.assertTrue(1 == result.getFilteredProfile().getColorProfile().size());
 	}
 
 	public void BasicRounding() {
 
 		// ARRANGE
-		Map<Rgb, Integer> colors = getBasicProfile();
+		Map<Color, Integer> colors = getBasicProfile();
 		IColorProfile map = new ColorProfile(colors);
 
 		MapFilter filter = new MapFilter(map);
 		IColorProfile imageProfile = new ColorProfile(_image);
 		IColorProfileFilterResult result = filter.apply(imageProfile);
-		Map<Rgb, Integer> rgbColors = result.getFilteredProfile().getRgbProfile();
+		Map<Color, Integer> rgbColors = result.getFilteredProfile().getColorProfile();
 
-		AssertJUnit.assertTrue(rgbColors.containsKey(new Rgb(.5, 0, 0)));
+		AssertJUnit.assertTrue(rgbColors.containsKey(new Color(128,0,0)));
 	}
 
-	private Map<Rgb, Integer> getBasicProfile() {
-		Map<Rgb, Integer> colors = new HashMap<Rgb, Integer>();
-		colors.put(new Rgb(new double[] { .5, 0, 0 }), 1);
-		colors.put(new Rgb(new double[] { 0, .5, 0 }), 1);
-		colors.put(new Rgb(new double[] { 0, 0, .5 }), 1);
+	private Map<Color, Integer> getBasicProfile() {
+		Map<Color, Integer> colors = new HashMap<Color, Integer>();
+		colors.put(new Color( 128, 0, 0 ), 1);
+		colors.put(new Color( 0, 128, 0 ), 1);
+		colors.put(new Color( 0, 0, 128 ), 1);
 		return colors;
 	}
 

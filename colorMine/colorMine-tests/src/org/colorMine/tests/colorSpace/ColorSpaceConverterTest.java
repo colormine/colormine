@@ -1,14 +1,12 @@
 package org.colorMine.tests.colorSpace;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 import java.awt.Color;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
 import org.colorMine.colorSpace.Lab;
-import org.colorMine.colorSpace.Rgb;
 import org.colorMine.colorSpace.Xyz;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 @Test
@@ -24,23 +22,24 @@ public class ColorSpaceConverterTest {
 		Hsl result = ColorSpaceConverter.colorToHsl(color);
 
 		// ASSERT
-		assert (ColorSpaceConverter.isNearMatch(expected, result, .01));
+		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(expected, result, .01));
 	}
 
-	public void RgbToXyz_givenRgb_ReturnsXyz() {
+	public void colorToXyz_givenColor_ReturnsXyz() {
 
 		// ARRANGE
-		Rgb rgb = new Rgb(1, 0, 0);
+		Color color = new Color(255,0,0);
 		Xyz expected = new Xyz(41.240, 21.260, 1.930);
 
 		// ACT
-		Xyz xyz = ColorSpaceConverter.rgbToXyz(rgb);
+		Xyz xyz = ColorSpaceConverter.colorToXyz(color);
 
 		// ASSERT
 		assert (ColorSpaceConverter.isNearMatch(xyz, expected, .001));
 	}
 
 	public void XyzToLab_givenXyz_ReturnsLab() {
+		
 		Xyz xyz = new Xyz(41.240, 21.260, 1.930);
 		Lab lab = ColorSpaceConverter.xyzToLab(xyz);
 		Lab expected = new Lab(53.233, 80.109, 67.220);
@@ -49,26 +48,15 @@ public class ColorSpaceConverterTest {
 
 	}
 
-	public void test_RgbToLab_givenRgb_ReturnsLab() {
-		Rgb rgb = new Rgb(1, 0, 0);
-		Lab lab = ColorSpaceConverter.rgbToLab(rgb);
+	public void colorToLab_givenColor_ReturnsLab() {
+
+		Color color = new Color(255,0,0);
+		Lab lab = ColorSpaceConverter.colorToLab(color);
 		Lab expected = new Lab(53.233, 80.109, 67.220);
 
 		assert (ColorSpaceConverter.isNearMatch(lab, expected, .001));
 
 	}
 
-	public void RgbToColor_givenRgb_ReturnsColor() {
-		Rgb rgb = new Rgb(1, 0, 0);
-		Color color = ColorSpaceConverter.rgbToColor(rgb);
-		assertEquals(color, Color.RED);
-	}
-
-	public void ColorConversion() {
-		Color color = new Color(12, 34, 56);
-		Rgb rgb = ColorSpaceConverter.colorToRgb(color);
-		Color actual = ColorSpaceConverter.rgbToColor(rgb);
-		assertEquals(color, actual);
-	}
 
 }

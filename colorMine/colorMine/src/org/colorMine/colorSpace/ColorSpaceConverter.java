@@ -4,32 +4,28 @@ import java.awt.Color;
 
 public class ColorSpaceConverter {
 
-	public static Rgb colorToRgb(Color color) {
-		double r = color.getRed() / 255.0;
-		double g = color.getGreen() / 255.0;
-		double b = color.getBlue() / 255.0;
+//	public static Rgb colorToRgb(Color color) {
+//		double r = color.getRed() / 255.0;
+//		double g = color.getGreen() / 255.0;
+//		double b = color.getBlue() / 255.0;
+//
+//		return new Rgb(r, g, b);
+//	}
 
-		return new Rgb(r, g, b);
-	}
+//	public static Color rgbToColor(Rgb rgb) {
+//		Color color = new Color((int) (255 * rgb.R), (int) (255 * rgb.G), (int) (255 * rgb.B));
+//		return color;
+//	}
 
 	public static Lab colorToLab(Color color) {
-		return rgbToLab(colorToRgb(color));
-	}
-
-	public static Color rgbToColor(Rgb rgb) {
-		Color color = new Color((int) (255 * rgb.R), (int) (255 * rgb.G), (int) (255 * rgb.B));
-		return color;
-	}
-
-	public static Lab rgbToLab(Rgb rgb) {
-		Xyz xyz = rgbToXyz(rgb);
+		Xyz xyz = colorToXyz(color);
 		return xyzToLab(xyz);
 	}
 
-	public static Xyz rgbToXyz(Rgb rgb) {
-		double r = pivotRgb(rgb.R);
-		double g = pivotRgb(rgb.G);
-		double b = pivotRgb(rgb.B);
+	public static Xyz colorToXyz(Color color) {
+		double r = pivotRgb(color.getRed()/255.0);
+		double g = pivotRgb(color.getGreen()/255.0);
+		double b = pivotRgb(color.getBlue()/255.0);
 
 		// Observer. = 2°, Illuminant = D65
 		return new Xyz(r * 0.4124 + g * 0.3576 + b * 0.1805, r * 0.2126 + g * 0.7152 + b * 0.0722, r * 0.0193 + g * 0.1192 + b * 0.9505);

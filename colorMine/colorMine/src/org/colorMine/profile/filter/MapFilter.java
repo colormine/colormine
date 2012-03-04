@@ -1,11 +1,10 @@
 package org.colorMine.profile.filter;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.colorMine.ColorMine;
-import org.colorMine.colorSpace.ColorSpaceConverter;
-import org.colorMine.colorSpace.Rgb;
 import org.colorMine.profile.ColorProfile;
 import org.colorMine.profile.IColorProfile;
 import org.colorMine.profile.MapCount;
@@ -18,31 +17,31 @@ import org.colorMine.profile.MapCount;
 
 public class MapFilter implements IColorProfileFilter {
 
-	private Map<Rgb, Integer> _mapColors;
+	private Map<Color, Integer> _mapColors;
 	private int _tolerance;
 
 	public MapFilter(IColorProfile mapProfile) {
-		_mapColors = mapProfile.getRgbProfile();
+		_mapColors = mapProfile.getColorProfile();
 		_tolerance = Integer.MAX_VALUE;
 	}
 
 	public MapFilter(IColorProfile mapProfile, int tolerance) {
-		_mapColors = mapProfile.getRgbProfile();
+		_mapColors = mapProfile.getColorProfile();
 		_tolerance = tolerance;
 	}
 
 	public IColorProfileFilterResult apply(IColorProfile imageProfile) {
-		Map<Rgb, Integer> resultColors = new HashMap<Rgb, Integer>();
-		Map<Rgb, Integer> modifiedColors = new HashMap<Rgb, Integer>();
-		Map<Rgb, Integer> invalidColors = new HashMap<Rgb, Integer>();
-		Map<Rgb, Integer> imageColors = imageProfile.getRgbProfile();
+		Map<Color, Integer> resultColors = new HashMap<Color, Integer>();
+		Map<Color, Integer> modifiedColors = new HashMap<Color, Integer>();
+		Map<Color, Integer> invalidColors = new HashMap<Color, Integer>();
+		Map<Color, Integer> imageColors = imageProfile.getColorProfile();
 
-		for (Rgb imageRgb : imageColors.keySet()) {
+		for (Color imageRgb : imageColors.keySet()) {
 			double bestScore = Double.POSITIVE_INFINITY;
-			Rgb bestMatch = null;
+			Color bestMatch = null;
 
-			for (Rgb mapRgb : _mapColors.keySet()) {
-				double currentScore = ColorMine.compare(ColorSpaceConverter.rgbToColor(imageRgb), ColorSpaceConverter.rgbToColor(mapRgb));
+			for (Color mapRgb : _mapColors.keySet()) {
+				double currentScore = ColorMine.compare(imageRgb, mapRgb);
 				if (currentScore < bestScore) {
 					bestScore = currentScore;
 					bestMatch = mapRgb;

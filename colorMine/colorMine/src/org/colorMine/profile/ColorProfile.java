@@ -6,10 +6,10 @@ import java.util.Map;
 
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Lab;
-import org.colorMine.colorSpace.Rgb;
+
 
 public class ColorProfile implements IColorProfile {
-	private final Map<Rgb, Integer> _colors;
+	private final Map<Color, Integer> _colors;
 	private final int _pixelCount;
 
 	public ColorProfile(IColoredImage image) {
@@ -17,9 +17,9 @@ public class ColorProfile implements IColorProfile {
 		_pixelCount = image.getWidth() * image.getHeight();
 	}
 
-	public ColorProfile(Map<Rgb, Integer> profileMap) {
+	public ColorProfile(Map<Color, Integer> profileMap) {
 		int count = 0;
-		for (Rgb key : profileMap.keySet()) {
+		for (Color key : profileMap.keySet()) {
 			count += profileMap.get(key);
 		}
 
@@ -29,20 +29,16 @@ public class ColorProfile implements IColorProfile {
 
 	public Map<Color, Integer> getColorProfile() {
 		HashMap<Color, Integer> colorProfile = new HashMap<Color, Integer>();
-		for (Rgb key : _colors.keySet()) {
-			colorProfile.put(ColorSpaceConverter.rgbToColor(key), _colors.get(key));
+		for (Color key : _colors.keySet()) {
+			colorProfile.put(key, _colors.get(key));
 		}
 		return colorProfile;
 	}
 
-	public Map<Rgb, Integer> getRgbProfile() {
-		return _colors;
-	}
-
 	public Map<Lab, Integer> getLabProfile() {
 		HashMap<Lab, Integer> labProfile = new HashMap<Lab, Integer>();
-		for (Rgb key : _colors.keySet()) {
-			labProfile.put(ColorSpaceConverter.rgbToLab(key), _colors.get(key));
+		for (Color key : _colors.keySet()) {
+			labProfile.put(ColorSpaceConverter.colorToLab(key), _colors.get(key));
 		}
 		return labProfile;
 	}
@@ -69,16 +65,15 @@ public class ColorProfile implements IColorProfile {
 		return new Lab(coordinates);
 	}
 
-	private Map<Rgb, Integer> getProfile(IColoredImage image) {
+	private Map<Color, Integer> getProfile(IColoredImage image) {
 		int width = image.getWidth();
 		int height = image.getHeight();
-		Map<Rgb, Integer> profile = new HashMap<Rgb, Integer>();
+		Map<Color, Integer> profile = new HashMap<Color, Integer>();
 
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				Color color = new Color(image.getRGB(x, y));
-				Rgb rgbColor = ColorSpaceConverter.colorToRgb(color);
-				MapCount.count(profile, rgbColor);
+				MapCount.count(profile, color);
 			}
 		}
 

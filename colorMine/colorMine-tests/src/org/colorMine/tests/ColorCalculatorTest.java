@@ -1,5 +1,6 @@
 package org.colorMine.tests;
 
+
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.awt.Color;

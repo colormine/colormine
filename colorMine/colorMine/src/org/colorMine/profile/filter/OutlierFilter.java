@@ -1,9 +1,10 @@
 package org.colorMine.profile.filter;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.colorMine.colorSpace.Rgb;
+
 import org.colorMine.profile.ColorProfile;
 import org.colorMine.profile.IColorProfile;
 
@@ -21,13 +22,13 @@ public final class OutlierFilter implements IColorProfileFilter {
 	}
 
 	public IColorProfileFilterResult apply(IColorProfile profile) {
-		Map<Rgb, Integer> colors = profile.getRgbProfile();
-		Map<Rgb, Integer> result = new HashMap<Rgb, Integer>();
-		Map<Rgb, Integer> removed = new HashMap<Rgb, Integer>();
+		Map<Color, Integer> colors = profile.getColorProfile();
+		Map<Color, Integer> result = new HashMap<Color, Integer>();
+		Map<Color, Integer> removed = new HashMap<Color, Integer>();
 
 		int pixelCount = profile.getPixelCount();
 		// loop through
-		for (Rgb key : colors.keySet()) {
+		for (Color key : colors.keySet()) {
 			int colorCount = colors.get(key);
 			int actualPercentage = (colorCount / pixelCount) * 100;
 			if (actualPercentage >= _percentage) {

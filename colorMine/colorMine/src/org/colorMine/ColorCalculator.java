@@ -7,6 +7,8 @@ import java.util.Collection;
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
 
+
+
 public class ColorCalculator {
 
 	final static String COLOR_DELIMITER = "-";
@@ -14,13 +16,27 @@ public class ColorCalculator {
 	final static String RGB_TYPE = "rgb";
 	final static String TYPE = "type";
 
+	/**
+	 *Determines if two given colors are complements of each other.
+	 * 
+	 * @param firstColor 
+	 * @param secondColor
+	 * @return 
+	 * Returns true if secondColor is a complement of first color.
+	 */
 	public static boolean isComplement(Color firstColor, Color secondColor) {
 
 		Color complementColor = getComplement(firstColor);
 
 		return (ColorSpaceConverter.isNearMatch(complementColor, secondColor, 1.0)) ? true : false;
 	}
-
+   /**
+    *Gets the Complement of the given color,
+    * 
+    * @param color
+    * @return
+    * Returns Color's complement
+    */
 	public static Color getComplement(Color color) {
 
 		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
@@ -28,7 +44,11 @@ public class ColorCalculator {
 
 		return ColorSpaceConverter.hslToColor(hsl);
 	}
-
+    /**
+     *Gets the triadic harmonies of the given color.
+     * @param color
+     * @return Array of the triadic colors for the given color
+     */
 	public static Color[] getTriadic(Color color) {
 		return getPointsOnColorWheel(color, 120, -120);
 	}
