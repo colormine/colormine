@@ -4,28 +4,15 @@ import java.awt.Color;
 
 public class ColorSpaceConverter {
 
-//	public static Rgb colorToRgb(Color color) {
-//		double r = color.getRed() / 255.0;
-//		double g = color.getGreen() / 255.0;
-//		double b = color.getBlue() / 255.0;
-//
-//		return new Rgb(r, g, b);
-//	}
-
-//	public static Color rgbToColor(Rgb rgb) {
-//		Color color = new Color((int) (255 * rgb.R), (int) (255 * rgb.G), (int) (255 * rgb.B));
-//		return color;
-//	}
-
 	public static Lab colorToLab(Color color) {
 		Xyz xyz = colorToXyz(color);
 		return xyzToLab(xyz);
 	}
 
 	public static Xyz colorToXyz(Color color) {
-		double r = pivotRgb(color.getRed()/255.0);
-		double g = pivotRgb(color.getGreen()/255.0);
-		double b = pivotRgb(color.getBlue()/255.0);
+		double r = pivotRgb(color.getRed() / 255.0);
+		double g = pivotRgb(color.getGreen() / 255.0);
+		double b = pivotRgb(color.getBlue() / 255.0);
 
 		// Observer. = 2°, Illuminant = D65
 		return new Xyz(r * 0.4124 + g * 0.3576 + b * 0.1805, r * 0.2126 + g * 0.7152 + b * 0.0722, r * 0.0193 + g * 0.1192 + b * 0.9505);
@@ -157,26 +144,25 @@ public class ColorSpaceConverter {
 		return Math.abs(a - b) < DoublePrecision;
 	}
 
-	public static boolean isNearMatch(IColorTuple firstColor, IColorTuple secondColor, double nearMatchTorrerance) {
+	public static boolean isNearMatch(IColorTuple firstColor, IColorTuple secondColor, double nearMatchTolerance) {
 
 		double[] values = firstColor.getTuple();
 		double[] values2 = secondColor.getTuple();
 
-		return compareNearValue(values[0], values2[0], nearMatchTorrerance) && compareNearValue(values[1], values2[1], nearMatchTorrerance) && compareNearValue(values[2], values2[2], nearMatchTorrerance);
-
+		return compareNearValue(values[0], values2[0], nearMatchTolerance) && compareNearValue(values[1], values2[1], nearMatchTolerance) && compareNearValue(values[2], values2[2], nearMatchTolerance);
 	}
 
-	public static boolean isNearMatch(Color firstColor, Color secondColor, double nearMatchTorrerance) {
+	public static boolean isNearMatch(Color firstColor, Color secondColor, double nearMatchTolerance) {
 
 		double[] values = { firstColor.getRed(), firstColor.getGreen(), firstColor.getBlue() };
 		double[] values2 = { secondColor.getRed(), secondColor.getGreen(), secondColor.getBlue() };
 
-		return compareNearValue(values[0], values2[0], nearMatchTorrerance) && compareNearValue(values[1], values2[1], nearMatchTorrerance) && compareNearValue(values[2], values2[2], nearMatchTorrerance);
+		return compareNearValue(values[0], values2[0], nearMatchTolerance) && compareNearValue(values[1], values2[1], nearMatchTolerance) && compareNearValue(values[2], values2[2], nearMatchTolerance);
 
 	}
 
-	private static boolean compareNearValue(double value, double otherValue, double nearMatchTorrerance) {
-		if (value == otherValue || Math.abs(value - otherValue) <= nearMatchTorrerance) {
+	private static boolean compareNearValue(double value, double otherValue, double nearMatchTolerance) {
+		if (value == otherValue || Math.abs(value - otherValue) <= nearMatchTolerance) {
 			return true;
 		}
 

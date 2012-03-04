@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	var scoreDiv = $('#score');
-	var complementDiv = $('#complement');
 	var colorA = $('#colorA');
 	var colorB = $('#colorB');
 
@@ -26,10 +25,10 @@ $(document).ready(function() {
 		var score = scoreData.score;
 		var description;
 
-		if(score <= 1000) {
+		if(score <= 10) {
 			 scoreDiv.attr('class', 'goodMatch');
 			 description = 'Great!';
-		} else if(score <= 2000) {
+		} else if(score <= 30) {
 			 scoreDiv.attr('class', 'badMatch');
 			 description = 'Getting closer';
 		} else {
@@ -38,7 +37,6 @@ $(document).ready(function() {
 		}
 		scoreDiv.html(description + ' - ' + parseInt(score));
 	}
-
 
 	function setColor(item, color) {
 		item.val(color);
