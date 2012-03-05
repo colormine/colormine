@@ -24,14 +24,18 @@ public class ColorMineTest {
 		when(_image.getRGB(0, 0)).thenReturn(0xFF0000);
 
 	}
-
+	
+	public void compare(){
+		AssertJUnit.fail("add tests for compare method!");
+	}
+	
 	public void getColorProfile_givenHeightAndWitdh1_returns1AsValue() {
 		Map<Color, Integer> result = ColorMine.getColorProfile(_image);
 
 		AssertJUnit.assertEquals(1, result.size());
 	}
 
-	public void getRgbProfile_givenRgbX_returnsRGbX_AsKey() {
+	public void getRgbProfile_givenColorX_returnColorX_AsKey() {
 		Map<Color, Integer> result = ColorMine.getColorProfile(_image);
 
 		AssertJUnit.assertEquals(1, (int) result.get(Color.red));

@@ -59,7 +59,7 @@ public class ColorCalculatorTest {
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
 		// ACT
-		Color[] result = ColorCalculator.getSpiltComplements(color1);
+		Color[] result = ColorCalculator.getSplitComplements(color1);
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
@@ -100,7 +100,7 @@ public class ColorCalculatorTest {
 		Color expectedColor2 = new Color(0, 238, 255);
 
 		// ACT
-		Color[] result = ColorCalculator.getSpiltComplements(color1);
+		Color[] result = ColorCalculator.getSplitComplements(color1);
 
 		// ASSERT
 		AssertJUnit.assertTrue(contains(expectedColor1, result) && contains(expectedColor2, result));
