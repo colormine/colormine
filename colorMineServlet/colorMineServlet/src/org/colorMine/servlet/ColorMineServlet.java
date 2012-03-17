@@ -2,6 +2,7 @@ package org.colorMine.servlet;
 
 import java.io.IOException;
 import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ public class ColorMineServlet extends HttpServlet {
 		double result = 0;
 
 		if (COMPARISON_METHOD.equals(method)) {
-			result = ColorCalculator.GetMatchScore(ServletHelpers.ParseColorFromHex(parameterMap.get(VALUE_1)[0]), ServletHelpers.ParseColorFromHex(parameterMap.get(VALUE_2)[0]));
+			result = ColorCalculator.getMatchScore(ServletHelpers.parseColorFromHex(parameterMap.get(VALUE_1)[0]), ServletHelpers.parseColorFromHex(parameterMap.get(VALUE_2)[0]));
 		} else {
 			throw new IllegalArgumentException(COMPARISON_METHOD + " is the only " + METHOD + " currently available. Given method was " + method);
 		}

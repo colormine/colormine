@@ -32,8 +32,7 @@ public class MapFilterTest {
 	}
 
 	@Test
-	public void Sanity() {
-
+	public void sanity() {
 		// ARRANGE
 		Map<Color, Integer> colors = new HashMap<Color, Integer>();
 		colors.put(new Color(255, 0, 0), 1);
@@ -48,7 +47,7 @@ public class MapFilterTest {
 		AssertJUnit.assertTrue(1 == result.getFilteredProfile().getColorProfile().size());
 	}
 
-	public void BasicRounding() {
+	public void basicRounding() {
 
 		// ARRANGE
 		Map<Color, Integer> colors = getBasicProfile();

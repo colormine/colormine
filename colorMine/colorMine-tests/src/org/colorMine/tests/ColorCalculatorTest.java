@@ -1,17 +1,16 @@
 package org.colorMine.tests;
 
-
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.awt.Color;
 
 import org.colorMine.ColorCalculator;
 import org.colorMine.colorSpace.ColorSpaceConverter;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 @Test
 public class ColorCalculatorTest {
 
-	public void isComplement_GivenComplementaryColors_returnsTrue() {
+	public void isComplement_givenComplementaryColors_returnsTrue() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -23,7 +22,7 @@ public class ColorCalculatorTest {
 
 	}
 
-	public void isComplement_GivenNonComplementaryColors_returnsFalse() {
+	public void isComplement_givenNonComplementaryColors_returnsFalse() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -34,7 +33,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertEquals(false, result);
 	}
 
-	public void getTriadic_GivenAColor_returnsTwoValues() {
+	public void getTriadic_givenAColor_returnsTwoValues() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -44,7 +43,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertEquals(2, result.length);
 	}
 
-	public void getAnalogous_GivenAColor_returnsTwoValues() {
+	public void getAnalogous_givenAColor_returnsTwoValues() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -54,7 +53,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertEquals(2, result.length);
 	}
 
-	public void getSpiltComplements_GivenAColor_returnsTwoValues() {
+	public void getSpiltComplements_givenAColor_returnsTwoValues() {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
@@ -64,7 +63,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertEquals(2, result.length);
 	}
 
-	public void getTriadic_GivenAColor_returnsTriadicColors() {
+	public void getTriadic_givenAColor_returnsTriadicColors() {
 
 		// ARRANGE
 		Color color1 = new Color(255, 0, 111);
@@ -78,7 +77,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertTrue(contains(expectedColor1, result) && contains(expectedColor2, result));
 	}
 
-	public void getAnalogous_GivenAColor_returnsAnalogousColors() {
+	public void getAnalogous_givenAColor_returnsAnalogousColors() {
 
 		// ARRANGE
 		Color color1 = new Color(255, 0, 111);
@@ -92,7 +91,7 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertTrue(contains(expectedColor1, result) && contains(expectedColor2, result));
 	}
 
-	public void getSpiltComplements_GivenAColor_returnsSpiltComplements() {
+	public void getSpiltComplements_givenAColor_returnsSpiltComplements() {
 
 		// ARRANGE
 		Color color1 = new Color(255, 0, 111);
@@ -106,13 +105,13 @@ public class ColorCalculatorTest {
 		AssertJUnit.assertTrue(contains(expectedColor1, result) && contains(expectedColor2, result));
 	}
 
-	public void GetmatchScore_GivenExactMatchingColors_returnsZero() {
+	public void getMatchScore_givenExactMatchingColors_returnsZero() {
 		// ARRANGE
 		Color firstColor = new Color(255, 0, 0);
 		Color secondColor = new Color(255, 0, 0);
 
 		// ACT
-		double result = ColorCalculator.GetMatchScore(firstColor, secondColor);
+		double result = ColorCalculator.getMatchScore(firstColor, secondColor);
 		// ASSERT
 		AssertJUnit.assertEquals(result, 0.0);
 	}

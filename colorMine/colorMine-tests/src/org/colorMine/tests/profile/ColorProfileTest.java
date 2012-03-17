@@ -43,7 +43,7 @@ public class ColorProfileTest {
 		AssertJUnit.assertEquals(1, (int) result.get(Color.RED));
 	}
 
-	public void ColorProfileQuantity() {
+	public void colorProfileQuantity() {
 
 		// ARRANGE
 		when(_image.getHeight()).thenReturn(2);
@@ -66,7 +66,7 @@ public class ColorProfileTest {
 		AssertJUnit.assertEquals(1, (int) result.get(Color.BLACK));
 	}
 
-	public void ColorProfileAccuracy() {
+	public void colorProfileAccuracy() {
 
 		// ARRANGE
 		when(_image.getHeight()).thenReturn(2);

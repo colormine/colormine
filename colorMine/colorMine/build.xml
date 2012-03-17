@@ -17,7 +17,7 @@
 
 	<target name="jar" depends="compile">
 		<jar destfile="dist/colorMine.jar">
-			<fileset dir="bin"/>
+			<fileset dir="bin" />
 		</jar>
 	</target>
 

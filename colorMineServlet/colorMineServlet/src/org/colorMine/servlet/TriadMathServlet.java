@@ -28,9 +28,9 @@ public class TriadMathServlet extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String colorString = ServletHelpers.GetColorFromParamer(request.getParameterMap(), DATA_KEY);
+		String colorString = ServletHelpers.getColorFromParameter(request.getParameterMap(), DATA_KEY);
 
-		Color baseColor = ServletHelpers.ParseColorFromHex(colorString);
+		Color baseColor = ServletHelpers.parseColorFromHex(colorString);
 
 		Color[] triadColors = ColorCalculator.getTriadic(baseColor);
 

@@ -74,7 +74,7 @@ public class ColorCalculator {
      * @return 
      * a double value that represents how well two colors match
      */
-	public static double GetMatchScore(Color firstColor, Color secondColor) {
+	public static double getMatchScore(Color firstColor, Color secondColor) {
 		return ColorMine.compare(firstColor, secondColor);
 	}
 	/**

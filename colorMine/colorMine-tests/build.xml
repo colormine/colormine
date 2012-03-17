@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="colorMine-tests" default="test" basedir=".">
+<project name="colorMine-tests" default="jar" basedir=".">
 
 	<property name="home" value="../colorMine" />
-	<property name="jar" value="dist/colorMine-tests.jar" />
+	<property name="jar" value="colorMine-tests.jar" />
 	<property name="testOutput" value="test-output" />
 
 	<path id="test-classpath">
@@ -13,29 +13,31 @@
 
 	<target name="init" depends="clean">
 		<mkdir dir="bin" />
+		<mkdir dir="dist" />
 	</target>
 
 	<target name="compile" depends="init">
 		<ant dir="${home}" target="jar" />
 		<javac srcdir="src" destdir="bin" includeantruntime="true">
-			<classpath refid="test-classpath"/>
+			<classpath refid="test-classpath" />
 		</javac>
 	</target>
 
-    <target name="jar" depends="compile">
-		<jar destfile="${jar}">
-			<fileset dir="bin"/>
+	<target name="jar" depends="compile">
+		<jar destfile="dist/${jar}">
+			<fileset dir="bin" />
+			<fileset file="testng.xml" />
 		</jar>
-    </target>
+	</target>
 
-	<taskdef name="testng" classpathref="test-classpath" classname="org.testng.TestNGAntTask"/>
+	<taskdef name="testng" classpathref="test-classpath" classname="org.testng.TestNGAntTask" />
 	<target name="test" depends="jar">
-		<testng classpathref="test-classpath" testJar="${jar}" outputDir="test-output" failureproperty="testFailure" />
+		<testng classpathref="test-classpath" testJar="dist/${jar}" outputDir="test-output" failureproperty="testFailure" />
 	</target>
 
 	<target name="clean">
-		<ant dir="${home}" target="clean" /> <!-- Not sure if this is a good idea -->
 		<delete dir="bin" />
+		<delete dir="dist" />
 	</target>
 
 </project>

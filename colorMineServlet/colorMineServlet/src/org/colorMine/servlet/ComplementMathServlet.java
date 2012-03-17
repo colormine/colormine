@@ -26,9 +26,9 @@ public class ComplementMathServlet extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String colorString = ServletHelpers.GetColorFromParamer(request.getParameterMap(), DATA_KEY);
+			String colorString = ServletHelpers.getColorFromParameter(request.getParameterMap(), DATA_KEY);
 
-			Color baseColor = ServletHelpers.ParseColorFromHex(colorString);
+			Color baseColor = ServletHelpers.parseColorFromHex(colorString);
 			Color complementColor = ColorCalculator.getComplement(baseColor);
 
 			ServletOutput.write(response, complementColor, DATA_KEY);

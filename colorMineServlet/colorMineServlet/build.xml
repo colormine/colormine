@@ -2,7 +2,8 @@
 <project name="colorMineServlet" default="war" basedir=".">
 
 	<property name="home" value="../../colorMine/colorMine" />
-	<property name="staging" value="${java.io.tmpdir}/${user.name}/${ant.project.name}/staging" />
+	<property name="staging"
+		value="${java.io.tmpdir}/${user.name}/${ant.project.name}/staging" />
 
 	<path id="servlet-classpath">
 		<pathelement location="${home}/dist/colorMine.jar" />
@@ -27,18 +28,18 @@
 
 	<target name="copy" depends="compile">
 		<copy todir="${staging}">
-			<fileset dir="www"/>
-		</copy> 
+			<fileset dir="www" />
+		</copy>
 		<copy todir="${staging}/WEB-INF/classes" overwrite="true">
 			<fileset dir="bin" />
 		</copy>
-		<copy todir="${staging}/WEB-INF/lib" file="${home}/dist/colorMine.jar"/>
-		<copy todir="${staging}/WEB-INF/lib" file="lib/json.jar"/>
+		<copy todir="${staging}/WEB-INF/lib" file="${home}/dist/colorMine.jar" />
+		<copy todir="${staging}/WEB-INF/lib" file="lib/json.jar" />
 	</target>
 
 	<target name="war" depends="copy">
 		<war destfile="dist/ColorMine.war" webxml="${staging}/WEB-INF/web.xml">
-			<fileset dir="${staging}"/>
+			<fileset dir="${staging}" />
 		</war>
 	</target>
 

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @Test
 public class ColorSpaceConverterTest {
 
-	public void ColorToHsl_GivenColorValue_ReturnsHsl() {
+	public void colorToHsl_givenColorValue_returnsHsl() {
 
 		// ARRANGE
 		Hsl expected = new Hsl(.66, .44, .62);
@@ -25,10 +25,10 @@ public class ColorSpaceConverterTest {
 		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(expected, result, .01));
 	}
 
-	public void colorToXyz_givenColor_ReturnsXyz() {
+	public void colorToXyz_givenColor_returnsXyz() {
 
 		// ARRANGE
-		Color color = new Color(255,0,0);
+		Color color = new Color(255, 0, 0);
 		Xyz expected = new Xyz(41.240, 21.260, 1.930);
 
 		// ACT
@@ -38,8 +38,7 @@ public class ColorSpaceConverterTest {
 		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(xyz, expected, .001));
 	}
 
-	public void XyzToLab_givenXyz_ReturnsLab() {
-		
+	public void xyzToLab_givenXyz_returnsLab() {
 
 		// ARRANGE
 		Xyz xyz = new Xyz(41.240, 21.260, 1.930);
@@ -49,22 +48,19 @@ public class ColorSpaceConverterTest {
 
 		// ASSERT
 		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(lab, expected, .001));
-
 	}
 
-	public void colorToLab_givenColor_ReturnsLab() {
+	public void colorToLab_givenColor_returnsLab() {
 
 		// ARRANGE
-		Color color = new Color(255,0,0);
+		Color color = new Color(255, 0, 0);
 		Lab expected = new Lab(53.233, 80.109, 67.220);
-		
+
 		// ACT
 		Lab lab = ColorSpaceConverter.colorToLab(color);
-		
+
 		// ASSERT
 		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(lab, expected, .001));
-
 	}
-
 
 }

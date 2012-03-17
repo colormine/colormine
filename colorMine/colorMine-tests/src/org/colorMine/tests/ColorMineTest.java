@@ -1,14 +1,16 @@
 package org.colorMine.tests;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.awt.Color;
 import java.util.Map;
+
 import org.colorMine.ColorMine;
 import org.colorMine.profile.IColoredImage;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import static org.mockito.Mockito.*;
 
 @Test
 public class ColorMineTest {
@@ -24,11 +26,7 @@ public class ColorMineTest {
 		when(_image.getRGB(0, 0)).thenReturn(0xFF0000);
 
 	}
-	
-	public void compare(){
-		AssertJUnit.fail("add tests for compare method!");
-	}
-	
+
 	public void getColorProfile_givenHeightAndWitdh1_returns1AsValue() {
 		Map<Color, Integer> result = ColorMine.getColorProfile(_image);
 

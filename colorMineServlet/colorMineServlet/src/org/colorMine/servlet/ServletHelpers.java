@@ -5,11 +5,11 @@ import java.util.Map;
 
 public final class ServletHelpers {
 
-	public static Color ParseColorFromHex(String hexString) {
+	public static Color parseColorFromHex(String hexString) {
 		return Color.decode(hexString);
 	}
 
-	public static String GetColorFromParamer(Map<String, String[]> parameterMap, String key) {
+	public static String getColorFromParameter(Map<String, String[]> parameterMap, String key) {
 
 		String color = "";
 
