@@ -38,7 +38,7 @@
 					<div class="nav-collapse">
 						<ul class="nav">
 							<li><a href="../../index.html">Overview</a></li>
-							<li class="active"><a title="Demos" href="http://demo.colormine.org">Demos</a></li>
+							<li><a title="Demos" href="http://demo.colormine.org">Demos</a></li>
 							<li><a title="Getting Started" href="https://github.com/colormine/colorMine/wiki/Getting-Started">Getting Started</a></li>
 							<li><a title="Blog" href="http://colormine.org">Blog</a></li>
 							<li><a title="Contact Us" href="mailto:admin@colormine.org">Contact Us</a></li>
@@ -59,23 +59,39 @@
 			</header>
 
 			<div class="marketing">
+				<h2>Comparing colors is hard!</h2>
+				<p>There are many different methods for calculating the difference between colors. The algorithm we use attempts to approximate similarity according to how the average human eye perceives them. The bigger the number, the more different the colors will appear. [TODO: Citation needed!]</p>
+				<p>There's a lot of fun stuff you can do once you figure out the visual relationship between two colors! [TODO: Show, don't tell!]</p>
+				<hr class="soften" />
 				<div class="row">
-					<div class="span3">
-						<p>Comparing colors is difficult. There are many different methods for calculating. The algorithm we use attempts to approximate similarity according to how the average human eye perceives them. The bigger the number, the more different the colors will appear.</p>
+					<div class="span6"> 
+						<h3>#1. Choose a color:</h3>
+						<div id="colorPickerA"></div>
+						<div id="colorA" name="colorA">&nbsp;</div>
 					</div>
-					<div class="span3" id="colorPickerA">&nbsp;</div>
-					<div class="span3" id="colorPickerB">&nbsp;</div>
-					<div class="span3">
-						<div type="text" id="colorA" name="colorA">&nbsp;</div>
-						<div type="text" id="colorB" name="colorB">&nbsp;</div>
-						<input type="button" value="Update" id="update" />
-						<span id="score"></span>
+					<div class="span6">
+						<h3>#2. Choose another color:</h3>
+						<div id="colorPickerB">&nbsp;</div>
+						<div id="colorB" name="colorB">&nbsp;</div>
 					</div>
-				</div>
-				<div class="row">
-
+					<div class="span12">
+						<div>
+							<div class="form-actions">
+								<input type="button" value="#3. Calculate Similarity" id="update" class="btn-large btn-primary"/>
+								<span id="score"></span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div><!-- /.marketing -->
+
+			<!-- TODO: -->
+			
+			<!-- 
+				Smaller color picker
+				Code samples
+				Better description of what's happening, link to delta-E
+			 -->
 
 			<!-- Footer ================================================== -->
 			<footer class="footer">
