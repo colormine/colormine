@@ -1,18 +1,93 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<title>ColorMine.org</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../bootstrap/css/docs.css" rel="stylesheet">
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+	</head>
+
+	<body data-spy="scroll" data-target=".subnav" data-offset="50">
+
+		<!-- Navbar ================================================== -->
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="./index.html">ColorMine.org</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li><a href="../../index.html">Overview</a></li>
+							<li><a title="Demos" href="http://demo.colormine.org">Demos</a></li>
+							<li><a title="Getting Started" href="https://github.com/colormine/colorMine/wiki/Getting-Started">Getting Started</a></li>
+							<li><a title="Blog" href="http://colormine.org">Blog</a></li>
+							<li><a title="Contact Us" href="mailto:admin@colormine.org">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	    <div class="container">
+
+			<!-- Masthead ================================================== -->
+			<header class="jumbotron masthead">
+				<div class="inner">
+					<h1>Color Profiles</h1>
+					<p>Upload an image to see a count of each color.</p>
+				</div>
+			</header>
+
+			<div class="marketing">
+				<h2>Pixel Counting</h2>
+				<p>This demo isn't very exciting, but color profiles are the key to unlocking a lot of the cool things you can do with ColorMine. [TODO: Like what?]</p>
+
+				<hr class="soften" />
+
+				<form class="well form-inline">
+					<input type="file" name="image"/>
+					<p>I would upload a small image if I were you...</p>
+					<div id="colors"></div>
+				</form>
+			</div><!-- /.marketing -->
+
+			<!-- TODO:
+				Smaller color picker
+				Code samples
+				Better description of what's happening, link to delta-E
+			 -->
+
+			<!-- Footer ================================================== -->
+			<footer class="footer">
+				<p>Big thanks to the <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a> at <a href="http://twitter.com/twitter" target="_blank">@twitter</a> for <a title="Simple and flexible HTML, CSS and Javascript via Bootstrap" href="https://github.com/twitter/bootstrap" target="_blank">bootstrap</a>!</p>
+				<p>Code licensed under the <a href="https://github.com/colormine/colorMine/blob/master/LICENSE" target="_blank">MIT License</a>.</p>
+				<p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+			</footer>
+
+		</div><!-- /container -->
+		
 		<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
 		<script src="../js/blueimp-jQuery-File-Upload-4922e27/js/vendor/jquery.ui.widget.js"></script>
 		<script src="../js/blueimp-jQuery-File-Upload-4922e27/js/jquery.iframe-transport.js"></script>
 		<script src="../js/blueimp-jQuery-File-Upload-4922e27/js/jquery.fileupload.js"></script>
 		<script src="../js/profile.js"></script>
-		<link rel="stylesheet" href="css/style.css" type="text/css" />
-	</head>
-	<body>
-		<div style="text-align: center;">
-			<input type="file" name="image"/>
-			<p class="warning">I would upload a small image if I were you...</p>
-			<p class="thanks">Thanks for the excellent ajaxy file uploader! <a href="https://github.com/blueimp/jQuery-File-Upload">https://github.com/blueimp/jQuery-File-Upload</a>!</p>
-			<div id="colors"></div>
-		</div>
+
 	</body>
 </html>

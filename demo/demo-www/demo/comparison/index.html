@@ -9,9 +9,7 @@
 
 		<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../../bootstrap/css/docs.css" rel="stylesheet">
-
 		<link href="../js/farbtastic/farbtastic.css" type="text/css" rel="stylesheet">
-		<link href="css/style.css" type="text/css" rel="stylesheet" />
 
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -54,7 +52,7 @@
 			<header class="jumbotron masthead">
 				<div class="inner">
 					<h1>Compare Colors</h1>
-					<p>Select two colors and 'Update' to calculate their similarity.</p>
+					<p>Select two colors to calculate their similarity.</p>
 				</div>
 			</header>
 
@@ -74,24 +72,17 @@
 						<div id="colorPickerB">&nbsp;</div>
 						<div id="colorB" name="colorB">&nbsp;</div>
 					</div>
+				</div>
+
+				<div class="row">				
 					<div class="span12">
-						<div>
-							<div class="form-actions">
-								<input type="button" value="#3. Calculate Similarity" id="update" class="btn-large btn-primary"/>
-								<span id="score"></span>
-							</div>
+						<div class="form-actions">
+							<input type="button" value="#3. Calculate Similarity" id="update" class="btn-large btn-primary"/>
+							<span id="score"></span>
 						</div>
 					</div>
 				</div>
 			</div><!-- /.marketing -->
-
-			<!-- TODO: -->
-			
-			<!-- 
-				Smaller color picker
-				Code samples
-				Better description of what's happening, link to delta-E
-			 -->
 
 			<!-- Footer ================================================== -->
 			<footer class="footer">
@@ -104,7 +95,7 @@
 		
 		<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="../js/farbtastic/farbtastic.js"></script>
-		<script type="text/javascript" src="../js/compare.js"></script>
+		<script type="text/javascript" src="../js/complement.js"></script>
 
 	</body>
 </html>
