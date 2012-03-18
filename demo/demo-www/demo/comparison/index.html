@@ -1,27 +1,94 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<title>ColorMine.org</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../bootstrap/css/docs.css" rel="stylesheet">
+
+		<link href="../js/farbtastic/farbtastic.css" type="text/css" rel="stylesheet">
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+	</head>
+
+	<body data-spy="scroll" data-target=".subnav" data-offset="50">
+
+		<!-- Navbar ================================================== -->
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="./index.html">ColorMine.org</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li><a href="../../index.html">Overview</a></li>
+							<li class="active"><a title="Demos" href="http://demo.colormine.org">Demos</a></li>
+							<li><a title="Getting Started" href="https://github.com/colormine/colorMine/wiki/Getting-Started">Getting Started</a></li>
+							<li><a title="Blog" href="http://colormine.org">Blog</a></li>
+							<li><a title="Contact Us" href="mailto:admin@colormine.org">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	    <div class="container">
+
+			<!-- Masthead ================================================== -->
+			<header class="jumbotron masthead">
+				<div class="inner">
+					<h1>Compare Colors</h1>
+					<p>Select two colors and 'Update' to calculate their similarity.</p>
+				</div>
+			</header>
+
+			<div class="marketing">
+				<div class="row">
+					<div class="span3">
+						<p>Comparing colors is difficult. There are many different methods for calculating. The algorithm we use attempts to approximate similarity according to how the average human eye perceives them. The bigger the number, the more different the colors will appear.</p>
+					</div>
+					<div class="span3" id="colorPickerA">&nbsp;</div>
+					<div class="span3" id="colorPickerB">&nbsp;</div>
+					<div class="span3">
+						<div type="text" id="colorA" name="colorA">&nbsp;</div>
+						<div type="text" id="colorB" name="colorB">&nbsp;</div>
+						<input type="button" value="Update" id="update" />
+						<span id="score"></span>
+					</div>
+				</div>
+				<div class="row">
+
+				</div>
+			</div><!-- /.marketing -->
+
+			<!-- Footer ================================================== -->
+			<footer class="footer">
+				<p>Big thanks to the <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a> at <a href="http://twitter.com/twitter" target="_blank">@twitter</a> for <a title="Simple and flexible HTML, CSS and Javascript via Bootstrap" href="https://github.com/twitter/bootstrap" target="_blank">bootstrap</a>!</p>
+				<p>Code licensed under the <a href="https://github.com/colormine/colorMine/blob/master/LICENSE" target="_blank">MIT License</a>.</p>
+				<p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+			</footer>
+
+		</div><!-- /container -->
+		
 		<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="../js/farbtastic/farbtastic.js"></script>
 		<script type="text/javascript" src="../js/compare.js"></script>
-		<link rel="stylesheet" href="../js/farbtastic/farbtastic.css" type="text/css" />
-		<link rel="stylesheet" href="css/style.css" type="text/css" />
-	</head>
-	<body>
-		<div id="blocks">
-			<div class="block">
-				<div id="colorPickerA">&nbsp;</div>
-			</div>
-			<div class="block">	
-				<input type="text" id="colorA" name="colorA" /><br />
-				<input type="text" id="colorB" name="colorB" /><br />
-				<input type="button" value="Update" id="update" />
-				<span id="score"></span>
-				<span id="complement"></span>
-			</div>
-			<div class="block">
-				<div id="colorPickerB">&nbsp;</div>
-			</div>
-		</div>
-		<p class="thanks">Thanks <a href="http://acko.net/blog/farbtastic-jquery-color-picker-plug-in/">farbtastic</a>!</p>
+
 	</body>
 </html>
