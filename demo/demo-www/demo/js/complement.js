@@ -15,12 +15,12 @@ $(document).ready(function() {
 	function rgbToHex(color) {
 		rgb = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
 		function hex(n) {
- 		n = parseInt(n,10);
- 		if (isNaN(n)) return "00";
- 		n = Math.max(0,Math.min(n,255));
- 		return "0123456789ABCDEF".charAt((n-n%16)/16)
-      			+ "0123456789ABCDEF".charAt(n%16);
-}		return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+	 		n = parseInt(n,10);
+	 		if (isNaN(n)) return "00";
+	 		n = Math.max(0,Math.min(n,255));
+	 		return "0123456789ABCDEF".charAt((n-n%16)/16) + "0123456789ABCDEF".charAt(n%16);
+ 		}
+		return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 	}
 
 	function setComplementColorBlock(color) {
@@ -42,8 +42,8 @@ $(document).ready(function() {
 			color: rgbToHex(color),
 		};
 
-		$.get('../ComplementMath', data, setComplementColorBlock);
-		$.get('../TriadMath', data, setTriadBlocks);
+		$.get('../../ComplementMath', data, setComplementColorBlock);
+		$.get('../../TriadMath', data, setTriadBlocks);
 	}
 
 	$('#colorPickerA').farbtastic(setColorBlocks);

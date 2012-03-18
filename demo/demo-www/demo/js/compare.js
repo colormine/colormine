@@ -58,7 +58,7 @@ $(document).ready(function() {
 			value2: valueB
 		};
 
-		$.get('../ColorMine', data, updateScore);
+		$.get('../../ColorMine', data, updateScore);
 	}
 
 	$('#colorPickerA').farbtastic(function(color) { setColor(colorA, color) });
