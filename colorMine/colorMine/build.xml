@@ -9,10 +9,12 @@
 	<target name="init" depends="clean">
 		<mkdir dir="bin" />
 		<mkdir dir="dist" />
+		<mkdir dir="doc" />
 	</target>
 
 	<target name="compile" depends="init">
 		<javac srcdir="src" destdir="bin" includeantruntime="true" />
+		<javadoc sourcepath="src" destdir="doc" />
 	</target>
 
 	<target name="jar" depends="compile">
@@ -28,6 +30,7 @@
 	<target name="clean">
 		<delete dir="bin" />
 		<delete dir="dist" />
+		<delete dir="doc" />
 	</target>
 
 </project>

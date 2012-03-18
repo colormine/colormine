@@ -14,6 +14,7 @@
 	<target name="init" depends="clean">
 		<mkdir dir="bin" />
 		<mkdir dir="dist" />
+		<mkdir dir="doc" />
 	</target>
 
 	<target name="compile" depends="init">
@@ -21,6 +22,9 @@
 		<javac srcdir="src" destdir="bin" includeantruntime="true">
 			<classpath refid="test-classpath" />
 		</javac>
+		<javadoc sourcepath="src" destdir="doc">
+			<classpath refid="test-classpath" />
+		</javadoc>
 	</target>
 
 	<target name="jar" depends="compile">
@@ -38,6 +42,7 @@
 	<target name="clean">
 		<delete dir="bin" />
 		<delete dir="dist" />
+		<delete dir="doc" />
 	</target>
 
 </project>

@@ -14,9 +14,11 @@
 	<target name="init" depends="clean">
 		<mkdir dir="bin" />
 		<mkdir dir="${staging}" />
+		<mkdir dir="${staging}/doc" />
 		<mkdir dir="${staging}/WEB-INF" />
 		<mkdir dir="${staging}/WEB-INF/classes" />
 		<mkdir dir="${staging}/WEB-INF/lib" />
+		<mkdir dir="doc" />
 	</target>
 
 	<target name="compile" depends="init">
@@ -24,6 +26,9 @@
 		<javac srcdir="src" destdir="bin" includeantruntime="true">
 			<classpath refid="servlet-classpath" />
 		</javac>
+		<javadoc sourcepath="src" destdir="bin">
+			<classpath refid="servlet-classpath" />
+		</javadoc>
 	</target>
 
 	<target name="copy" depends="compile">
@@ -36,6 +41,9 @@
 		<copy todir="${staging}/WEB-INF/classes" overwrite="true">
 			<fileset dir="bin" />
 		</copy>
+		<copy todir="${staging}/doc">
+			<fileset dir="${home}/doc" />
+		</copy>
 		<copy todir="${staging}/WEB-INF/lib" file="${home}/dist/colorMine.jar" />
 		<copy todir="${staging}/WEB-INF/lib" file="lib/json.jar" />
 	</target>
@@ -47,7 +55,9 @@
 	</target>
 
 	<target name="clean">
+		<delete dir="bin" />
 		<delete dir="${staging}" />
+		<delete dir="doc" />
 	</target>
 
 </project>

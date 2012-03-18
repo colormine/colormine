@@ -7,8 +7,6 @@ import java.util.Collection;
 import org.colorMine.colorSpace.ColorSpaceConverter;
 import org.colorMine.colorSpace.Hsl;
 
-
-
 public class ColorCalculator {
 
 	final static String COLOR_DELIMITER = "-";
@@ -17,12 +15,11 @@ public class ColorCalculator {
 	final static String TYPE = "type";
 
 	/**
-	 *Determines if two given colors are complements of each other.
+	 * Determines if two given colors are complements of each other.
 	 * 
-	 * @param firstColor 
+	 * @param firstColor
 	 * @param secondColor
-	 * @return 
-	 * Returns true if secondColor is a complement of first color.
+	 * @return Returns true if secondColor is a complement of first color.
 	 */
 	public static boolean isComplement(Color firstColor, Color secondColor) {
 
@@ -30,13 +27,13 @@ public class ColorCalculator {
 
 		return (ColorSpaceConverter.isNearMatch(complementColor, secondColor, 1.0)) ? true : false;
 	}
-   /**
-    *Gets the Complement of the given color,
-    * 
-    * @param color
-    * @return
-    * Returns Color's complement
-    */
+
+	/**
+	 * Gets the Complement of the given color,
+	 * 
+	 * @param color
+	 * @return Returns Color's complement
+	 */
 	public static Color getComplement(Color color) {
 
 		Hsl hsl = ColorSpaceConverter.colorToHsl(color);
@@ -44,45 +41,54 @@ public class ColorCalculator {
 
 		return ColorSpaceConverter.hslToColor(hsl);
 	}
-    /**
-     *Gets the triadic harmonies of the given color.
-     * @param color
-     * @return Array of the triadic colors for the given color
-     */
+
+	/**
+	 * Gets the triadic harmonies of the given color.
+	 * 
+	 * @param color
+	 * @return Array of the triadic colors for the given color
+	 */
 	public static Color[] getTriadic(Color color) {
 		return getPointsOnColorWheel(color, 120, -120);
 	}
-	 /**
-     *Gets the Split Complements of the given color.
-     * @param color
-     * @return Array of the Split Complements colors for the given color
-     */
+
+	/**
+	 * Gets the Split Complements of the given color.
+	 * 
+	 * @param color
+	 * @return Array of the Split Complements colors for the given color
+	 */
 	public static Color[] getSplitComplements(Color color) {
 		return getPointsOnColorWheel(color, 150, -150);
 	}
-	 /**
-     *Gets the Analogous colors for the given color.
-     * @param color
-     * @return Array of the Analogous colors for the given color
-     */
+
+	/**
+	 * Gets the Analogous colors for the given color.
+	 * 
+	 * @param color
+	 * @return Array of the Analogous colors for the given color
+	 */
 	public static Color[] getAnalogous(Color color) {
 		return getPointsOnColorWheel(color, 30, -30);
 	}
+
 	/**
-     *returns a value that represents how well two colors match
-     * @param color
-     * @return 
-     * a double value that represents how well two colors match
-     */
+	 * returns a value that represents how well two colors match
+	 * 
+	 * @param firstColor
+	 * @param secondColor
+	 * @return a double value that represents how well two colors match
+	 */
 	public static double getMatchScore(Color firstColor, Color secondColor) {
 		return ColorMine.compare(firstColor, secondColor);
 	}
+
 	/**
 	 * returns the colors found by adjusting given color by the given points
+	 * 
 	 * @param color
 	 * @param points
-	 * @return
-	 * a color array with the adjusted hue points
+	 * @return a color array with the adjusted hue points
 	 */
 	private static Color[] getPointsOnColorWheel(Color color, double... points) {
 
@@ -96,11 +102,12 @@ public class ColorCalculator {
 
 		return colors.toArray(new Color[colors.size()]);
 	}
+
 	/**
 	 * returns the given colors Complement
+	 * 
 	 * @param hsl
-	 * @return
-	 * a Hsl value that represents the complement of the given Hsl value
+	 * @return a Hsl value that represents the complement of the given Hsl value
 	 */
 	private static Hsl getHslComplement(Hsl hsl) {
 
@@ -108,12 +115,13 @@ public class ColorCalculator {
 
 		return ComplementH;
 	}
+
 	/**
 	 * moves the hue of the hsl value the specified percent
+	 * 
 	 * @param hsl
 	 * @param percent
-	 * @return
-	 * an adjusted hsl value
+	 * @return an adjusted hsl value
 	 */
 	private static Hsl moveHueOnColorWheel(Hsl hsl, double percent) {
 		double H = hsl.H + percent / 360;
