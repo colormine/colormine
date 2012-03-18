@@ -10,6 +10,10 @@
         <servlet-class>org.colorMine.servlet.ColorProfileServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ColorMapping</servlet-name>
+        <servlet-class>org.colorMine.servlet.ColorMappingServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ComplementMath</servlet-name>
         <servlet-class>org.colorMine.servlet.ComplementMathServlet</servlet-class>
     </servlet>
@@ -24,6 +28,10 @@
     <servlet-mapping>
         <servlet-name>ColorProfile</servlet-name>
         <url-pattern>/ColorProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColorMapping</servlet-name>
+        <url-pattern>/ColorMapping</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ComplementMath</servlet-name>

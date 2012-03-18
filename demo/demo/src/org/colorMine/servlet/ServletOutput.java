@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.colorMine.profile.IColorProfile;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,10 @@ public class ServletOutput {
 		Map<String, String> stringData = convertToSerializable(data);
 		JSONObject json = new JSONObject(stringData);
 		write(response, json);
+	}
+
+	static void write(HttpServletResponse response, IColorProfile profile) throws IOException {
+		write(response, profile.getColorProfile());
 	}
 
 	static void write(HttpServletResponse response, Color color, String key) throws IOException {

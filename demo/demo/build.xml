@@ -41,7 +41,7 @@
 	</target>
 
 	<target name="war" depends="copy">
-		<war destfile="dist/ColorMine.war" webxml="${staging}/WEB-INF/web.xml">
+		<war destfile="dist/colorMine.war" webxml="${staging}/WEB-INF/web.xml">
 			<fileset dir="${staging}" />
 		</war>
 	</target>
