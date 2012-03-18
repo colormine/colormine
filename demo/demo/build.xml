@@ -30,6 +30,9 @@
 		<copy todir="${staging}">
 			<fileset dir="www" />
 		</copy>
+		<copy todir="${staging}">
+			<fileset dir="../demo-www" />	
+		</copy>
 		<copy todir="${staging}/WEB-INF/classes" overwrite="true">
 			<fileset dir="bin" />
 		</copy>
@@ -44,7 +47,6 @@
 	</target>
 
 	<target name="clean">
-		<ant dir="${home}" target="clean" />
 		<delete dir="${staging}" />
 	</target>
 

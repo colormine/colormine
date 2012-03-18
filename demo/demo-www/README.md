@@ -1,0 +1,1 @@
+This project contains static files used for the demos.
