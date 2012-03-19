@@ -26,9 +26,6 @@
 		<javac srcdir="src" destdir="bin" includeantruntime="true">
 			<classpath refid="servlet-classpath" />
 		</javac>
-		<javadoc sourcepath="src" destdir="bin">
-			<classpath refid="servlet-classpath" />
-		</javadoc>
 	</target>
 
 	<target name="copy" depends="compile">
@@ -41,6 +38,7 @@
 		<copy todir="${staging}/WEB-INF/classes" overwrite="true">
 			<fileset dir="bin" />
 		</copy>
+		<ant dir="${home}" target="doc" />
 		<copy todir="${staging}/doc">
 			<fileset dir="${home}/doc" />
 		</copy>
@@ -52,6 +50,12 @@
 		<war destfile="dist/colorMine.war" webxml="${staging}/WEB-INF/web.xml">
 			<fileset dir="${staging}" />
 		</war>
+	</target>
+
+	<target name="doc" depends="compile">
+		<javadoc sourcepath="src" destdir="bin">
+			<classpath refid="servlet-classpath" />
+		</javadoc>
 	</target>
 
 	<target name="clean">

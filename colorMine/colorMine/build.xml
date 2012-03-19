@@ -14,7 +14,6 @@
 
 	<target name="compile" depends="init">
 		<javac srcdir="src" destdir="bin" includeantruntime="true" />
-		<javadoc sourcepath="src" destdir="doc" />
 	</target>
 
 	<target name="jar" depends="compile">
@@ -25,6 +24,10 @@
 
 	<target name="test" depends="jar">
 		<ant dir="${testHome}" target="test" />
+	</target>
+
+	<target name="doc" depends="compile">
+		<javadoc sourcepath="src" destdir="doc" />	
 	</target>
 
 	<target name="clean">
