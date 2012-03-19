@@ -1,6 +1,7 @@
 package org.colorMine.colorSpace;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 public class ColorSpaceConverter {
 
@@ -45,8 +46,8 @@ public class ColorSpaceConverter {
 		double G = (color.getGreen() / 255.0);
 		double B = (color.getBlue() / 255.0);
 
-		double var_Min = Helpers.min(R, G, B); // Min. value of RGB
-		double var_Max = Helpers.max(R, G, B); // Max. value of RGB
+		double var_Min = min(R, G, B); // Min. value of RGB
+		double var_Max = max(R, G, B); // Max. value of RGB
 		double delta_Max = var_Max - var_Min; // Delta RGB value
 
 		double l = 0.0;
@@ -167,6 +168,16 @@ public class ColorSpaceConverter {
 		}
 
 		return false;
+	}
+
+	private static double max(double... numbers) {
+		Arrays.sort(numbers);
+		return numbers[numbers.length - 1];
+	}
+
+	private static double min(double... numbers) {
+		Arrays.sort(numbers);
+		return numbers[0];
 	}
 
 }
