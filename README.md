@@ -16,7 +16,7 @@ Follow us at [@colorminedev](http://twitter.com/colorminedev/ "@ColorMineDev on 
 ## Recent Updates
 
 *2012-03-18 : Demo enhancements*
-We're now using [[Bootstrap|http://twitter.github.com/bootstrap/]] for the demos, much prettier! We've also added a new demo for mapping an image to a palette, and we're now generating docs!
+We're now using [Bootstrap](http://twitter.github.com/bootstrap/) for the demos, much prettier! We've also added a new demo for mapping an image to a palette, and we're now generating docs!
 
 *2012-03-01 : Switching to TestNG*
 We've moved over to TestNG for better parameterized tests. Additionally, you can now run "ant test" to run the tests for you.
