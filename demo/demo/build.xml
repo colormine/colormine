@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="colorMineServlet" default="war" basedir=".">
+<project name="demo" default="war" basedir=".">
 
-	<property name="home" value="../../colorMine/colorMine" />
+	<property name="home" value="../../colormine/colormine" />
 	<property name="staging"
 		value="${java.io.tmpdir}/${user.name}/${ant.project.name}/staging" />
 
 	<path id="servlet-classpath">
-		<pathelement location="${home}/dist/colorMine.jar" />
+		<pathelement location="${home}/dist/colormine.jar" />
 		<pathelement location="lib/json.jar" />
 		<pathelement location="lib/servlet-api.jar" />
 	</path>
@@ -42,12 +42,12 @@
 		<copy todir="${staging}/doc">
 			<fileset dir="${home}/doc" />
 		</copy>
-		<copy todir="${staging}/WEB-INF/lib" file="${home}/dist/colorMine.jar" />
+		<copy todir="${staging}/WEB-INF/lib" file="${home}/dist/colormine.jar" />
 		<copy todir="${staging}/WEB-INF/lib" file="lib/json.jar" />
 	</target>
 
 	<target name="war" depends="copy">
-		<war destfile="dist/colorMine.war" webxml="${staging}/WEB-INF/web.xml">
+		<war destfile="dist/colormine.war" webxml="${staging}/WEB-INF/web.xml">
 			<fileset dir="${staging}" />
 		</war>
 	</target>

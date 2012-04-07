@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="colormine-tests" default="jar" basedir=".">
+
+	<property name="home" value="../colormine" />
+	<property name="jar" value="colormine-tests.jar" />
+	<property name="testOutput" value="test-output" />
+
+	<path id="test-classpath">
+		<pathelement location="${home}/dist/colormine.jar" />
+		<pathelement location="lib/testng-6.4.jar" />
+		<pathelement location="lib/mockito-all-1.9.0.jar" />
+	</path>
+
+	<target name="init" depends="clean">
+		<mkdir dir="bin" />
+		<mkdir dir="dist" />
+		<mkdir dir="doc" />
+	</target>
+
+	<target name="compile" depends="init">
+		<ant dir="${home}" target="jar" />
+		<javac srcdir="src" destdir="bin" includeantruntime="true">
+			<classpath refid="test-classpath" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="dist/${jar}">
+			<fileset dir="bin" />
+			<fileset file="testng.xml" />
+		</jar>
+	</target>
+
+	<taskdef name="testng" classpathref="test-classpath" classname="org.testng.TestNGAntTask" />
+	<target name="test" depends="jar">
+		<testng classpathref="test-classpath" testJar="dist/${jar}" outputDir="test-output" failureproperty="testFailure" />
+	</target>
+
+	<target name="doc" depends="compile">
+		<javadoc sourcepath="src" destdir="doc">
+			<classpath refid="test-classpath" />
+		</javadoc>
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+		<delete dir="dist" />
+		<delete dir="doc" />
+	</target>
+
+</project>
