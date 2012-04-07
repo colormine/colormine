@@ -3,23 +3,23 @@
          xsi:schemaLocation="http://java.sun.com/dtd/web-app_2_3.dtd">
     <servlet>
     <servlet-name>ColorMine</servlet-name>
-        <servlet-class>org.colorMine.servlet.ColorMineServlet</servlet-class>
+        <servlet-class>org.colormine.servlet.ColorMineServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ColorProfile</servlet-name>
-        <servlet-class>org.colorMine.servlet.ColorProfileServlet</servlet-class>
+        <servlet-class>org.colormine.servlet.ColorProfileServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ColorMapping</servlet-name>
-        <servlet-class>org.colorMine.servlet.ColorMappingServlet</servlet-class>
+        <servlet-class>org.colormine.servlet.ColorMappingServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ComplementMath</servlet-name>
-        <servlet-class>org.colorMine.servlet.ComplementMathServlet</servlet-class>
+        <servlet-class>org.colormine.servlet.ComplementMathServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TriadMath</servlet-name>
-        <servlet-class>org.colorMine.servlet.TriadMathServlet</servlet-class>
+        <servlet-class>org.colormine.servlet.TriadMathServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ColorMine</servlet-name>

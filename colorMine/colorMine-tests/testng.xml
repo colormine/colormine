@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="none">
   <test name="Test" preserve-order="true">
     <packages>
-      <package name="org.colorMine.tests.*"/>
+      <package name="org.colormine.tests.*"/>
     </packages>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
