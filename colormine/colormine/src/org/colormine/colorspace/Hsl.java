@@ -1,6 +1,6 @@
 package org.colormine.colorspace;
 
-public class Hsl extends ColorTuple implements Tuple {
+public class Hsl extends ColorTuple {
 	public final double H;
 	public final double S;
 	public final double L;
@@ -22,7 +22,7 @@ public class Hsl extends ColorTuple implements Tuple {
 		L = vaules[2];
 	}
 
-	public double[] getTuple() {
-		return new double[] { H, S, L };
+	public Double[] getTuple() {
+		return new Double[] { H, S, L };
 	}
 }

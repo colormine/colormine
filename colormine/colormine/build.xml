@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="colormine" default="jar" basedir=".">
 
-	<property name="testHome" value="../colormine-tests" />
 	<path id="colormine-classpath">
 		<pathelement location="bin" />
 	</path>
@@ -20,10 +19,6 @@
 		<jar destfile="dist/colormine.jar">
 			<fileset dir="bin" />
 		</jar>
-	</target>
-
-	<target name="test" depends="jar">
-		<ant dir="${testHome}" target="test" />
 	</target>
 
 	<target name="doc" depends="compile">

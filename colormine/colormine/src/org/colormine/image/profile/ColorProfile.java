@@ -11,7 +11,7 @@ import org.colormine.image.Image;
 
 public class ColorProfile implements Profile<Color> {
 
-	private Map<Color, Integer> _colors = new HashMap<Color, Integer>();;
+	private Map<Color, Integer> _colors = new HashMap<Color, Integer>();
 	private int _total = 0;
 
 	public ColorProfile() {
@@ -60,7 +60,7 @@ public class ColorProfile implements Profile<Color> {
 
 	@Override
 	public int get(Color key) {
-		return _colors.containsKey(key) ? get(key) : 0;
+		return _colors.containsKey(key) ? _colors.get(key) : 0;
 	}
 
 	@Override

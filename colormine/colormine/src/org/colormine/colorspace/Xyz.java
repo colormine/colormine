@@ -1,6 +1,6 @@
 package org.colormine.colorspace;
 
-public class Xyz extends ColorTuple implements Tuple {
+public class Xyz extends ColorTuple {
 	public final double X;
 	public final double Y;
 	public final double Z;
@@ -11,8 +11,8 @@ public class Xyz extends ColorTuple implements Tuple {
 		Z = z;
 	}
 
-	public double[] getTuple() {
-		return new double[] { X, Y, Z };
+	public Double[] getTuple() {
+		return new Double[] { X, Y, Z };
 	}
 
 }

@@ -27,11 +27,10 @@ public class MapFilter implements Filter<Profile<Color>> {
 		_tolerance = tolerance;
 	}
 
-	public FilterResult<Profile<Color>> apply(Profile<Color> imageProfile) {
+	public FilterResult<Profile<Color>> apply(Profile<Color> imageColors) {
 		Profile<Color> resultColors = new ColorProfile();
 		Profile<Color> modifiedColors = new ColorProfile();
 		Profile<Color> invalidColors = new ColorProfile();
-		Profile<Color> imageColors = new ColorProfile();
 
 		for (Color imageRgb : imageColors.keySet()) {
 			double bestScore = Double.POSITIVE_INFINITY;
@@ -55,6 +54,6 @@ public class MapFilter implements Filter<Profile<Color>> {
 			}
 		}
 
-		return new ProfileFilterResult<Color>(resultColors, modifiedColors, invalidColors, imageProfile);
+		return new ProfileFilterResult<Color>(resultColors, modifiedColors, invalidColors, imageColors);
 	}
 }
