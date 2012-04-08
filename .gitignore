@@ -11,3 +11,4 @@ WEB-INF/classes/
 *.jar
 staging/
 test-output/
+doc/
