@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="demo" default="war" basedir=".">
-
-	<property name="home" value="../../colormine/colormine" />
+	<property name="main.jar" value="${home}/dist/main/colormine.jar" />
+	<property name="home" value="../../colormine" />
 	<property name="staging"
 		value="${java.io.tmpdir}/${user.name}/${ant.project.name}/staging" />
 
 	<path id="servlet-classpath">
-		<pathelement location="${home}/dist/colormine.jar" />
+		<pathelement location="${main.jar}" />
 		<pathelement location="lib/json.jar" />
 		<pathelement location="lib/servlet-api.jar" />
 	</path>
@@ -22,7 +22,7 @@
 	</target>
 
 	<target name="compile" depends="init">
-		<ant dir="${home}" target="jar" />
+		<ant dir="${home}" target="compile" />
 		<javac srcdir="src" destdir="bin" includeantruntime="true">
 			<classpath refid="servlet-classpath" />
 		</javac>
@@ -45,7 +45,7 @@
 		<copy todir="${staging}/doc">
 			<fileset dir="${home}/doc" />
 		</copy>
-		<copy todir="${staging}/WEB-INF/lib" file="${home}/dist/colormine.jar" />
+		<copy todir="${staging}/WEB-INF/lib" file="${main.jar}" />
 		<copy todir="${staging}/WEB-INF/lib" file="lib/json.jar" />
 	</target>
 
