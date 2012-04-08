@@ -1,6 +1,6 @@
 package org.colormine.colorspace;
 
-public interface IColorTuple {
+public interface Tuple {
 	public double[] getTuple();
 
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.colormine.profile.IColorProfile;
+import org.colormine.image.profile.Profile;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,8 +30,8 @@ public class ServletOutput {
 		write(response, json);
 	}
 
-	static void write(HttpServletResponse response, IColorProfile profile) throws IOException {
-		write(response, profile.getColorProfile());
+	static void write(HttpServletResponse response, Profile<Color> profile) throws IOException {
+		write(response, profile);
 	}
 
 	static void write(HttpServletResponse response, Color color, String key) throws IOException {

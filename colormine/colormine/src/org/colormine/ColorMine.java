@@ -1,11 +1,11 @@
 package org.colormine;
 
 import java.awt.Color;
-import java.util.Map;
 
 import org.colormine.colorspace.ColorSpaceConverter;
-import org.colormine.profile.ColorProfile;
-import org.colormine.profile.IColoredImage;
+import org.colormine.image.Image;
+import org.colormine.image.profile.ColorProfile;
+import org.colormine.image.profile.Profile;
 
 public class ColorMine {
 
@@ -13,9 +13,7 @@ public class ColorMine {
 		return ColorSpaceConverter.colorToLab(a).compare(ColorSpaceConverter.colorToLab(b));
 	}
 
-	public static Map<Color, Integer> getColorProfile(IColoredImage image) {
-		ColorProfile profile = new ColorProfile(image);
-		return profile.getColorProfile();
+	public static Profile<Color> getColorProfile(Image image) {
+		return new ColorProfile(image);
 	}
-
 }

@@ -1,6 +1,6 @@
 package org.colormine.colorspace;
 
-public class Xyz extends ColorTuple implements IColorTuple {
+public class Xyz extends ColorTuple implements Tuple {
 	public final double X;
 	public final double Y;
 	public final double Z;

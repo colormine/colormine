@@ -4,10 +4,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.awt.Color;
-import java.util.Map;
 
 import org.colormine.ColorMine;
-import org.colormine.profile.IColoredImage;
+import org.colormine.image.Image;
+import org.colormine.image.profile.Profile;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -15,12 +15,12 @@ import org.testng.annotations.Test;
 @Test
 public class ColorMineTest {
 
-	private IColoredImage _image;
+	private Image _image;
 
 	@BeforeTest
 	public void setup() {
 
-		_image = mock(IColoredImage.class);
+		_image = mock(Image.class);
 		when(_image.getHeight()).thenReturn(1);
 		when(_image.getWidth()).thenReturn(1);
 		when(_image.getRGB(0, 0)).thenReturn(0xFF0000);
@@ -28,13 +28,13 @@ public class ColorMineTest {
 	}
 
 	public void getColorProfile_givenHeightAndWitdh1_returns1AsValue() {
-		Map<Color, Integer> result = ColorMine.getColorProfile(_image);
+		Profile<Color> result = ColorMine.getColorProfile(_image);
 
 		AssertJUnit.assertEquals(1, result.size());
 	}
 
 	public void getRgbProfile_givenColorX_returnColorX_AsKey() {
-		Map<Color, Integer> result = ColorMine.getColorProfile(_image);
+		Profile<Color> result = ColorMine.getColorProfile(_image);
 
 		AssertJUnit.assertEquals(1, (int) result.get(Color.red));
 	}

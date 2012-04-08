@@ -1,6 +1,6 @@
-package org.colormine.profile;
+package org.colormine.image;
 
-public interface IColoredImage {
+public interface Image {
 	int getWidth();
 
 	int getHeight();

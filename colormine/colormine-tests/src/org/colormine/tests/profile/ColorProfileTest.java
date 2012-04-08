@@ -4,10 +4,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.awt.Color;
-import java.util.Map;
 
-import org.colormine.profile.ColorProfile;
-import org.colormine.profile.IColoredImage;
+import org.colormine.image.Image;
+import org.colormine.image.profile.ColorProfile;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -15,11 +14,11 @@ import org.testng.annotations.Test;
 @Test
 public class ColorProfileTest {
 
-	private IColoredImage _image;
+	private Image _image;
 
 	@BeforeTest
 	public void setup() {
-		_image = mock(IColoredImage.class);
+		_image = mock(Image.class);
 	}
 
 	public void ColorProfile() {
@@ -30,16 +29,13 @@ public class ColorProfileTest {
 		when(_image.getWidth()).thenReturn(1);
 		when(_image.getRGB(0, 0)).thenReturn(0xFF0000);
 
-		ColorProfile profile = new ColorProfile(_image);
-
 		// ACT
 
-		Map<Color, Integer> result = profile.getColorProfile();
+		ColorProfile result = new ColorProfile(_image);
 
 		// ASSERT
 
 		AssertJUnit.assertEquals(1, result.size());
-		AssertJUnit.assertTrue(result.containsKey(Color.RED));
 		AssertJUnit.assertEquals(1, (int) result.get(Color.RED));
 	}
 
@@ -53,16 +49,12 @@ public class ColorProfileTest {
 		when(_image.getRGB(1, 0)).thenReturn(0xFF0000);
 		when(_image.getRGB(1, 1)).thenReturn(0x000000);
 
-		ColorProfile profile = new ColorProfile(_image);
-
 		// ACT
-		Map<Color, Integer> result = profile.getColorProfile();
+		ColorProfile result = new ColorProfile(_image);
 
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.size());
-		AssertJUnit.assertTrue(result.containsKey(Color.RED));
 		AssertJUnit.assertEquals(3, (int) result.get(Color.RED));
-		AssertJUnit.assertTrue(result.containsKey(Color.BLACK));
 		AssertJUnit.assertEquals(1, (int) result.get(Color.BLACK));
 	}
 
@@ -76,10 +68,8 @@ public class ColorProfileTest {
 		when(_image.getRGB(1, 0)).thenReturn(0xCCCCCC);
 		when(_image.getRGB(1, 1)).thenReturn(0xDDDDDD);
 
-		ColorProfile profile = new ColorProfile(_image);
-
 		// ACT
-		Map<Color, Integer> result = profile.getColorProfile();
+		ColorProfile result = new ColorProfile(_image);
 
 		// ASSERT
 		AssertJUnit.assertEquals(4, result.size());

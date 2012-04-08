@@ -15,13 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.colormine.profile.ColorProfile;
-import org.colormine.profile.ColoredImage;
-import org.colormine.profile.IColorProfile;
-import org.colormine.profile.IColoredImage;
-import org.colormine.profile.filter.IColorProfileFilter;
-import org.colormine.profile.filter.IColorProfileFilterResult;
-import org.colormine.profile.filter.MapFilter;
+import org.colormine.image.ColorImage;
+import org.colormine.image.profile.ColorProfile;
+import org.colormine.image.profile.Profile;
+import org.colormine.image.profile.filter.Filter;
+import org.colormine.image.profile.filter.FilterResult;
+import org.colormine.image.profile.filter.MapFilter;
 import org.colormine.servlet.validation.IValidationResult;
 import org.colormine.servlet.validation.ImageUploadValidator;
 
@@ -55,12 +54,12 @@ public class ColorMappingServlet extends HttpServlet {
 				InputStream fileContent = part.getInputStream();
 				BufferedImage image = ImageIO.read(fileContent);
 
-				IColoredImage colorImage = new ColoredImage(image);
+				ColorImage colorImage = new ColorImage(image);
 
-				IColorProfileFilter filter = new MapFilter(getPalette());
-				IColorProfileFilterResult filterResult = filter.apply(new ColorProfile(colorImage));
+				Filter<Profile<Color>> filter = new MapFilter(getPalette());
+				FilterResult<Profile<Color>> filterResult = filter.apply(new ColorProfile(colorImage));
 
-				ServletOutput.write(response, filterResult.getFilteredProfile());
+				ServletOutput.write(response, filterResult.getFiltered());
 
 				profileReturned = true;
 			}
@@ -71,7 +70,7 @@ public class ColorMappingServlet extends HttpServlet {
 		}
 	}
 
-	private static IColorProfile getPalette() {
+	private static Profile<Color> getPalette() {
 		Map<Color, Integer> colors = new HashMap<Color, Integer>();
 
 		colors.put(Color.WHITE, 1);

@@ -145,7 +145,7 @@ public class ColorSpaceConverter {
 		return Math.abs(a - b) < DoublePrecision;
 	}
 
-	public static boolean isNearMatch(IColorTuple firstColor, IColorTuple secondColor, double nearMatchTolerance) {
+	public static boolean isNearMatch(Tuple firstColor, Tuple secondColor, double nearMatchTolerance) {
 
 		double[] values = firstColor.getTuple();
 		double[] values2 = secondColor.getTuple();

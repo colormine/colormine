@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.colormine.ColorMine;
-import org.colormine.profile.ColoredImage;
-import org.colormine.profile.IColoredImage;
+import org.colormine.image.ColorImage;
 import org.colormine.servlet.validation.IValidationResult;
 import org.colormine.servlet.validation.ImageUploadValidator;
 
@@ -48,7 +47,7 @@ public class ColorProfileServlet extends HttpServlet {
 				InputStream fileContent = part.getInputStream();
 				BufferedImage image = ImageIO.read(fileContent);
 
-				IColoredImage colorImage = new ColoredImage(image);
+				ColorImage colorImage = new ColorImage(image);
 
 				ServletOutput.write(response, ColorMine.getColorProfile(colorImage));
 

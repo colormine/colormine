@@ -1,12 +1,16 @@
-package org.colormine.profile;
+package org.colormine.image;
 
 import java.awt.image.BufferedImage;
 
-public class ColoredImage implements IColoredImage {
+/**
+ * Simple wrapper for BufferedImage that implements Image
+ */
+
+public class ColorImage implements Image {
 
 	private BufferedImage _image;
 
-	public ColoredImage(BufferedImage image) {
+	public ColorImage(BufferedImage image) {
 		_image = image;
 	}
 

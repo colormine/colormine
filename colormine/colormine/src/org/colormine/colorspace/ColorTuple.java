@@ -1,6 +1,6 @@
 package org.colormine.colorspace;
 
-public abstract class ColorTuple implements IColorTuple {
+public abstract class ColorTuple implements Tuple {
 
 	public abstract double[] getTuple();
 
@@ -23,7 +23,7 @@ public abstract class ColorTuple implements IColorTuple {
 		return result.toString().hashCode();
 	}
 
-	public double compare(IColorTuple other) {
+	public double compare(Tuple other) {
 		double[] otherData = other.getTuple();
 		double[] myData = getTuple();
 		return Math.sqrt(Math.pow(myData[0] - otherData[0], 2) + Math.pow(myData[1] - otherData[1], 2) + Math.pow(myData[2] - otherData[2], 2));
@@ -41,7 +41,7 @@ public abstract class ColorTuple implements IColorTuple {
 		return (int) (255 * d);
 	}
 
-	public boolean isNearMatch(IColorTuple color, double nearMatchTorrerance) {
+	public boolean isNearMatch(Tuple color, double nearMatchTorrerance) {
 		double[] values = color.getTuple();
 		double[] values2 = this.getTuple();
 
