@@ -26,10 +26,16 @@
 		<javac srcdir="src" destdir="bin" includeantruntime="true">
 			<classpath refid="servlet-classpath" />
 		</javac>
-                <javadoc sourcepath="src" destdir="bin">
-                        <classpath refid="servlet-classpath" />
-                </javadoc>
+		<javadoc sourcepath="src" destdir="doc">
+			<classpath refid="servlet-classpath" />
+		</javadoc>
 	</target>
+	
+    <target name="doc" depends="compile">
+		<javadoc sourcepath="src" destdir="doc">
+			<classpath refid="servlet-classpath" />
+		</javadoc>
+    </target>
 
 	<target name="copy" depends="compile">
 		<copy todir="${staging}">

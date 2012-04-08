@@ -47,7 +47,9 @@
 
 	<target name="doc" depends="compile">
 		<javadoc sourcepath="${main.src}" destdir="${main.doc}" />
-		<javadoc sourcepath="${test.src}" destdir="${test.doc}" />
+		<javadoc sourcepath="${test.src}" destdir="${test.doc}">
+                        <classpath refid="test.classpath" />
+		</javadoc>
 	</target>
 
 	<taskdef name="testng" classpathref="test.classpath" classname="org.testng.TestNGAntTask" />
