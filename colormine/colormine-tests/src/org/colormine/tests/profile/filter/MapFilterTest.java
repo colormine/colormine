@@ -44,7 +44,7 @@ public class MapFilterTest {
 
 		AssertJUnit.assertTrue(result.getOriginal() == imageProfile);
 		AssertJUnit.assertTrue(0 == result.getDiscarded().size());
-		// AssertJUnit.assertTrue(1 == result.getFiltered().size());
+		AssertJUnit.assertTrue(1 == result.getFiltered().size());
 	}
 
 	public void basicRounding() {
