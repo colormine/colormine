@@ -1,34 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="colormine" default="jar" basedir=".">
+<project name="colormine" default="compile" basedir=".">
 
-	<path id="colormine-classpath">
-		<pathelement location="bin" />
+	<property name="main.src" value="src/main" />
+	<property name="main.bin" value="bin/main" />
+	<property name="main.dist" value="dist/main" />
+	<property name="main.doc" value="doc/main" />
+	<property name="main.jar" value="${main.dist}/colormine.jar" />
+
+	<property name="test.src" value="src/test" />
+	<property name="test.bin" value="bin/test" />
+	<property name="test.dist" value="dist/test" />
+	<property name="test.doc" value="doc/test" />
+	<property name="test.jar" value="${test.dist}/colormine-test.jar" />
+	<property name="test.output" value="test-output" />
+
+	<path id="test.classpath">
+		<pathelement location="${main.jar}" />
+		<pathelement location="lib/testng-6.4.jar" />
+		<pathelement location="lib/mockito-all-1.9.0.jar" />
 	</path>
 
 	<target name="init" depends="clean">
-		<mkdir dir="bin" />
-		<mkdir dir="dist" />
-		<mkdir dir="doc" />
+		<mkdir dir="${main.bin}" />
+		<mkdir dir="${main.dist}" />
+		<mkdir dir="${main.doc}" />
+
+		<mkdir dir="${test.bin}" />
+		<mkdir dir="${test.dist}" />
+		<mkdir dir="${test.doc}" />
 	</target>
 
 	<target name="compile" depends="init">
-		<javac srcdir="src" destdir="bin" includeantruntime="true" />
-	</target>
+		<javac srcdir="${main.src}" destdir="${main.bin}" includeantruntime="true" />
+		<jar destfile="${main.jar}">
+			<fileset dir="${main.bin}" />
+		</jar>
 
-	<target name="jar" depends="compile">
-		<jar destfile="dist/colormine.jar">
-			<fileset dir="bin" />
+		<javac srcdir="${test.src}" destdir="${test.bin}" includeantruntime="true">
+			<classpath refid="test.classpath" />
+		</javac>
+		<jar destfile="${test.jar}">
+			<fileset dir="${test.bin}" />
+			<fileset file="testng.xml" />
 		</jar>
 	</target>
 
 	<target name="doc" depends="compile">
-		<javadoc sourcepath="src" destdir="doc" />	
+		<javadoc sourcepath="${main.src}" destdir="${main.doc}" />
+		<javadoc sourcepath="${test.src}" destdir="${test.doc}" />
+	</target>
+
+	<taskdef name="testng" classpathref="test.classpath" classname="org.testng.TestNGAntTask" />
+	<target name="test" depends="compile">
+		<testng classpathref="test.classpath" testJar="${test.jar}" outputDir="${test.output}" failureproperty="testFailure" />
 	</target>
 
 	<target name="clean">
-		<delete dir="bin" />
-		<delete dir="dist" />
-		<delete dir="doc" />
+		<delete dir="${main.bin}" />
+		<delete dir="${main.dist}" />
+		<delete dir="${main.doc}" />
 	</target>
 
 </project>
