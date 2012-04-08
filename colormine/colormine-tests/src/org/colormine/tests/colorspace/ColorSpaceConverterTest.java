@@ -1,4 +1,4 @@
-package org.colormine.tests.colorSpace;
+package org.colormine.tests.colorspace;
 
 import java.awt.Color;
 
