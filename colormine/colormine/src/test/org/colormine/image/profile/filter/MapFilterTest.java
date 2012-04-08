@@ -1,4 +1,4 @@
-package org.colormine.tests.profile.filter;
+package org.colormine.image.profile.filter;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -10,8 +10,6 @@ import java.util.Map;
 import org.colormine.image.Image;
 import org.colormine.image.profile.ColorProfile;
 import org.colormine.image.profile.Profile;
-import org.colormine.image.profile.filter.FilterResult;
-import org.colormine.image.profile.filter.MapFilter;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

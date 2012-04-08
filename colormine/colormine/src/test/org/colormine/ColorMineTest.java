@@ -1,4 +1,4 @@
-package org.colormine.tests;
+package org.colormine;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

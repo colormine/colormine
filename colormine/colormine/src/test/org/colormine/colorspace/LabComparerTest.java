@@ -1,4 +1,4 @@
-package org.colormine.tests.colorspace;
+package org.colormine.colorspace;
 
 import java.text.DecimalFormat;
 

@@ -1,4 +1,4 @@
-package org.colormine.tests.profile;
+package org.colormine.image.profile;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -6,7 +6,6 @@ import static org.mockito.Mockito.when;
 import java.awt.Color;
 
 import org.colormine.image.Image;
-import org.colormine.image.profile.ColorProfile;
 import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
