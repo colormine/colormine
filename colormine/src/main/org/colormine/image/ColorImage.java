@@ -11,7 +11,7 @@ public class ColorImage implements Image {
 	private BufferedImage _image;
 
 	/**
-	 * Create from BufferedImage.
+	 * Create from BufferedImage
 	 * 
 	 * @param image
 	 */
@@ -20,9 +20,9 @@ public class ColorImage implements Image {
 	}
 
 	/**
-	 * Get image width.
+	 * Gets image width
 	 * 
-	 * @return
+	 * @return image width
 	 */
 	@Override
 	public int getWidth() {
@@ -30,9 +30,9 @@ public class ColorImage implements Image {
 	}
 
 	/**
-	 * Get image height.
+	 * Gets image height
 	 * 
-	 * @return
+	 * @return image height
 	 */
 	@Override
 	public int getHeight() {
@@ -40,11 +40,11 @@ public class ColorImage implements Image {
 	}
 
 	/**
-	 * Get Rgb value of a pixel specified by it's x and y coordinates.
+	 * Gets Rgb value of the pixel located at the position specified by x, y
 	 * 
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return integer representation of the rgb value
 	 */
 	@Override
 	public int getRGB(int x, int y) {

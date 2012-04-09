@@ -18,7 +18,7 @@ public abstract class ColorTuple implements Tuple<Double> {
 	 * formula in three dimensional space.
 	 * 
 	 * @param other
-	 * @return
+	 * @return the distance in 3d space
 	 */
 	public double compare(ColorTuple other) {
 		Double[] otherData = other.getTuple();
@@ -27,24 +27,22 @@ public abstract class ColorTuple implements Tuple<Double> {
 	}
 
 	/**
-	 * Determines if two items are "close enough" given a tolerance
+	 * Determines if two items are "close enough" given a tolerance.
 	 * 
-	 * @param firstColor
-	 * @param secondColor
-	 * @param nearMatchTolerance
-	 * @return
+	 * @param color
+	 * @param tolerance
+	 * @return true if images are "close enough"
 	 */
 	public boolean isNearMatch(ColorTuple color, double tolerance) {
-		Double[] values = color.getTuple();
-		Double[] values2 = this.getTuple();
-
-		return ColorSpaceConverter.compareNearValue(values[0], values2[0], tolerance) && ColorSpaceConverter.compareNearValue(values[1], values2[1], tolerance) && ColorSpaceConverter.compareNearValue(values[2], values2[2], tolerance);
+		return ColorSpaceConverter.isNearMatch(this, color, tolerance);
 	}
 
 	/**
 	 * Uses the result of the toString method so we can treat ColorTuples like a
 	 * value type, meaning that two ColorTuples of the same value will have the
 	 * same hash code even though they are different objects.
+	 * 
+	 * @return true if objects contain the same coordinates
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -58,6 +56,8 @@ public abstract class ColorTuple implements Tuple<Double> {
 	 * Uses the result of the toString method so we can treat ColorTuples like a
 	 * value type, meaning that two ColorTuples of the same value will have the
 	 * same hash code even though they are different objects.
+	 * 
+	 * @return hascode based on the value of the coordinates
 	 */
 	@Override
 	public int hashCode() {
@@ -65,7 +65,9 @@ public abstract class ColorTuple implements Tuple<Double> {
 	}
 
 	/**
-	 * Returns a pretty-formatted version of the ColorTuple
+	 * Get easily readable string representation.
+	 * 
+	 * @return returns the coordinates in format %d-%d-%d for readability
 	 */
 	@Override
 	public String toString() {

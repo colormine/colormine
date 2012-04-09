@@ -26,8 +26,8 @@ public class ColorMine {
 	 * 
 	 * @param a
 	 * @param b
-	 * @return Returns a score for how similar two colors are to each other, the
-	 *         lower the score the more similar the colors.
+	 * @return score for how similar two colors are to each other, the lower the
+	 *         score the more similar the colors.
 	 */
 
 	public static double calculateSimilarity(Color a, Color b) {
@@ -35,37 +35,39 @@ public class ColorMine {
 	}
 
 	/**
-	 * Determines if two given colors are complements of each other.
+	 * Determines if two given colors are complements of each other, the order
+	 * doesn't matter
 	 * 
-	 * @param firstColor
-	 * @param secondColor
-	 * @return Returns true if secondColor is a complement of first color.
+	 * @param a
+	 * @param b
+	 * @param tolerance
+	 * @return true if the colors are complements within passed in tolerance
 	 */
-	public static boolean isComplement(Color firstColor, Color secondColor, double tolerance) {
+	public static boolean isComplement(Color a, Color b, double tolerance) {
 
-		Color complementColor = getComplement(firstColor);
-		return ColorSpaceConverter.isNearMatch(complementColor, secondColor, tolerance);
+		Color complementColor = getComplement(a);
+		return ColorSpaceConverter.isNearMatch(complementColor, b, tolerance);
 	}
 
 	/**
 	 * Determines if two given colors are complements of each other using the
 	 * default tolerance of 1.0
 	 * 
-	 * @param firstColor
-	 * @param secondColor
-	 * @return Returns true if secondColor is a complement of first color.
+	 * @param a
+	 * @param b
+	 * @return true if the colors are complements within passed in tolerance
 	 */
-	public static boolean isComplement(Color firstColor, Color secondColor) {
+	public static boolean isComplement(Color a, Color b) {
 
-		Color complementColor = getComplement(firstColor);
-		return ColorSpaceConverter.isNearMatch(complementColor, secondColor, _defaultComplementTolerance);
+		Color complementColor = getComplement(a);
+		return ColorSpaceConverter.isNearMatch(complementColor, b, _defaultComplementTolerance);
 	}
 
 	/**
 	 * Gets the Complement of the given color.
 	 * 
 	 * @param color
-	 * @return Returns Color's complement
+	 * @return color representing the complement
 	 */
 	public static Color getComplement(Color color) {
 
@@ -81,8 +83,8 @@ public class ColorMine {
 	 * Returns a ColorProfile for a given Image.
 	 * 
 	 * @param image
-	 * @return Returns a profile containing a map of colors to how many times
-	 *         that color occurred in the image.
+	 * @return profile containing a map of colors to how many times that color
+	 *         occurred in the image.
 	 */
 
 	public static ColorProfile getColorProfile(Image image) {
@@ -103,7 +105,7 @@ public class ColorMine {
 	 * Gets the Split Complements of the given color.
 	 * 
 	 * @param color
-	 * @return Array of the Split Complements colors for the given color
+	 * @return array of the split complements colors for the given color
 	 */
 	public static Color[] getSplitComplements(Color color) {
 		return getPointsOnColorWheel(color, 150, -150);

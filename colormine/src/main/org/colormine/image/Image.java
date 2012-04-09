@@ -6,25 +6,25 @@ package org.colormine.image;
  */
 public interface Image {
 	/**
-	 * Get image width.
+	 * Gets image width
 	 * 
-	 * @return
+	 * @return image width
 	 */
 	int getWidth();
 
 	/**
-	 * Get image height;
+	 * Gets image height
 	 * 
-	 * @return
+	 * @return image height
 	 */
 	int getHeight();
 
 	/**
-	 * Get Rgb value of a pixel specified by it's x and y coordinates.
+	 * Get Rgbs value of the pixel located at the position specified by x, y
 	 * 
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return integer representation of the rgb value
 	 */
 	int getRGB(int x, int y);
 }

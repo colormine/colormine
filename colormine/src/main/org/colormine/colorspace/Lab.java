@@ -24,6 +24,8 @@ public class Lab extends ColorTuple {
 	/**
 	 * Provides access to the coordinates that make up this color space in a
 	 * uniform way.
+	 * 
+	 * @return array containing the lab coordinates
 	 */
 	@Override
 	public Double[] getTuple() {

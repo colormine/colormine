@@ -13,7 +13,7 @@ public class ColorSpaceConverter {
 	 * Converts a java.awt.Color to Lab color space
 	 * 
 	 * @param color
-	 * @return
+	 * @return color in Lab color space
 	 */
 	public static Lab colorToLab(Color color) {
 		Xyz xyz = colorToXyz(color);
@@ -24,7 +24,7 @@ public class ColorSpaceConverter {
 	 * Converts a java.awt.Color to Xyz color space
 	 * 
 	 * @param color
-	 * @return
+	 * @return color in Xyz color space
 	 */
 	public static Xyz colorToXyz(Color color) {
 		double r = pivotRgb(color.getRed() / 255.0);
@@ -38,8 +38,8 @@ public class ColorSpaceConverter {
 	/**
 	 * Converts Xyz to Lab color space
 	 * 
-	 * @param color
-	 * @return
+	 * @param xyz
+	 * @return color in Lab color space
 	 */
 	public static Lab xyzToLab(Xyz xyz) {
 		final double REF_X = 95.047; // Observer= 2°, Illuminant= D65
@@ -57,9 +57,8 @@ public class ColorSpaceConverter {
 	 * Converts a java.awt.Color to Hsl color space
 	 * 
 	 * @param color
-	 * @return
+	 * @return color in Hsl color space
 	 */
-
 	public static Hsl colorToHsl(Color color) {
 
 		double R = (color.getRed() / 255.0);
@@ -110,7 +109,7 @@ public class ColorSpaceConverter {
 	 * Converts a Hsl color space to java.awt.Color
 	 * 
 	 * @param hsl
-	 * @return
+	 * @return color as java.awt.Color
 	 */
 
 	public static Color hslToColor(Hsl hsl) {
@@ -143,30 +142,38 @@ public class ColorSpaceConverter {
 	}
 
 	/**
-	 * Determines if two items are "close enough" given a tolerance
+	 * Determines if colors are "close enough" given a tolerance
 	 * 
 	 * @param firstColor
 	 * @param secondColor
 	 * @param nearMatchTolerance
-	 * @return
+	 * @return true if colors are "close enough"
 	 */
+
 	public static boolean isNearMatch(Color firstColor, Color secondColor, double nearMatchTolerance) {
 
 		int[] values = { firstColor.getRed(), firstColor.getGreen(), firstColor.getBlue() };
 		int[] values2 = { secondColor.getRed(), secondColor.getGreen(), secondColor.getBlue() };
 
 		return compareNearValue(values[0], values2[0], nearMatchTolerance) && compareNearValue(values[1], values2[1], nearMatchTolerance) && compareNearValue(values[2], values2[2], nearMatchTolerance);
-
 	}
 
-	/**
-	 * Helper method for converting hue to it's rgb value
-	 * 
-	 * @param v1
-	 * @param v2
-	 * @param vh
-	 * @return
-	 */
+	public static boolean isNearMatch(ColorTuple firstColor, ColorTuple secondColor, double nearMatchTolerance) {
+		Double[] values = firstColor.getTuple();
+		Double[] values2 = secondColor.getTuple();
+		return compareNearValue(values[0], values2[0], nearMatchTolerance) && compareNearValue(values[1], values2[1], nearMatchTolerance) && compareNearValue(values[2], values2[2], nearMatchTolerance);
+	}
+
+	private static boolean compareNearValue(double value, double otherValue, double nearMatchTorrerance) {
+		return value == otherValue || Math.abs(value - otherValue) <= nearMatchTorrerance;
+	}
+
+	private final static double DoublePrecision = .000001;
+
+	private static boolean areCloseEnough(double a, double b) {
+		return Math.abs(a - b) < DoublePrecision;
+	}
+
 	private static double hueToRgb(double v1, double v2, double vh) {
 		if (vh < 0.0) {
 			vh += 1.0;
@@ -191,73 +198,23 @@ public class ColorSpaceConverter {
 		return (v1);
 	};
 
-	private final static double DoublePrecision = .000001;
-
-	/**
-	 * Tells if doubles are close enough to the DoublePrecision
-	 * 
-	 * @param v1
-	 * @param v2
-	 * @param vh
-	 * @return
-	 */
-	private static boolean areCloseEnough(double a, double b) {
-		return Math.abs(a - b) < DoublePrecision;
-	}
-
-	/**
-	 * Helper function to improve readability
-	 * 
-	 * @param n
-	 * @return
-	 */
 	private static double pivotRgb(double n) {
 		return (n > 0.04045 ? Math.pow((n + 0.055) / 1.055, 2.4) : n / 12.92) * 100;
 	}
 
-	/**
-	 * Helper function to improve readability
-	 * 
-	 * @param n
-	 * @return
-	 */
 	private static double pivotXyz(double n) {
 		double i = Math.cbrt(n);
 		return n > 0.008856 ? i : 7.787 * n + 16 / 116;
 	}
 
-	/**
-	 * Get the largest number in an array
-	 * 
-	 * @param numbers
-	 * @return
-	 */
 	private static double max(double... numbers) {
 		Arrays.sort(numbers);
 		return numbers[numbers.length - 1];
 	}
 
-	/**
-	 * Get the smallest number in an array
-	 * 
-	 * @param numbers
-	 * @return
-	 */
 	private static double min(double... numbers) {
 		Arrays.sort(numbers);
 		return numbers[0];
-	}
-
-	/**
-	 * Determines if two values are close enough given a tolerance
-	 * 
-	 * @param value
-	 * @param otherValue
-	 * @param nearMatchTolerance
-	 * @return
-	 */
-	static boolean compareNearValue(double value, double otherValue, double nearMatchTorrerance) {
-		return value == otherValue || Math.abs(value - otherValue) <= nearMatchTorrerance;
 	}
 
 }
