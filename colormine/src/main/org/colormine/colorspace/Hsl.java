@@ -1,27 +1,31 @@
 package org.colormine.colorspace;
 
+/**
+ * ColorTuple representing the Hsl color space
+ */
 public class Hsl extends ColorTuple {
 	public final double H;
 	public final double S;
 	public final double L;
 
-	// should probably be pulled out to a factory-ish thing
-	public Hsl(double[] tuple) {
-		this(tuple[0], tuple[1], tuple[2]);
-	}
-
+	/**
+	 * Create Hsl from values
+	 * 
+	 * @param h
+	 * @param s
+	 * @param l
+	 */
 	public Hsl(double h, double s, double l) {
 		H = h;
 		S = s;
 		L = l;
 	}
 
-	public Hsl(float[] vaules) {
-		H = vaules[0];
-		S = vaules[1];
-		L = vaules[2];
-	}
-
+	/**
+	 * Provides access to the coordinates that make up this color space in a
+	 * uniform way.
+	 */
+	@Override
 	public Double[] getTuple() {
 		return new Double[] { H, S, L };
 	}

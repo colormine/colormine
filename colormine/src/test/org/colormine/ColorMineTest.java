@@ -19,12 +19,10 @@ public class ColorMineTest {
 
 	@BeforeTest
 	public void setup() {
-
 		_image = mock(Image.class);
 		when(_image.getHeight()).thenReturn(1);
 		when(_image.getWidth()).thenReturn(1);
 		when(_image.getRGB(0, 0)).thenReturn(0xFF0000);
-
 	}
 
 	public void getColorProfile_givenHeightAndWitdh1_returns1AsValue() {
@@ -44,11 +42,12 @@ public class ColorMineTest {
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
 		Color color2 = new Color(238, 144, 237);
+
 		// ACT
 		boolean result = ColorMine.isComplement(color1, color2);
+
 		// ASSERT
 		AssertJUnit.assertEquals(true, result);
-
 	}
 
 	public void isComplement_givenNonComplementaryColors_returnsFalse() {
@@ -56,8 +55,10 @@ public class ColorMineTest {
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
 		Color color2 = new Color(0, 0, 255);
+
 		// ACT
 		boolean result = ColorMine.isComplement(color1, color2);
+
 		// ASSERT
 		AssertJUnit.assertEquals(false, result);
 	}
@@ -66,8 +67,10 @@ public class ColorMineTest {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
+
 		// ACT
 		Color[] result = ColorMine.getTriadic(color1);
+
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
@@ -76,8 +79,10 @@ public class ColorMineTest {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
+
 		// ACT
 		Color[] result = ColorMine.getAnalogous(color1);
+
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
@@ -86,8 +91,10 @@ public class ColorMineTest {
 
 		// ARRANGE
 		Color color1 = new Color(144, 238, 144);
+
 		// ACT
 		Color[] result = ColorMine.getSplitComplements(color1);
+
 		// ASSERT
 		AssertJUnit.assertEquals(2, result.length);
 	}
@@ -134,13 +141,13 @@ public class ColorMineTest {
 		AssertJUnit.assertTrue(contains(expectedColor1, result) && contains(expectedColor2, result));
 	}
 
-	public void getMatchScore_givenExactMatchingColors_returnsZero() {
+	public void calculateSimilarity_givenExactMatchingColors_returnsZero() {
 		// ARRANGE
 		Color firstColor = new Color(255, 0, 0);
 		Color secondColor = new Color(255, 0, 0);
 
 		// ACT
-		double result = ColorMine.getMatchScore(firstColor, secondColor);
+		double result = ColorMine.calculateSimilarity(firstColor, secondColor);
 		// ASSERT
 		AssertJUnit.assertEquals(result, 0.0);
 	}

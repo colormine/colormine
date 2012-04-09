@@ -10,15 +10,19 @@ import org.colormine.image.Image;
 import org.colormine.image.profile.ColorProfile;
 
 /**
- * Provides a facade to the colormine library that makes it easy to do the most
- * common tasks without having to know anything about the underlying classes.
+ * Provides a facade that makes it easy to do the most common tasks without
+ * having to know anything about the underlying classes.
  */
 
 public class ColorMine {
 
+	private static final double _defaultComplementTolerance = 1.0;
+
+	// Color Comparison Methods
+
 	/**
-	 * Calculates how similar colors are to each other (delta-E). The order of
-	 * the arguments doesn't matter
+	 * Calculates how similar colors are to each other (delta-E), the order of
+	 * the arguments doesn't matter.
 	 * 
 	 * @param a
 	 * @param b
@@ -31,18 +35,21 @@ public class ColorMine {
 	}
 
 	/**
+	 * Determines if two given colors are complements of each other.
 	 * 
-	 * @param image
-	 * @return Returns a profile containing a map of colors to how many times
-	 *         that color occurred in the image.
+	 * @param firstColor
+	 * @param secondColor
+	 * @return Returns true if secondColor is a complement of first color.
 	 */
+	public static boolean isComplement(Color firstColor, Color secondColor, double tolerance) {
 
-	public static ColorProfile getColorProfile(Image image) {
-		return new ColorProfile(image);
+		Color complementColor = getComplement(firstColor);
+		return ColorSpaceConverter.isNearMatch(complementColor, secondColor, tolerance);
 	}
 
 	/**
-	 * Determines if two given colors are complements of each other.
+	 * Determines if two given colors are complements of each other using the
+	 * default tolerance of 1.0
 	 * 
 	 * @param firstColor
 	 * @param secondColor
@@ -51,11 +58,11 @@ public class ColorMine {
 	public static boolean isComplement(Color firstColor, Color secondColor) {
 
 		Color complementColor = getComplement(firstColor);
-		return ColorSpaceConverter.isNearMatch(complementColor, secondColor, 1.0);
+		return ColorSpaceConverter.isNearMatch(complementColor, secondColor, _defaultComplementTolerance);
 	}
 
 	/**
-	 * Gets the Complement of the given color,
+	 * Gets the Complement of the given color.
 	 * 
 	 * @param color
 	 * @return Returns Color's complement
@@ -66,6 +73,20 @@ public class ColorMine {
 		hsl = getHslComplement(hsl);
 
 		return ColorSpaceConverter.hslToColor(hsl);
+	}
+
+	// Image Manipulation Methods
+
+	/**
+	 * Returns a ColorProfile for a given Image.
+	 * 
+	 * @param image
+	 * @return Returns a profile containing a map of colors to how many times
+	 *         that color occurred in the image.
+	 */
+
+	public static ColorProfile getColorProfile(Image image) {
+		return new ColorProfile(image);
 	}
 
 	/**
@@ -88,25 +109,16 @@ public class ColorMine {
 		return getPointsOnColorWheel(color, 150, -150);
 	}
 
+	// Color Scheme Methods
+
 	/**
-	 * Gets the Analogous colors for the given color.
+	 * Gets the analogous colors for the given color.
 	 * 
 	 * @param color
 	 * @return Array of the Analogous colors for the given color
 	 */
 	public static Color[] getAnalogous(Color color) {
 		return getPointsOnColorWheel(color, 30, -30);
-	}
-
-	/**
-	 * returns a value that represents how well two colors match
-	 * 
-	 * @param firstColor
-	 * @param secondColor
-	 * @return a double value that represents how well two colors match
-	 */
-	public static double getMatchScore(Color firstColor, Color secondColor) {
-		return ColorMine.calculateSimilarity(firstColor, secondColor);
 	}
 
 	/**

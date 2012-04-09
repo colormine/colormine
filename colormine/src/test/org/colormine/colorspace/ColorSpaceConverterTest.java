@@ -2,10 +2,6 @@ package org.colormine.colorspace;
 
 import java.awt.Color;
 
-import org.colormine.colorspace.ColorSpaceConverter;
-import org.colormine.colorspace.Hsl;
-import org.colormine.colorspace.Lab;
-import org.colormine.colorspace.Xyz;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -22,7 +18,7 @@ public class ColorSpaceConverterTest {
 		Hsl result = ColorSpaceConverter.colorToHsl(color);
 
 		// ASSERT
-		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(expected, result, .01));
+		AssertJUnit.assertTrue(expected.isNearMatch(result, .01));
 	}
 
 	public void colorToXyz_givenColor_returnsXyz() {
@@ -35,7 +31,7 @@ public class ColorSpaceConverterTest {
 		Xyz xyz = ColorSpaceConverter.colorToXyz(color);
 
 		// ASSERT
-		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(xyz, expected, .001));
+		AssertJUnit.assertTrue(xyz.isNearMatch(expected, .001));
 	}
 
 	public void xyzToLab_givenXyz_returnsLab() {
@@ -47,7 +43,7 @@ public class ColorSpaceConverterTest {
 		Lab lab = ColorSpaceConverter.xyzToLab(xyz);
 
 		// ASSERT
-		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(lab, expected, .001));
+		AssertJUnit.assertTrue(lab.isNearMatch(expected, .001));
 	}
 
 	public void colorToLab_givenColor_returnsLab() {
@@ -60,7 +56,7 @@ public class ColorSpaceConverterTest {
 		Lab lab = ColorSpaceConverter.colorToLab(color);
 
 		// ASSERT
-		AssertJUnit.assertTrue(ColorSpaceConverter.isNearMatch(lab, expected, .001));
+		AssertJUnit.assertTrue(lab.isNearMatch(expected, .001));
 	}
 
 }
