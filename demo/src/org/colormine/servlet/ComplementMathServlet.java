@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.colormine.ColorCalculator;
+import org.colormine.ColorMine;
 
 public class ComplementMathServlet extends HttpServlet {
 
@@ -29,7 +29,7 @@ public class ComplementMathServlet extends HttpServlet {
 			String colorString = ServletHelpers.getColorFromParameter(request.getParameterMap(), DATA_KEY);
 
 			Color baseColor = ServletHelpers.parseColorFromHex(colorString);
-			Color complementColor = ColorCalculator.getComplement(baseColor);
+			Color complementColor = ColorMine.getComplement(baseColor);
 
 			ServletOutput.write(response, complementColor, DATA_KEY);
 

@@ -37,7 +37,7 @@ public class MapFilter implements Filter<Profile<Color>> {
 			Color bestMatch = null;
 
 			for (Color mapRgb : _profile.keySet()) {
-				double currentScore = ColorMine.compare(imageRgb, mapRgb);
+				double currentScore = ColorMine.calculateSimilarity(imageRgb, mapRgb);
 				if (currentScore < bestScore) {
 					bestScore = currentScore;
 					bestMatch = mapRgb;
