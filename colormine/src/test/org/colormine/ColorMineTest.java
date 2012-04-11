@@ -50,6 +50,32 @@ public class ColorMineTest {
 		AssertJUnit.assertEquals(true, result);
 	}
 
+	public void isComplement_givenNearComplementaryColorsAndNoTolerance_returnsFalse() {
+
+		// ARRANGE
+		Color color1 = new Color(144, 238, 144);
+		Color color2 = new Color(238, 145, 237);
+
+		// ACT
+		boolean result = ColorMine.isComplement(color1, color2, 0);
+
+		// ASSERT
+		AssertJUnit.assertEquals(false, result);
+	}
+
+	public void isComplement_givenNearComplementaryColorsAndSmallTolerance_returnsTrue() {
+
+		// ARRANGE
+		Color color1 = new Color(144, 238, 144);
+		Color color2 = new Color(238, 145, 237);
+
+		// ACT
+		boolean result = ColorMine.isComplement(color1, color2, 1);
+
+		// ASSERT
+		AssertJUnit.assertEquals(true, result);
+	}
+
 	public void isComplement_givenNonComplementaryColors_returnsFalse() {
 
 		// ARRANGE
